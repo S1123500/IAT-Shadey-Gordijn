@@ -198,3 +198,197 @@ body {
 .footer-nav nav ul li .material-icons:hover {
     color: var(--clr-yellow);
 }
+
+/* Curtain Details Pagina --------- */
+
+/* Header */
+
+.detailsHeader .material-icons {
+    transition: 0.2s all;
+}
+
+.detailsHeader .material-icons:hover {
+    color: var(--clr-yellow);
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+/* Open close slider */
+
+.openCloseSlider__container {
+    background: var(--clr-dark-blue);
+    width: 100%;
+    height: 80px;
+    margin-top: 25px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.openCloseSlider {
+    display: flex;
+    align-items: center;
+    width: 60%;
+}
+
+.openCloseSlider__slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 2px;
+    background: none;
+    outline: none;
+    background-color: white;
+}
+
+.openCloseSlider__slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 100%;
+    background: var(--clr-white);
+    cursor: pointer;
+    transition: .2s all;
+}
+
+.openCloseSlider__slider::-webkit-slider-thumb:hover {
+     width: 1.6rem;
+    height: 1.6rem;
+}
+
+.openCloseSlider__slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+}
+
+.openCloseSlider__options option {
+    background-color: red;
+}
+
+/* Timers List */
+
+.timerList {
+    width: 80%;
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5%;
+    margin-bottom: 8px;
+}
+
+.timerCard__wrapper, .timerList__addTimerBtn {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.timerCard__wrapper {
+    background: var(--clr-dark-blue);
+    height: 7rem;
+}
+
+.timerCard {
+    margin: 1rem;
+    position: relative;
+}
+
+.timerCard__delete {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    transition: 0.2s all;
+}
+
+.timerCard__schedule {
+    margin-top: 1rem;
+    border-radius: 100px;
+    background-color: var(--clr-light-blue);
+    -webkit-box-shadow: inset 0px 0px 39px -6px rgba(0, 0, 0, 0.631); 
+    box-shadow: inset 0px 0px 39px -6px rgba(0, 0, 0, 0.624);
+}
+
+.timerCard__openToClose {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 100px;
+    background-color: var(--clr-yellow);
+    width: 50%;
+    margin-left: 20%;
+}
+
+.timerCard__openToClose p {
+    font-size: 90%;
+    color: var(--clr-white);
+    position: relative;
+    line-height: 0.9rem;
+    top: 1.5rem;
+}
+
+.timerCard__delete:hover {
+    cursor: pointer;
+    color: var(--clr-orange);
+}
+
+.timerList__addTimerBtn {
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+    border:none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--clr-yellow);
+    transition: 0.2s all;
+    margin-top: 1rem;
+}
+
+.timerList__addTimerBtn .material-icons{
+    font-size: 1.8rem;
+    color: var(--clr-dark-blue);
+}
+
+.timerList__addTimerText {
+    font-size: 1.2rem;
+    color: var(--clr-dark-blue);
+    font-weight: 600;
+    padding-left: 10px;
+    
+}
+
+.timerList__addTimerBtn:hover, .timerList__addTimerBtn .material-icons:hover {
+    cursor: pointer;
+    transform: scale(1.01);   
+}
+
+/* Remove */
+
+.removeCurtain {
+    width: 80%;
+    margin-top: 25px;
+    border-top: 2px solid;
+    border-color: var(--clr-light-blue);
+}
+
+.removeCurtainBtn {
+    width: 100%;
+    border-radius: 10px;
+    height: 3.5rem;
+    border:none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #221305;
+    transition: 0.2s all;
+    margin-top: 25px;
+    border: 3px solid;
+    font-size: 1.2rem;
+    color: var(--clr-orange);
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+.removeCurtainBtn:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+}
