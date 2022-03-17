@@ -40,7 +40,13 @@
 
     <!-- Remove section -->
     <section class="removeCurtain">
-        <button class="removeCurtainBtn"> Remove This Curtain </button>
+        
+        <button class="removeCurtainBtn"> 
+            <span class="material-icons">
+                delete
+            </span>    
+            Remove This Curtain 
+        </button>
     </section>
 </main>
 

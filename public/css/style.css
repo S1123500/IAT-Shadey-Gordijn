@@ -388,6 +388,11 @@ body {
     padding-left: 10px;
 }
 
+.removeCurtainBtn .material-icons {
+    color: var(--clr-orange);
+    margin-right: 0.75rem;
+}
+
 .removeCurtainBtn:hover {
     cursor: pointer;
     transform: scale(1.02);
