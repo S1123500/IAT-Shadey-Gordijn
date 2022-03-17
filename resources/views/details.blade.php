@@ -45,7 +45,7 @@
             <span class="material-icons">
                 delete
             </span>    
-            Remove This Curtain 
+            Remove This Curtain
         </button>
     </section>
 </main>

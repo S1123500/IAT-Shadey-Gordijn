@@ -210,7 +210,7 @@ body {
 .detailsHeader .material-icons:hover {
     color: var(--clr-yellow);
     cursor: pointer;
-    transform: scale(1.15);
+    transform: scale(1.1);
 }
 
 /* Open close slider */
@@ -224,12 +224,19 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+     
+}
+
+
+.openCloseSlider__container p {
+    font-weight: 400;
 }
 
 .openCloseSlider {
     display: flex;
     align-items: center;
     width: 60%;
+  
 }
 
 .openCloseSlider__slider {
@@ -253,19 +260,16 @@ body {
 }
 
 .openCloseSlider__slider::-webkit-slider-thumb:hover {
-     width: 1.6rem;
+    width: 1.6rem;
     height: 1.6rem;
 }
 
 .openCloseSlider__slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    background: #04AA6D;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 100%;
+    background: var(--clr-white);
     cursor: pointer;
-}
-
-.openCloseSlider__options option {
-    background-color: red;
 }
 
 /* Timers List */
@@ -286,7 +290,7 @@ body {
 
 .timerCard__wrapper {
     background: var(--clr-dark-blue);
-    height: 7rem;
+    height: 8.5rem;
 }
 
 .timerCard {
@@ -294,15 +298,62 @@ body {
     position: relative;
 }
 
+.timerCard__openToClose-open {
+    left: -1.1rem;
+}
+
+.timerCard__openToClose-close {
+    right: -1.1rem;
+}
+
 .timerCard__delete {
     position: absolute;
     top: -10px;
     right: -10px;
-    transition: 0.2s all;
+    transition: 0.4s all;
+     padding: 0.2rem;
+    
 }
 
+.timerCard__deleteHoverText {
+    position: absolute;
+    top: -7px;
+    right: -15px;
+    line-height: 1rem;
+    transform: scale(0.75);
+    color: var(--clr-orange);
+    transition: 0.2s all ease;
+    opacity: 0;
+    cursor: pointer;
+    line-height: 1rem;
+    padding: 0.2rem;
+    font-weight: 400;
+    border-radius: 5px;
+}
+
+.timerCard__p:hover .timerCard__deleteHoverText {
+    right: 16px;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.timerCard__p:hover .timerCard__delete {
+    cursor: pointer;
+    color: var(--clr-orange);
+}
+
+.timerCard__deleteHoverText:hover {
+    opacity: 0;
+}
+
+/* .timerCard__deleteHoverText:hover {
+    opacity: 1;
+    cursor: pointer;
+} */
+
+
 .timerCard__schedule {
-    margin-top: 1rem;
+    margin-top: 2rem;
     border-radius: 100px;
     background-color: var(--clr-light-blue);
     -webkit-box-shadow: inset 0px 0px 39px -6px rgba(0, 0, 0, 0.631); 
@@ -316,19 +367,42 @@ body {
     background-color: var(--clr-yellow);
     width: 50%;
     margin-left: 20%;
+    animation: openToClose 0.5s ease-out;
+}
+
+@keyframes openToClose {
+    0% {
+        width: 30%;
+        margin-left: 30%;
+    }
+
+    100% {
+        width: 50%;
+        margin-left: 20%;
+    }
+}
+
+@keyframes openToCloseP {
+    0% {
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .timerCard__openToClose p {
     font-size: 90%;
-    color: var(--clr-white);
+    color: var(--clr-yellow);
     position: relative;
-    line-height: 0.9rem;
+    line-height: 0.85rem;
     top: 1.5rem;
-}
-
-.timerCard__delete:hover {
-    cursor: pointer;
-    color: var(--clr-orange);
+    opacity: 1;
+    animation: openToCloseP 0.5s;
 }
 
 .timerList__addTimerBtn {
@@ -340,12 +414,14 @@ body {
     justify-content: center;
     background: var(--clr-yellow);
     transition: 0.2s all;
+  
     margin-top: 1rem;
 }
 
 .timerList__addTimerBtn .material-icons{
     font-size: 1.8rem;
     color: var(--clr-dark-blue);
+    transition: 0.2s all ease-in-out;
 }
 
 .timerList__addTimerText {
@@ -356,10 +432,14 @@ body {
     
 }
 
+
 .timerList__addTimerBtn:hover, .timerList__addTimerBtn .material-icons:hover {
     cursor: pointer;
     transform: scale(1.01);   
+    
 }
+
+
 
 /* Remove */
 
@@ -381,7 +461,7 @@ body {
     background: #221305;
     transition: 0.2s all;
     margin-top: 25px;
-    border: 3px solid;
+    border: 2px solid;
     font-size: 1.2rem;
     color: var(--clr-orange);
     font-weight: 600;
@@ -395,5 +475,32 @@ body {
 
 .removeCurtainBtn:hover {
     cursor: pointer;
-    transform: scale(1.02);
+    transform: scale(1.01);
 }
+
+.removeCurtainBtn:hover .material-icons {
+    animation: removeThisCurtainBtnAnimation 0.4s;
+}
+
+/* Keyframes --------------- */
+
+
+
+@keyframes removeThisCurtainBtnAnimation {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    25% {
+        transform: scale(1.1) rotate(15deg);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
