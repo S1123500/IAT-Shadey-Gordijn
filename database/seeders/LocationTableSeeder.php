@@ -14,6 +14,7 @@ class LocationTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('location')->insert(['name' => 'Slaapkamer 1']);
+        DB::table('location')->insert([
+            'name' => 'Slaapkamer 1']);
     }
 }

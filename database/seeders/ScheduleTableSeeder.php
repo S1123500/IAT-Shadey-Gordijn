@@ -14,9 +14,10 @@ class ScheduleTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('schedule')->insert(['curtain name' => 'Betty', 
-        'which day' => 'Mon', 
-        'what time' => '17:49:00',
-        'percentage' => 3]);
+        DB::table('schedule')->insert([
+            'curtain name' => 'Betty', 
+            'which day' => 'Mon', 
+            'what time' => '17:49:00',
+            'percentage' => 3]);
     }
 }
