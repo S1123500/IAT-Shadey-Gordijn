@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             LocationTableSeeder::class,
             CurtainTableSeeder::class,
             ScheduleTableSeeder::class,
-            // LightsensorTableSeeder::class,
+            LightsensorTableSeeder::class,
         ]);
     }
 }
