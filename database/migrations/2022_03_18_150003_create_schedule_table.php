@@ -15,11 +15,11 @@ class CreateScheduleTable extends Migration
     {
         Schema::create('schedule', function (Blueprint $table) {
             $table->id();
-            $table->string("curtain name");
-            $table->string("which day");
-            $table->time("what time");
+            $table->string("curtain-name");
+            $table->string("which-day");
+            $table->time("what-time");
             $table->integer("percentage"); # 0=0%(open) /// 1=25% /// 2=50% /// 3=75% /// 4=100%(dicht)
-            $table->foreign("curtain name")->references("name")->on("curtain");
+            $table->foreign("curtain-name")->references("name")->on("curtain");
         });
     }
 

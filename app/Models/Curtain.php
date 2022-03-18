@@ -10,7 +10,7 @@ class Curtain extends Model
     protected $table ="curtain";
 
     public function allSchedules(){
-        return $this->hasMany('\App\Models\Schedule',"curtain name","name");
+        return $this->hasMany('\App\Models\Schedule',"curtain-name","name");
     }
 
     public function curtainLocation(){

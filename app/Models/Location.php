@@ -9,11 +9,11 @@ class Location extends Model
 {
     protected $table ="location";
 
-    public function allCurtain(){
+    public function allCurtains(){
         return $this->hasMany('\App\Models\Curtain',"location","name");
     }
     
-    public function allLightsensor(){
+    public function allLightsensors(){
         return $this->hasMany('\App\Models\Lightsensor',"location","name");
     }
 }
