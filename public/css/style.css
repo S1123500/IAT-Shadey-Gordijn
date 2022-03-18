@@ -16,6 +16,15 @@
     margin: 0;
 }
 
+.u-noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
 h1, h2, h3, p {
     font-family: var(--ff-primary);
     color: var(--clr-white);
@@ -103,6 +112,9 @@ body {
     cursor: pointer;
 }
 .footerNav nav ul li .material-icons:hover {
+    color: var(--clr-yellow);
+}
+.footerNav nav ul li .material-icons.u-active {
     color: var(--clr-yellow);
 }
 
@@ -200,6 +212,10 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
+    transition: 0.2s all ease;
+}
+.curtainCard__wrapper:hover{
+    transform: scale(1.05);
 }
 .curtainCard {
     padding: 15px;

@@ -7,7 +7,7 @@
 
         <header class="detailsHeader">
             <a href="{{'/'}}">
-                <span class="material-icons">
+                <span class="material-icons u-noselect">
                     keyboard_backspace
                 </span>
             </a>
@@ -30,7 +30,7 @@
         @include('./components/timer-card')
         
         <button class="timerList__addTimerBtn">
-            <span class="material-icons">
+            <span class="material-icons u-noselect">
                 add
             </span>
             <p class="timerList__addTimerText">
@@ -44,7 +44,7 @@
     <section class="removeCurtain">
         
         <button class="removeCurtainBtn"> 
-            <span class="material-icons">
+            <span class="material-icons u-noselect">
                 delete
             </span>    
             Remove This Curtain
