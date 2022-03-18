@@ -1,0 +1,545 @@
+:root {
+    --clr-yellow: #FFD60A;
+    --clr-blue: #181C2C;
+    --clr-dark-blue: #0F111A;
+    --clr-light-blue: #394266;
+    --clr-white: #FFFCF9;
+    --clr-orange: #FF620A;
+
+    --max-width: 500px;
+
+    --ff-primary: 'Lexend', sans-serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.u-noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+h1, h2, h3, p {
+    font-family: var(--ff-primary);
+    color: var(--clr-white);
+}
+    h1 {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 35px;
+    }
+    h2 {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 25px;
+    }
+    h3 {
+        font-weight: 700;
+        font-size: 18px;
+    }
+    p {
+        font-weight: 300;
+        font-size: 14px;
+    }
+    a {
+        text-decoration: none;
+    }
+
+body {
+    background: var(--clr-blue);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.material-icons {
+    color: var(--clr-white);
+    cursor: default;
+}
+
+/* Page Header */
+
+.header {
+    background: var(--clr-yellow);
+    height: 7%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header .header__logo {
+    width: 100%;
+    max-width: var(--max-width);
+    text-align: center;
+}
+.header .header__logo img {
+    width: 25%;
+}
+
+
+/* Footer Navigation */
+
+.footerNav {
+    height: 7%;
+    width: 100%;
+    background: var(--clr-dark-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footerNav nav {
+    width: 100%;
+    max-width: var(--max-width);
+}
+.footerNav nav ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+.footerNav nav ul li {
+    display: inline;
+}
+.footerNav nav ul li .material-icons {
+    font-size: 28px;
+    cursor: pointer;
+}
+.footerNav nav ul li .material-icons:hover {
+    color: var(--clr-yellow);
+}
+.footerNav nav ul li .material-icons.u-active {
+    color: var(--clr-yellow);
+}
+
+/* Content Top Section */
+
+.content {
+    width: 100%;
+    height: 93%;
+    max-width: var(--max-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contentTop {
+    width: 80%;
+    margin-top: 50px;
+    padding-bottom: 25px;
+    border-bottom: 2px solid var(--clr-light-blue);
+}
+.contentTop header, .contentTop header a{
+    display: flex;
+    align-items: center;
+}
+.contentTop header h1 {
+    margin-left: 10px;
+}
+.contentTop header .material-icons {
+    font-size: 35px;
+}
+
+
+/* Homepage --------- */
+
+/* Out Of Home Card */
+
+.outOfHomeCard {
+    background: var(--clr-dark-blue);
+    width: 100%;
+    height: 80px;
+    margin-top: 25px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35%;
+}
+.outOfHomeCard__label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.outOfHomeCard__label p{
+    font-family: var(--ff-primary);
+    font-weight: 400;
+    font-size: 18px; 
+    margin-left: 15px;
+}
+.outOfHomeCard__label p{
+    font-size: 20px; 
+}
+.outOfHomeCard__toggleBtn .material-icons {
+    font-size: 55px;
+    transition: 0.2s all ease;
+}
+.outOfHomeCard:hover{
+    cursor: pointer;
+}
+.outOfHomeCard:hover .outOfHomeCard__toggleBtn .material-icons {
+    color: var(--clr-yellow);
+}
+
+/* Curtain list */
+
+.curtainList {
+    width: 80%;
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5%;
+}
+.curtainCard__wrapper, .curtainList__add {
+    width: 100%;
+    border-radius: 10px;
+}
+.curtainCard__wrapper:after, .curtainList__add:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+.curtainCard__wrapper {
+    background: var(--clr-light-blue);
+    background-size: 250%;
+    background-position: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    transition: 0.2s all ease;
+}
+.curtainCard__wrapper:hover{
+    transform: scale(1.05);
+}
+.curtainCard {
+    padding: 15px;
+}
+
+.curtainList__add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--clr-dark-blue);
+}
+.curtainList__add .material-icons{
+    font-size: 60px;
+    color: var(--clr-white);
+    transition: 0.2s all ease;
+}
+.curtainList__add:hover{
+    cursor: pointer;
+}
+.curtainList__add:hover .material-icons {
+    transform: scale(1.1);
+    color: var(--clr-yellow);
+}
+
+
+
+/* Curtain Details Pagina --------- */
+
+/* Header */
+
+.detailsHeader .material-icons {
+    transition: 0.2s all;
+}
+
+.detailsHeader .material-icons:hover {
+    color: var(--clr-yellow);
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+/* Open close slider */
+
+.openCloseSlider__container {
+    background: var(--clr-dark-blue);
+    width: 100%;
+    height: 80px;
+    margin-top: 25px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.openCloseSlider__container p {
+    font-weight: 400;
+}
+
+.openCloseSlider {
+    display: flex;
+    align-items: center;
+    width: 60%;
+}
+
+.openCloseSlider__slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 2px;
+    background: none;
+    outline: none;
+    background-color: white;
+}
+
+.openCloseSlider__slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 100%;
+    background: var(--clr-white);
+    cursor: pointer;
+    transition: .2s all;
+}
+
+.openCloseSlider__slider::-webkit-slider-thumb:hover {
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+.openCloseSlider__slider::-moz-range-thumb {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 100%;
+    background: var(--clr-white);
+    cursor: pointer;
+}
+
+/* Timers List */
+
+.timerList {
+    width: 80%;
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5%;
+    margin-bottom: 8px;
+}
+
+.timerCard__wrapper, .timerList__addTimerBtn {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.timerCard__wrapper {
+    background: var(--clr-dark-blue);
+    height: 8.5rem;
+}
+
+.timerCard {
+    margin: 1rem;
+    position: relative;
+}
+
+.timerCard__openToClose-open {
+    left: -1.1rem;
+}
+
+.timerCard__openToClose-close {
+    right: -1.1rem;
+}
+
+.timerCard__delete {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    transition: 0.4s all;
+    padding: 0.2rem;
+    
+}
+
+.timerCard__deleteHoverText {
+    position: absolute;
+    top: -7px;
+    right: -15px;
+    line-height: 1rem;
+    transform: scale(0.75);
+    color: var(--clr-orange);
+    transition: 0.2s all ease;
+    opacity: 0;
+    cursor: pointer;
+    line-height: 1rem;
+    padding: 0.2rem;
+    font-weight: 400;
+    border-radius: 5px;
+}
+
+.timerCard__p:hover .timerCard__deleteHoverText {
+    right: 16px;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.timerCard__p:hover .timerCard__delete {
+    cursor: pointer;
+    color: var(--clr-orange);
+}
+
+.timerCard__deleteHoverText:hover {
+    opacity: 0;
+}
+
+/* .timerCard__deleteHoverText:hover {
+    opacity: 1;
+    cursor: pointer;
+} */
+
+
+.timerCard__schedule {
+    margin-top: 2rem;
+    border-radius: 100px;
+    background-color: var(--clr-light-blue);
+    -webkit-box-shadow: inset 0px 0px 39px -6px rgba(0, 0, 0, 0.631); 
+    box-shadow: inset 0px 0px 39px -6px rgba(0, 0, 0, 0.624);
+}
+
+.timerCard__openToClose {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 100px;
+    background-color: var(--clr-yellow);
+    width: 50%;
+    margin-left: 20%;
+    animation: openToClose 0.5s ease-out;
+}
+
+@keyframes openToClose {
+    0% {
+        width: 30%;
+        margin-left: 30%;
+    }
+
+    100% {
+        width: 50%;
+        margin-left: 20%;
+    }
+}
+
+@keyframes openToCloseP {
+    0% {
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.timerCard__openToClose p {
+    font-size: 90%;
+    color: var(--clr-yellow);
+    position: relative;
+    line-height: 0.85rem;
+    top: 1.5rem;
+    opacity: 1;
+    animation: openToCloseP 0.5s;
+}
+
+.timerList__addTimerBtn {
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+    border:none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--clr-yellow);
+    transition: 0.2s all;
+    margin-top: 1rem;
+}
+
+.timerList__addTimerBtn .material-icons{
+    font-size: 1.8rem;
+    color: var(--clr-dark-blue);
+    transition: 0.2s all ease-in-out;
+}
+
+.timerList__addTimerText {
+    font-size: 1.2rem;
+    color: var(--clr-dark-blue);
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+
+.timerList__addTimerBtn:hover, .timerList__addTimerBtn .material-icons:hover {
+    cursor: pointer;
+    transform: scale(1.01);   
+    
+}
+
+
+
+/* Remove */
+
+.removeCurtain {
+    width: 80%;
+    margin-top: 25px;
+    border-top: 2px solid;
+    border-color: var(--clr-light-blue);
+}
+
+.removeCurtainBtn {
+    width: 100%;
+    border-radius: 10px;
+    height: 3.5rem;
+    border:none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #221305;
+    transition: 0.2s all;
+    margin-top: 25px;
+    border: 2px solid;
+    font-size: 1.2rem;
+    color: var(--clr-orange);
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+.removeCurtainBtn .material-icons {
+    color: var(--clr-orange);
+    margin-right: 0.75rem;
+}
+
+.removeCurtainBtn:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+}
+
+.removeCurtainBtn:hover .material-icons {
+    animation: removeThisCurtainBtnAnimation 0.4s;
+}
+
+
+/* Keyframes --------------- */
+
+
+@keyframes removeThisCurtainBtnAnimation {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    25% {
+        transform: scale(1.1) rotate(15deg);
+    }
+
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
