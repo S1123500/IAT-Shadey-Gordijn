@@ -2,9 +2,9 @@
 @section('body')
 
     <body>
-        @include('header')
+        @include('./components/header')
         @yield('content')
-        @include('footer')
+        @include('./components/footer')
     </body>
     
 @endsection

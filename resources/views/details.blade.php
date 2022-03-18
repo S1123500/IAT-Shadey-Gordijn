@@ -27,7 +27,7 @@
     <!-- Timers -->
     <section class="timerList">
 
-        @include('timer-card')
+        @include('./components/timer-card')
         
         <button class="timerList__addTimerBtn">
             <span class="material-icons">
