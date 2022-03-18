@@ -2,7 +2,8 @@
 @section('content')
 
     <main class="content">
-        <section class="content-top">
+        <!-- Title + Out of Home Toggle -->
+        <section class="contentTop">
             <header>
                 <span class="material-icons">
                     dashboard
@@ -10,32 +11,34 @@
                 <h1>My Curtains</h1>
             </header>
 
-            <section class="out-of-home">
+            <section class="outOfHomeCard">
 
-                <section class="out-of-home-label">
+                <section class="outOfHomeCard__label">
                     <span class="material-icons">
                         home
                     </span>
                     <p> Out of Home</p>
                 </section>
 
-                <section class="out-of-home-button"> 
+                <section class="outOfHomeCard__toggleBtn"> 
                     <span class="material-icons">
                         toggle_off
                     </span>
                 </section>
 
             </section>
+
         </section>
+        
+        <!-- Curtain Cards -->
+        <section class="curtainList">
 
-        <section class="curtain-list">
-
-            @include('curtain-card')
+            <a href="{{'/curtain/'}}">
+                @include('./components/curtain-card')
+            </a>
             
-            <section class="curtain-add">
-                <span class="material-icons">
-                    add
-                </span>
+            <section class="curtainList__add">
+                <span class="material-icons">add</span>
             </section>
         </section>
     </main>

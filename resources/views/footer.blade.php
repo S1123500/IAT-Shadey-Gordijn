@@ -1,4 +1,4 @@
-<footer class="footer-nav">
+<footer class="footerNav">
     <nav>
         <ul>
             <li><span class="material-icons">bedtime</span></li>

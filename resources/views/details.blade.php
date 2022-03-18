@@ -3,12 +3,14 @@
 
 <main class="content">
     <!-- Title + Open Close Slider -->
-    <section class="content-top">
+    <section class="contentTop">
 
         <header class="detailsHeader">
-            <span class="material-icons">
-                keyboard_backspace
-            </span>
+            <a href="{{'/'}}">
+                <span class="material-icons">
+                    keyboard_backspace
+                </span>
+            </a>
             <h1>[curtain name]</h1>
         </header>
 

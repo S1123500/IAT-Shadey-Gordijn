@@ -1,5 +1,5 @@
-<article class="curtain-card">
-    <section class="curtain-card-text">
+<article class="curtainCard__wrapper">
+    <section class="curtainCard">
         <h3>[curtain name]</h3>
         <p>[location]</p>
     </section>
