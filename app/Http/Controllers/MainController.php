@@ -9,18 +9,33 @@ use App\Models\Schedule;
 
 use Illuminate\Http\Request;
 
-class CurtainController extends Controller
+class MainController extends Controller
 {
     public function show() {
         $curtains = Curtain::all();
         $lightsensors = Lightsensor::all();
         $locations = Location::all();
         $schedules = Schedule::all();
-        return view('Testy',[
+        return view('home',[
             'curtains' => $curtains,
             'lightsensors' => $lightsensors,
             'locations' => $locations,
             'schedules' => $schedules,
+        ]);
+    }
+
+    public function details($name) {
+        $name = $name;
+        $curtain = Curtain::where('name', $name)->first();
+        $lightsensors = Curtain::where('name', $name)->first()->curtainLocation->allLightsensors;
+        $location = Curtain::where('name', $name)->first()->curtainLocation;
+        $schedules = Curtain::where('name', $name)->first()->allSchedules;
+        return view('details',[
+            'curtain' => $curtain,
+            'lightsensors' => $lightsensors,
+            'location' => $location,
+            'schedules' => $schedules,
+            'name' => $name
         ]);
     }
 }

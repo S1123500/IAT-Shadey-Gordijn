@@ -8,7 +8,7 @@
         </p>
                 
         <section class="timerCard__content">
-            <h3 class="timerCard__title">[Day]</h3>
+            <h3 class="timerCard__title">{{$schedule->whichDay}}</h3>
             <section class="timerCard__schedule">
                 <section class="timerCard__openToClose">
                     <p class="timerCard__openToClose-open">[open]</p>

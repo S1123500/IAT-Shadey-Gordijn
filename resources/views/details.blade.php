@@ -11,24 +11,24 @@
                     keyboard_backspace
                 </span>
             </a>
-            <h1>[curtain name]</h1>
+            <h1>{{$name}}</h1>
         </header>
 
         <section class="openCloseSlider__container">
-            <p>Close</p>
+            <p>Open</p>
             <section class="openCloseSlider">
                 <input type="range" class="openCloseSlider__slider" id="openCloseSlider__slider" min="0" value="0" max="4" step="1" list="openCloseSlider__options">
             </section>
-            <p>Open</p>
+            <p>Close</p>
         </section>
 
     </section>
 
     <!-- Timers -->
     <section class="timerList">
-
+    @foreach ($schedules as $schedule)
         @include('./components/timer-card')
-        
+    @endforeach
         <button class="timerList__addTimerBtn">
             <span class="material-icons u-noselect">
                 add

@@ -32,11 +32,11 @@
         
         <!-- Curtain Cards -->
         <section class="curtainList">
-
-            <a href="{{'/curtain/'}}">
+        @foreach ($curtains as $curtain)
+            <a href= '/{{$curtain->name}}/'>
                 @include('./components/curtain-card')
             </a>
-            
+        @endforeach
             <section class="curtainList__add">
                 <span class="material-icons u-noselect">add</span>
             </section>
