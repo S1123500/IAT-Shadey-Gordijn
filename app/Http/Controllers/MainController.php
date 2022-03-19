@@ -9,7 +9,7 @@ use App\Models\Schedule;
 
 use Illuminate\Http\Request;
 
-class CurtainController extends Controller
+class MainController extends Controller
 {
     public function show() {
         $curtains = Curtain::all();
