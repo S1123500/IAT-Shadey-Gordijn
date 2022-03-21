@@ -21,15 +21,15 @@ class CurtainTableSeeder extends Seeder
         DB::table('curtain')->insert([
             'name' => 'Frank',
             'location' => 'Livingroom',
-            'percentage' => 1]);
+            'percentage' => 0]);
         DB::table('curtain')->insert([
             'name' => 'Jaap',
             'location' => 'Bedroom 2',
-            'percentage' => 2]);
+            'percentage' => 0]);
         DB::table('curtain')->insert([
             'name' => 'Gerda',
             'location' => 'Kitchen',
-            'percentage' => 4]);
+            'percentage' => 0]);
             
         
     }
