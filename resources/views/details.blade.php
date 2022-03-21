@@ -43,7 +43,7 @@
     <!-- Remove section -->
     <section class="removeCurtain">
         
-        <button class="removeCurtainBtn"> 
+        <button onclick="window.location.href = '/delete/{{$curtain->name}}'" class="removeCurtainBtn"> 
             <span class="material-icons u-noselect">
                 delete
             </span>    
