@@ -69,7 +69,7 @@ body {
 
 .header {
     background: var(--clr-yellow);
-    height: 7%;
+    height: 65px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -81,7 +81,7 @@ body {
     text-align: center;
 }
 .header .header__logo img {
-    width: 25%;
+    width: 30%;
 }
 
 
@@ -95,7 +95,7 @@ body {
     position: fixed;
     left: 0;
     bottom: 0;
-    height: 7%;
+    height: 60px;
     width: 100%;
     color: white;
     text-align: center;
