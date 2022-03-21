@@ -41,7 +41,7 @@
                     </section>
                     <section class="addNewTimer__closeTime">
                         <label for="close-time"> Close time </label>
-                        <input type="time" name="close-time" id="close-time">
+                        <input type="time" step="300" name="close-time" id="close-time">
                     </section>
                 </section>
 

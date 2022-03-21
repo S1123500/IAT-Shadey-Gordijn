@@ -36,22 +36,23 @@ window.onload = () => {
         console.log("Curtain Detailpage")
         
         // Get js elements from DOM by ID
+        // add timer
         const newTimerOverlay = document.getElementById("js--newTimerOverlay");
         const addTimerBtn = document.getElementById("js--addTimerBtn");
         const closeTimerIcon = document.getElementById("js--closeAddNewTimerIcon");
         const closeTimerBtn = document.getElementById("js--closeAddNewTimerBtn");
-
+        // are you sure timer
         const areYouSureTimerOverlay = document.getElementById("js--areYouSureTimerOverlay")
         const deleteTimerBtn = document.getElementById("js--deleteTimerBtn");
         const areYouSureCancelBtn = document.getElementById("js--areYouSureCancelBtn");
         const areYouSureCloseIcon = document.getElementById("js--areYouSureCloseIcon");
-
+        // are you sure curtain
         const areYouSureCurtainOverlay = document.getElementById("js--areYouSureCurtainOverlay");
         const areYouSureCancelCurtainBtn = document.getElementById("js--areYouSureCancelCurtainBtn");
         const removeCurtainBtn = document.getElementById("js--removeCurtainBtn");
         const areYouSureCloseCurtainIcon = document.getElementById("js--areYouSureCloseCurtainIcon");
 
-        // are you sure
+        // are you sure curtain
 
         areYouSureCancelCurtainBtn.addEventListener("click", () => {
             closeOverlay(areYouSureCurtainOverlay);
@@ -62,12 +63,13 @@ window.onload = () => {
         })
 
         removeCurtainBtn.addEventListener("click", () => {
-            areYouSureCurtainOverlay.style.display = "flex";
+             openOverlay(areYouSureCurtainOverlay);
         })
-
+        
+        // are you sure timer
 
         deleteTimerBtn.addEventListener("click", () => {
-            areYouSureTimerOverlay.style.display = "flex";
+            openOverlay(areYouSureTimerOverlay);
         })
 
         areYouSureCancelBtn.addEventListener("click", () => {
@@ -77,12 +79,11 @@ window.onload = () => {
         areYouSureCloseIcon.addEventListener("click", () => {
             closeOverlay(areYouSureTimerOverlay);
         })
-
-    
         
         // onclick add timer btn
+
         addTimerBtn.addEventListener("click", function () {
-            newTimerOverlay.style.display = "flex";
+            openOverlay(newTimerOverlay);
         })
 
         closeTimerIcon.addEventListener("click", function () {
@@ -93,10 +94,36 @@ window.onload = () => {
             closeOverlay(newTimerOverlay);
         })
 
-        const closeOverlay = (el) => {
-            el.style.display = "none";
-        }
-      
-    }
+        // overlay open and close + animation
 
+        // om dit goed te laten werken moet in de css het volgende staan bij 'el':
+        // top: -2vh, display: none, opacity: 0, background: none, transition: 0.2s all
+        
+        const closeOverlay = (el) => {
+            el.style.background = "none";   
+
+            setTimeout(() => {
+                el.style.opacity = "0";
+                el.style.top = "-2vh";
+            }, 10)
+
+            setTimeout(() => {
+                el.style.display = "none"; 
+            },200)
+        }
+
+        const openOverlay = (el) => {
+            el.style.display = "flex"
+           
+            setTimeout(() => {
+                el.style.opacity = "1";
+                el.style.top = "0";  
+            }, 1)
+            
+            setTimeout(() => {
+                el.style.background = "rgba(0, 0, 0, 0.7)";
+               
+            },75)
+        }
+    }
 };
