@@ -31,43 +31,70 @@ window.onload = () => {
 
     }
 
+    // /curtain
     if (path === "/curtain/") {
         console.log("Curtain Detailpage")
         
         // Get js elements from DOM by ID
         const newTimerOverlay = document.getElementById("js--newTimerOverlay");
         const addTimerBtn = document.getElementById("js--addTimerBtn");
-        const closeIcon = document.getElementById("js--closeAddNewTimerIcon");
-        const closeBtn = document.getElementById("js--closeAddNewTimerBtn");
+        const closeTimerIcon = document.getElementById("js--closeAddNewTimerIcon");
+        const closeTimerBtn = document.getElementById("js--closeAddNewTimerBtn");
 
-        // Set outOfHome state to false
-        let isNewTimerOverlayOpen = false;
+        const areYouSureTimerOverlay = document.getElementById("js--areYouSureTimerOverlay")
+        const deleteTimerBtn = document.getElementById("js--deleteTimerBtn");
+        const areYouSureCancelBtn = document.getElementById("js--areYouSureCancelBtn");
+        const areYouSureCloseIcon = document.getElementById("js--areYouSureCloseIcon");
+
+        const areYouSureCurtainOverlay = document.getElementById("js--areYouSureCurtainOverlay");
+        const areYouSureCancelCurtainBtn = document.getElementById("js--areYouSureCancelCurtainBtn");
+        const removeCurtainBtn = document.getElementById("js--removeCurtainBtn");
+        const areYouSureCloseCurtainIcon = document.getElementById("js--areYouSureCloseCurtainIcon");
+
+        // are you sure
+
+        areYouSureCancelCurtainBtn.addEventListener("click", () => {
+            closeOverlay(areYouSureCurtainOverlay);
+        })
+
+        areYouSureCloseCurtainIcon.addEventListener("click", () => {
+            closeOverlay(areYouSureCurtainOverlay);
+        })
+
+        removeCurtainBtn.addEventListener("click", () => {
+            areYouSureCurtainOverlay.style.display = "flex";
+        })
+
+
+        deleteTimerBtn.addEventListener("click", () => {
+            areYouSureTimerOverlay.style.display = "flex";
+        })
+
+        areYouSureCancelBtn.addEventListener("click", () => {
+            closeOverlay(areYouSureTimerOverlay);
+        })
+
+        areYouSureCloseIcon.addEventListener("click", () => {
+            closeOverlay(areYouSureTimerOverlay);
+        })
+
+    
         
         // onclick add timer btn
         addTimerBtn.addEventListener("click", function () {
-            
-            // toggle overlay met display none en flex
-            if (isNewTimerOverlayOpen) {
-                newTimerOverlay.style.display = "none";
-            } else {
-                newTimerOverlay.style.display = "flex";
-            }
-
-            // switch
-            isNewTimerOverlayOpen = !isNewTimerOverlayOpen
+            newTimerOverlay.style.display = "flex";
         })
 
-        closeIcon.addEventListener("click", function () {
-            closeOverlay();
+        closeTimerIcon.addEventListener("click", function () {
+            closeOverlay(newTimerOverlay);
         })
 
-        closeBtn.addEventListener("click", function () {
-            closeOverlay();
+        closeTimerBtn.addEventListener("click", function () {
+            closeOverlay(newTimerOverlay);
         })
 
-        const closeOverlay = () => {
-            newTimerOverlay.style.display = "none";
-            isNewTimerOverlayOpen = false; 
+        const closeOverlay = (el) => {
+            el.style.display = "none";
         }
       
     }

@@ -6,6 +6,9 @@
     <!-- Add timer card -->
     @include('./components/add-timer-card')
 
+    @include('./components/are-you-sure-timer')
+    @include('./components/are-you-sure-curtain')
+
     <!-- Title + Open Close Slider -->
     <section class="contentTop">
 
@@ -47,7 +50,7 @@
     <!-- Remove section -->
     <section class="removeCurtain">
         
-        <button class="removeCurtainBtn"> 
+        <button class="removeCurtainBtn" id="js--removeCurtainBtn"> 
             <span class="material-icons u-noselect">
                 delete
             </span>    
