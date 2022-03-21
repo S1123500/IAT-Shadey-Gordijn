@@ -33,7 +33,43 @@ window.onload = () => {
 
     if (path === "/curtain/") {
         console.log("Curtain Detailpage")
+        
+        // Get js elements from DOM by ID
+        const newTimerOverlay = document.getElementById("js--newTimerOverlay");
+        const addTimerBtn = document.getElementById("js--addTimerBtn");
+        const closeIcon = document.getElementById("js--closeAddNewTimerIcon");
+        const closeBtn = document.getElementById("js--closeAddNewTimerBtn");
 
+        // Set outOfHome state to false
+        let isNewTimerOverlayOpen = false;
+        
+        // onclick add timer btn
+        addTimerBtn.addEventListener("click", function () {
+            
+            // toggle overlay met display none en flex
+            if (isNewTimerOverlayOpen) {
+                newTimerOverlay.style.display = "none";
+            } else {
+                newTimerOverlay.style.display = "flex";
+            }
+
+            // switch
+            isNewTimerOverlayOpen = !isNewTimerOverlayOpen
+        })
+
+        closeIcon.addEventListener("click", function () {
+            closeOverlay();
+        })
+
+        closeBtn.addEventListener("click", function () {
+            closeOverlay();
+        })
+
+        const closeOverlay = () => {
+            newTimerOverlay.style.display = "none";
+            isNewTimerOverlayOpen = false; 
+        }
+      
     }
 
 };

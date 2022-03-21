@@ -14,6 +14,7 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 .u-noselect {
@@ -54,7 +55,7 @@ h1, h2, h3, p {
 body {
     background: var(--clr-blue);
     width: 100vw;
-    min-height: 100vh;
+    min-height: calc(100vh + 10rem);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -272,6 +273,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    transition: 0.2s all;
 }
 
 
@@ -480,10 +482,231 @@ body {
 .timerList__addTimerBtn:hover, .timerList__addTimerBtn .material-icons:hover {
     cursor: pointer;
     transform: scale(1.01);   
-    
 }
 
 
+/* Add curtain timer popup */
+
+.addNewTimer__background {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.addNewTimer__wrapper {
+    background-color: var(--clr-dark-blue);
+    border-radius: 10px;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 380px;
+    position: relative;
+}
+
+.addNewTimer__title {
+    margin-bottom: 1.5rem;
+    font-size: 180%;
+}
+
+.addNewTimer__form p {
+    font-size: 100%;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+.addNewTimer__dotw {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.addNewTimer__dotw input[type="radio"] {
+    display: none;
+}
+
+.addNewTimer__dotw > label {
+    display: inline-block;
+    background-color: var(--clr-white);
+    width: 34px;
+    height: 34px;
+    padding: 10px;
+    text-align: center;
+    font-family: Arial;
+    cursor: pointer;
+    color: var(--clr-dark-blue);
+    font-size: 80%;
+    font-weight: 600;
+    border-radius: 100%;
+    transition: 0.2s all;
+}
+
+.addNewTimer__dotw input[type="radio"]:hover+label {
+    transform: scale(0.95);
+    background-color: #FFD60A;
+}
+
+
+
+.addNewTimer__dotw input[type="radio"]:checked+label {
+  background-color: var(--clr-yellow);
+  transition: 0.2s all;
+  transform: scale(1.1);
+  animation: radioClick 0.4s ease-in-out;
+}
+
+.addNewTimer__error {
+    color: var(--)
+}
+
+@keyframes radioClick {
+    0% {
+        transform: rotate(0deg)
+        scale(0.95);
+    }
+    10% {
+        transform: rotate(8deg)
+    }
+    50% {
+        transform: rotate(-5deg)
+        scale(1.2);
+    }
+    100% {
+        transform: rotate(0deg)
+        scale(1.15);
+    }
+}
+
+.addNewTimer__closeIcon {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    transition: 0.4s all;
+    padding: 0.2rem;
+    
+}
+
+.addNewTimer__closeHoverText {
+    position: absolute;
+    top: -7px;
+    right: -15px;
+    line-height: 1rem;
+    transform: scale(0.75);
+    color: var(--clr-orange);
+    transition: 0.2s all ease;
+    opacity: 0;
+    cursor: pointer;
+    line-height: 1rem;
+    padding: 0.2rem;
+    font-weight: 400;
+    border-radius: 5px;
+}
+
+
+.addNewTimer__p {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.addNewTimer__p:hover .addNewTimer__closeHoverText {
+    right: 16px;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.addNewTimer__p:hover .addNewTimer__closeIcon {
+    cursor: pointer;
+    color: var(--clr-orange);
+}
+
+.addNewTimer__closeHoverText:hover {
+    opacity: 0;
+}
+
+.addNewTimer__openAndCloseTimes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 2rem;
+    gap: 2rem;
+}
+
+.addNewTimer__openAndCloseTimes input {
+    padding:0.5rem;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--clr-white);
+}
+
+.addNewTimer__openAndCloseTimes label {
+    display: block;
+    color: var(--clr-white);
+    font-family: var(--ff-primary);
+    margin-bottom: 0.5rem;
+}
+
+.addNewTimer__openTime input {
+    width: 100%;
+}
+
+.addNewTimer__closeTime input {
+    width: 100%;
+}
+
+.addNewTimer__addCurtainBtn {
+    display: inline-block;
+    border: none;
+    background-color: var(--clr-yellow);
+    color: var(--clr-dark-blue);
+    border-radius: 8px;
+    padding: 0.5rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    width: 100%;
+    font-family: var(--ff-primary);
+    font-weight: 600;
+    font-size: 120%;
+    margin-bottom: 0.75rem;
+    transition: 0.2s all;
+}
+
+.addNewTimer__addCurtainBtn:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+}
+
+.addNewTimer__cancelBtn {
+    display: inline-block;
+    background: transparent;
+    border: 2px solid;
+    border-color: var(--clr-yellow);
+    border-radius: 8px;
+    color: var(--clr-yellow);
+    padding: 0.5rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    width: 100%;
+    font-size: 120%;
+    font-family: var(--ff-primary);
+    font-weight: 600;
+    transition: 0.2s all;
+}
+
+.addNewTimer__cancelBtn:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+        background-color: #ffd60a0c;
+
+}
 
 /* Remove */
 

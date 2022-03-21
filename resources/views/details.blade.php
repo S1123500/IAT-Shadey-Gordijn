@@ -1,7 +1,11 @@
 @extends('body')
 @section('content')
 
+
 <main class="content">
+    <!-- Add timer card -->
+    @include('./components/add-timer-card')
+
     <!-- Title + Open Close Slider -->
     <section class="contentTop">
 
@@ -26,14 +30,14 @@
 
     <!-- Timers -->
     <section class="timerList">
-    
+
         @include('./components/timer-card')
-        
-        <button class="timerList__addTimerBtn">
+
+        <button class="timerList__addTimerBtn" id="js--addTimerBtn">
             <span class="material-icons u-noselect">
                 add
             </span>
-            <p class="timerList__addTimerText">
+            <p class="timerList__addTimerText ">
                 ADD NEW TIMER
             </p>
         </button>
@@ -50,6 +54,11 @@
             Remove This Curtain
         </button>
     </section>
+
+     
 </main>
 
+
+
 @endsection
+
