@@ -15,10 +15,10 @@ class LightsensorTableSeeder extends Seeder
     public function run()
     {
         DB::table('lightsensor')->insert([
-            'location' => 'Slaapkamer 1',
+            'location' => 'Bedroom 1',
             'value' => 2000]);
         DB::table('lightsensor')->insert([
-            'location' => 'Slaapkamer 2',
+            'location' => 'Bedroom 2',
             'value' => 4000]);
     }
 }

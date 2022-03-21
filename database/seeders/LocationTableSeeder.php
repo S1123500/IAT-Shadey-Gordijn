@@ -15,12 +15,12 @@ class LocationTableSeeder extends Seeder
     public function run()
     {
         DB::table('location')->insert([
-            'name' => 'Slaapkamer 1']);
+            'name' => 'Bedroom 1']);
         DB::table('location')->insert([
-            'name' => 'Slaapkamer 2']);
+            'name' => 'Bedroom 2']);
         DB::table('location')->insert([
-            'name' => 'Woonkamer']);
+            'name' => 'Livingroom']);
         DB::table('location')->insert([
-            'name' => 'Keuken']);
+            'name' => 'Kitchen']);
     }
 }

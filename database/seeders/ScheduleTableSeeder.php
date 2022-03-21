@@ -17,36 +17,32 @@ class ScheduleTableSeeder extends Seeder
         DB::table('schedule')->insert([
             'curtainName' => 'Betty', 
             'whichDay' => 'Mon', 
-            'timeClose' => '17:49:00',
-            'percentage1' => 3]);
+            'timeOpen' => '06:00',
+            'timeClose' => '17:50']);
         DB::table('schedule')->insert([
             'curtainName' => 'Betty', 
             'whichDay' => 'Tue', 
-            'timeOpen' => '08:00:00',
-            'timeClose' => '08:00:00',
-            'percentage1' => 0,
-            'percentage2' => 4]);
+            'timeOpen' => '08:00',
+            'timeClose' => '20:00']);
         DB::table('schedule')->insert([
             'curtainName' => 'Jaap', 
             'whichDay' => 'Wed', 
-            'timeOpen' => '08:00:00',
-            'percentage1' => 0]);
+            'timeOpen' => '04:00',
+            'timeClose' => '21:00']);
         DB::table('schedule')->insert([
             'curtainName' => 'Gerda', 
             'whichDay' => 'Thu', 
-            'timeClose' => '23:00:00',
-            'percentage1' => 4]);
+            'timeOpen' => '10:00',
+            'timeClose' => '23:00']);
         DB::table('schedule')->insert([
             'curtainName' => 'Gerda', 
             'whichDay' => 'Thu', 
-            'timeOpen' => '04:00:00',
-            'timeClose' => '12:30:00',
-            'percentage1' => 2,
-            'percentage2' => 4]);
+            'timeOpen' => '04:00',
+            'timeClose' => '12:30']);
         DB::table('schedule')->insert([
             'curtainName' => 'Frank', 
             'whichDay' => 'Sun', 
-            'timeOpen' => '06:00:00',
-            'percentage1' => 0]);
+            'timeOpen' => '08:30',
+            'timeClose' => '21:15']);
     }
 }
