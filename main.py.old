@@ -1,0 +1,37 @@
+import serial
+import sys
+import numpy
+#import time
+
+import bluetooth as bt
+
+
+uuid = "DEVICE FINGERPRINT GOES HERE"
+#Maybe generate an ID? could be anything.
+#wbn to have an ID generated per device for info security
+#https://www.famkruithof.net/uuid/uuidgen
+
+
+#temp concept for finding available bluetooth ports
+#will switch to using curtain "names" when they become available. it wil make appending and removing them easier than integer and index values
+channels_in_use = [0,0,0,0,0,0,0,0]
+next_usable_port = 1
+port_in_use = ""
+
+for x in channels_in_use:
+    if x != 0:
+        channels_in_use[x] = next_usable_port
+        port_in_use = next_usable_port
+        next_usable_port =+ 1
+
+sock=bt.BluetoothSocket( bt.RFCOMM )
+sock.connect((uuid, port_in_use)) #need to tie uuid to name of curtain, tie port to index value
+print('Connected')
+sock.settimeout(1.0)
+sock.send("x")
+print('Sent data')
+
+data = sock.recv(1)
+print('received [%s]'%data)
+
+sock.close()
