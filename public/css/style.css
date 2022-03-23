@@ -554,7 +554,7 @@ body {
     flex-direction: column;
     /* grid-template-columns: 1fr; */
     gap: 10px;
-    margin-bottom: 1rem;
+    margin-bottom: 25px;
 }
 
 .timerCard__wrapper, .timerList__addTimerBtn, .singleTimerCard__wrapper {
@@ -1038,13 +1038,12 @@ body {
     transform: scale(1.02);
 }
 
-
 /* Remove */
 
 .removeCurtain {
     width: 80%;
     border-top: 2px solid;
-    padding-top: 15px;
+    padding-top: 25px;
     border-color: var(--clr-light-blue);
     display: flex;
     justify-content: center;
