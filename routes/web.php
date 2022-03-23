@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'App\Http\Controllers\MainController@show');
-Route::get('/vacation', 'App\Http\Controllers\VacationController@vacationmaker');
+Route::get('/vacation', 'App\Http\Controllers\ChoosRedirectionController@chooser');
+Route::get('/vacationmaker', 'App\Http\Controllers\VacationController@makevacation');
+Route::get('/vacationyeeter', 'App\Http\Controllers\VacationController@yeetvacation');
 
 Route::get('/{name}', 'App\Http\Controllers\MainController@details');
 

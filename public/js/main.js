@@ -3,7 +3,17 @@ window.onload = () => {
     // Get current path name
     var path = window.location.pathname;
 
-    var isOutOfHome = false;
+
+    var isOutOfHome = document.getElementById('js--outOfHomeCard').dataset.isoutofhome;
+    console.log(isOutOfHome);
+
+    if (isOutOfHome === "false") {
+        isOutOfHome = false;
+    } else {
+        isOutOfHome = true;
+    }
+
+    // console.log(isOutOfHome.dataset.isoutofhome);
     // Depending on pathname, run code..
 
     if (path === "/") {
@@ -18,7 +28,7 @@ window.onload = () => {
         // Out of Home icon toggle
         outOfHomeCard.addEventListener("click", function () {
             // set false to true, or true to false
-            isOutOfHome = !isOutOfHome
+            // isOutOfHome = !isOutOfHome;
 
             console.log(isOutOfHome);
 

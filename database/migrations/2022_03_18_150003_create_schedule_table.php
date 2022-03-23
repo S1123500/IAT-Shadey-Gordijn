@@ -21,7 +21,7 @@ class CreateScheduleTable extends Migration
             $table->time("timeClose");
             $table->integer("percentage1")->default(0); # 0=0%(open) /// 1=25% /// 2=50% /// 3=75% /// 4=100%(dicht)
             $table->integer("percentage2")->default(2); # 0=0%(open) /// 1=25% /// 2=50% /// 3=75% /// 4=100%(dicht)
-            $table->boolean("vacation")->default(0);
+            $table->string("vacation")->default('0');
             $table->foreign("curtainName")->references("name")->on("curtain");
         });
     }
