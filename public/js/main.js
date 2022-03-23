@@ -86,6 +86,9 @@ window.onload = () => {
         const removeCurtainBtn = document.getElementById("js--removeCurtainBtn");
         const areYouSureCloseCurtainIcon = document.getElementById("js--areYouSureCloseCurtainIcon");
 
+
+        const test = document.getElementsByClassName("js--deleteTimerBtn");
+        console.log(test.length);
         // are you sure curtain
 
         areYouSureCancelCurtainBtn.addEventListener("click", () => {
