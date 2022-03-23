@@ -11,6 +11,14 @@ window.onload = () => {
         // // Get js elements from DOM by ID
         const outOfHomeCard = document.getElementById("js--outOfHomeCard");
         const outOfHomeCard_toggleIcon = document.getElementById("js--outOfHomeCard-toggleIcon");
+        const addLocationInput = document.getElementById('js--newLocation');
+        const addLocationBtn = document.getElementById('addLocation');
+        const addCurtainForm = document.getElementById('js--addCurtainForm');
+        const addCurtainOverlay = document.getElementById("js--addCurtainOverlay");
+        const addCurtainBtn = document.getElementById("js--addCurtainBtn");
+        const closeAddCurtainBtn = document.getElementById("js--closeAddCurtain");
+        const cancelAddCurtainBtn = document.getElementById("js--cancelAddCurtain");
+
 
         // Set outOfHome state to false
         var isOutOfHome = false;
@@ -29,11 +37,6 @@ window.onload = () => {
         })
 
 
-        // Get more stuff from DOM
-        const addLocationInput = document.getElementById('js--newLocation');
-        const addLocationBtn = document.getElementById('addLocation');
-        const addCurtainForm = document.getElementById('js--addCurtainForm');
-
         // Eventlistener on form
         addCurtainForm.addEventListener('click', function (event) {
             // If a radio button is checked
@@ -47,9 +50,17 @@ window.onload = () => {
             }
         });
 
+        addCurtainBtn.addEventListener("click", () => {
+            openOverlay(addCurtainOverlay);
+        })
 
-
-
+        closeAddCurtainBtn.addEventListener("click", () => {
+            closeOverlay(addCurtainOverlay);
+        })
+        cancelAddCurtainBtn.addEventListener("click", () => {
+            closeOverlay(addCurtainOverlay);
+        })
+        
     }
 
     // /curtain
@@ -84,7 +95,7 @@ window.onload = () => {
         })
 
         removeCurtainBtn.addEventListener("click", () => {
-             openOverlay(areYouSureCurtainOverlay);
+            openOverlay(areYouSureCurtainOverlay);
         })
         
         // are you sure timer
@@ -115,36 +126,39 @@ window.onload = () => {
             closeOverlay(newTimerOverlay);
         })
 
-        // overlay open and close + animation
-
-        // om dit goed te laten werken moet in de css het volgende staan bij 'el':
-        // top: -2vh, display: none, opacity: 0, background: none, transition: 0.2s all
         
-        const closeOverlay = (el) => {
-            el.style.background = "none";   
-
-            setTimeout(() => {
-                el.style.opacity = "0";
-                el.style.top = "-2vh";
-            }, 10)
-
-            setTimeout(() => {
-                el.style.display = "none"; 
-            },200)
-        }
-
-        const openOverlay = (el) => {
-            el.style.display = "flex"
-           
-            setTimeout(() => {
-                el.style.opacity = "1";
-                el.style.top = "0";  
-            }, 1)
-            
-            setTimeout(() => {
-                el.style.background = "rgba(0, 0, 0, 0.7)";
-               
-            },75)
-        }
     }
+
+
+    // overlay open and close + animation
+
+    // om dit goed te laten werken moet in de css het volgende staan bij 'el':
+     // top: -2vh, display: none, opacity: 0, background: none, transition: 0.2s all
+        
+    const closeOverlay = (el) => {
+        el.style.background = "none";   
+
+        setTimeout(() => {
+            el.style.opacity = "0";
+            el.style.top = "-2vh";
+        }, 10)
+
+        setTimeout(() => {
+            el.style.display = "none"; 
+        },200)
+    }
+
+    const openOverlay = (el) => {
+        el.style.display = "flex"
+
+        setTimeout(() => {
+            el.style.opacity = "1";
+            el.style.top = "0";  
+        }, 1)
+            
+        setTimeout(() => {
+            el.style.background = "rgba(0, 0, 0, 0.7)";
+        },75)
+    }
+
 };

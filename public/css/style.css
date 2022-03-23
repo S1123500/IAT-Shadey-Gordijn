@@ -252,18 +252,20 @@ body {
 /* Add Curtain Card */
 
 .addCurtainCard__overlay{
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     width: 100vw;
     height: 100vh;
     position: fixed;
-    top: 0;
+    top: -2vh;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 2;
-    background: rgba(0, 0, 0, 0.7);
+    background: none;
+    opacity: 0;
+    transition: 0.2s all;
 }
 .addCurtainCard{
     display: flex;
@@ -358,6 +360,7 @@ body {
     background: none;
     border: 2px solid;
     color: var(--clr-yellow);
+    cursor: pointer;
 }
 
 .addCurtainCard__form-location{

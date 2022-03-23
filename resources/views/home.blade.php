@@ -30,7 +30,6 @@
 
         </section>
 
-        
         <!-- Curtain Cards -->
         <section class="curtainList">
 
@@ -38,9 +37,12 @@
                 @include('./components/curtain-card')
             </a>
             
-            <section class="curtainList__add">
+            <section class="curtainList__add" id="js--addCurtainBtn">
                 <span class="material-icons u-noselect">add</span>
             </section>
+
+            @include('./components/add-curtain-card')
+
         </section>
     </main>
 

@@ -6,7 +6,7 @@
 
             <section class="addCurtainCard__close" id="js--addCurtainCloseIcon">
 
-                <span class="addCurtainCard__close-icon material-icons u-noselect">
+                <span class="addCurtainCard__close-icon material-icons u-noselect" id="js--closeAddCurtain">
                     close   
                 </span>
                 <span class="addCurtainCard__close-hoverText">Close</span>
@@ -17,7 +17,7 @@
 
         <form class="addCurtainCard__form" id="js--addCurtainForm">
             <label for="name">Curtain name</label>
-            <input type="text" id="name" name="name" placeholder="John" required>
+            <input type="text" id="name" name="name" placeholder="Give your curtain a name" required>
             
             <label for="location">Curtain location</label>
 
@@ -41,7 +41,7 @@
             <input type="submit" class="addCurtainCard__form-addBtn" id="js--addCurtainBtn" value="Add Curtain">
         </form> 
 
-        <input type="submit" class="addCurtainCard__cancelBtn" id="js--addCurtainCloseBtn" value="Cancel">
+        <input type="submit" class="addCurtainCard__cancelBtn" id="js--cancelAddCurtain" value="Cancel">
 
     </section>
 </article>
