@@ -35,6 +35,7 @@
     <section class="timerList">
 
         @include('./components/timer-card')
+        @include('./components/single-timer-card')
 
         <button class="timerList__addTimerBtn" id="js--addTimerBtn">
             <span class="material-icons u-noselect">

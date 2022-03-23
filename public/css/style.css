@@ -538,7 +538,7 @@ body {
     margin-bottom: 8px;
 }
 
-.timerCard__wrapper, .timerList__addTimerBtn {
+.timerCard__wrapper, .timerList__addTimerBtn, .singleTimerCard__wrapper {
     width: 100%;
     border-radius: 10px;
 }
@@ -547,10 +547,26 @@ body {
     background: var(--clr-dark-blue);
     height: 8.5rem;
 }
+.singleTimerCard__wrapper {
+    background: var(--clr-dark-blue);
+    height: auto;
+}
 
 .timerCard {
     margin: 1rem;
     position: relative;
+}
+
+.singleTimerCard__content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 75%;
+}
+.timerCard__timeInfo{
+    display: flex;
+    gap: 8px;
+    align-items: center;
 }
 
 .timerCard__openToClose-open {
@@ -606,6 +622,10 @@ body {
     cursor: pointer;
 } */
 
+.singleTimerCard__time {
+    font-size: 150%;
+    font-weight: 200;
+}
 
 .timerCard__schedule {
     margin-top: 2rem;
