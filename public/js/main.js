@@ -28,11 +28,13 @@ window.onload = () => {
             // set false to true, or true to false
             isOutOfHome = !isOutOfHome
             
-        //     // change icon by changing the innerHTML, depending on Out of Home state
+        // Change icon by changing the innerHTML, depending on Out of Home state, and add or remove active class
             if (isOutOfHome) {
                 outOfHomeCard_toggleIcon.innerHTML = "toggle_on"
+                outOfHomeCard_toggleIcon.classList.add("active")
             } else {
                 outOfHomeCard_toggleIcon.innerHTML = "toggle_off"
+                outOfHomeCard_toggleIcon.classList.remove("active")
             }
         })
 
