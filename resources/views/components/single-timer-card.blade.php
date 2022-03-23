@@ -6,7 +6,7 @@
             </span>
             <span class="timerCard__deleteHoverText">Delete</span>
         </p>
-                
+             
         <section class="singleTimerCard__content">
             <h3 class="timerCard__title">[Day]</h3>
             <section class="timerCard__timeInfo">
