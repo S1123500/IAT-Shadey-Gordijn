@@ -10,7 +10,7 @@
         <section class="timerCard__content">
             <h3 class="timerCard__title">{{$schedule->whichDay}}</h3>
             <section class="timerCard__schedule">
-                @if ($schedule->timeOpen != NULL && $schedule->timeClose != NULL )
+                @if ($schedule->timeOpen != NULL && $schedule->timeClose != NULL)
                     <section class="timerCard__openToClose">
                         <p class="timerCard__openToClose-open">{{$schedule->timeOpen}}</p>
                         <p class="timerCard__openToClose-close">{{$schedule->timeClose}}</p>

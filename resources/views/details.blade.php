@@ -27,7 +27,9 @@
     <!-- Timers -->
     <section class="timerList">
     @foreach ($schedules as $schedule)
-        @include('./components/timer-card')
+        @if($schedule->vacation == 0)
+            @include('./components/timer-card')
+        @endif
     @endforeach
         <button class="timerList__addTimerBtn">
             <span class="material-icons u-noselect">

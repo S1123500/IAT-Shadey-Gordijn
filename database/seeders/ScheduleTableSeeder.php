@@ -36,7 +36,7 @@ class ScheduleTableSeeder extends Seeder
             'timeClose' => '23:00']);
         DB::table('schedule')->insert([
             'curtainName' => 'Gerda', 
-            'whichDay' => 'Thu', 
+            'whichDay' => 'Sat', 
             'timeOpen' => '04:00',
             'timeClose' => '12:30']);
         DB::table('schedule')->insert([

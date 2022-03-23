@@ -20,6 +20,8 @@ window.onload = () => {
             // set false to true, or true to false
             isOutOfHome = !isOutOfHome
 
+            console.log(isOutOfHome);
+
             //     // change icon by changing the innerHTML, depending on Out of Home state
             if (isOutOfHome) {
                 outOfHomeCard_toggleIcon.innerHTML = "toggle_on"

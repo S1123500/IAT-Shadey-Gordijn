@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Schedule;
 use App\Models\Curtain;
 
-use DB;
 
 use Illuminate\Http\Request;
 

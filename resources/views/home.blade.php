@@ -11,7 +11,7 @@
                 <h1>My Curtains</h1>
             </header>
 
-            <section onclick="window.location.href = '/vacation'" class="outOfHomeCard" id="js--outOfHomeCard" >
+            <section class="outOfHomeCard" id="js--outOfHomeCard" >
 
                 <section class="outOfHomeCard__label">
                     <span class="material-icons u-noselect">
