@@ -188,6 +188,9 @@ body {
     font-size: 55px;
     transition: 0.2s all ease;
 }
+.outOfHomeCard__toggleBtn .material-icons.active {
+    color: var(--clr-yellow);
+}
 .outOfHomeCard:hover{
     cursor: pointer;
 }
