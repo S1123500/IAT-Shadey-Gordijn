@@ -35,6 +35,13 @@
     <section class="timerList">
 
         @include('./components/timer-card')
+        @include('./components/timer-card')
+        @include('./components/timer-card')
+        @include('./components/timer-card')
+        @include('./components/timer-card')
+        @include('./components/timer-card')
+  
+      
 
         <button class="timerList__addTimerBtn" id="js--addTimerBtn">
             <span class="material-icons u-noselect">
@@ -45,23 +52,18 @@
             </p>
         </button>
 
+      <!-- Remove section -->
+        <section class="removeCurtain">
+            
+            <button class="removeCurtainBtn" id="js--removeCurtainBtn"> 
+                <span class="material-icons u-noselect">
+                    delete
+                </span>    
+                Remove This Curtain
+            </button>
+        </section>
+</section>
     </section>
-
-    <!-- Remove section -->
-    <section class="removeCurtain">
-        
-        <button class="removeCurtainBtn" id="js--removeCurtainBtn"> 
-            <span class="material-icons u-noselect">
-                delete
-            </span>    
-            Remove This Curtain
-        </button>
-    </section>
-
-     
 </main>
-
-
-
 @endsection
 

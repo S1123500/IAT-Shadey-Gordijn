@@ -21,19 +21,27 @@
             
             <label for="location">Curtain location</label>
 
-            <section class="addCurtainCard__form-location u-noselect">
+            <section class="addCurtainCard__form-locations">
 
-                <input type="radio" id="test" name="locations" value="[location]">
-                <label for="test">[location]</label>
+                <section class="addCurtainCard__form-location u-noselect">
+                    <input type="radio" id="test" name="locations" value="[location]">
+                    <label for="test">[location]</label>
 
-                <input type="radio" id="test2" name="locations" value="[location2]">
-                <label for="test2">[location2]</label>
+                    <input type="radio" id="test2" name="locations" value="[location2]">
+                    <label for="test2">[location2]</label>
 
+                    <input type="radio" id="test3" name="locations" value="[location2]">
+                    <label for="test3">[location2]</label>
+
+                    <input type="radio" id="test4" name="locations" value="[location2]">
+                    <label for="test4">[location2]</label>
+                </section>
+                
                 <section class="add">
                     <input type="radio" id="addLocation" name="locations" value="addLocation">
-                    <label for="addLocation"> + Add new location</label>
+                    <label for="addLocation"> + </label>
                 </section>
-
+            
             </section>
 
             <input type="text" id="js--newLocation" class="newLocationInput" name="location" placeholder="Add new location">

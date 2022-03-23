@@ -11,10 +11,12 @@
     --ff-primary: 'Lexend', sans-serif;
 }
 
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    border: 1px solid red;
 }
 
 .u-noselect {
@@ -57,8 +59,8 @@ body {
     width: 100vw;
     max-width: 100%;
     overflow-x: hidden;
-    min-height: calc(100vh + 3rem);
     display: flex;
+    height: calc(200% + 100px);
     flex-direction: column;
     align-items: center;
 }
@@ -130,7 +132,6 @@ body {
 
 .content {
     width: 100%;
-    height: 93%;
     max-width: var(--max-width);
     display: flex;
     flex-direction: column;
@@ -384,11 +385,18 @@ body {
     cursor: pointer;
 }
 
+.addCurtainCard__form-locations {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 6%;
+}
+
 .addCurtainCard__form-location{
+    margin-right: 10px;
     display: flex;
     gap: 10px;
     padding: 5px 0px 5px 0px;
-    
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
@@ -399,7 +407,7 @@ body {
     display: none;
 }
 
-.addCurtainCard__form-location input[type="radio"] {
+.addCurtainCard__form-locations input[type="radio"] {
     display: none;
 }
 
@@ -422,38 +430,45 @@ body {
 }
 
 
-.addCurtainCard__form-location .add label{
-    color: var(--clr-white);
-    border: 2px solid var(--clr-white);
+.addCurtainCard__form-locations .add label{
+    color: var(--clr-yellow);
+    border: 2px solid var(--clr-yellow);
     background-color: transparent;
+    padding: 50%;
+    padding-right: 75%;
+    padding-left: 75%;
+    transition: 0.2s all;
 }
 
-.addCurtainCard__form-location input[type="radio"]:hover+label {
+.addCurtainCard__form-locations .add label:hover {
+    cursor: pointer;
+}
+
+.addCurtainCard__form-locations input[type="radio"]:hover+label {
     background-color: #FFD60A;
 }
-.addCurtainCard__form-location input[type="radio"]:checked+label {
+.addCurtainCard__form-locations input[type="radio"]:checked+label {
     background-color: var(--clr-yellow);
     transition: 0.2s all;
     transform: scale(1.1);
 }
 
-.addCurtainCard__form-location .add input[type="radio"]:hover+label {
+.addCurtainCard__form-locations .add input[type="radio"]:hover+label {
     background-color: transparent;
     border: 2px solid var(--clr-yellow);
     color: var(--clr-yellow);
 }
-.addCurtainCard__form-location .add input[type="radio"]:checked+label {
+.addCurtainCard__form-locations .add input[type="radio"]:checked+label {
     border: 2px solid var(--clr-yellow);
     color: var(--clr-yellow);
     background-color: transparent;
     transition: 0.2s all;
     transform: scale(1.1);
 }
+
 .addCurtainCard__form .newLocationInput {
     display: none;
 }
-
-
 
 /* Curtain Details Pagina --------- */
 
@@ -534,8 +549,8 @@ body {
     margin-top: 25px;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 5%;
-    margin-bottom: 8px;
+    gap: 1.5%;
+    margin-bottom: 1rem;
 }
 
 .timerCard__wrapper, .timerList__addTimerBtn {
@@ -809,7 +824,6 @@ body {
     border-radius: 5px;
 }
 
-
 .addNewTimer__p {
     position: absolute;
     top: 20px;
@@ -1006,8 +1020,8 @@ body {
 /* Remove */
 
 .removeCurtain {
-    width: 80%;
-    margin-top: 25px;
+    width: 100%;
+    margin-top: 2rem;
     border-top: 2px solid;
     border-color: var(--clr-light-blue);
 }
