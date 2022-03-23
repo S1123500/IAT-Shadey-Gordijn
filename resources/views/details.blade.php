@@ -24,7 +24,7 @@
         <section class="openCloseSlider__container">
             <p>Close</p>
             <section class="openCloseSlider">
-                <input type="range" class="openCloseSlider__slider" id="openCloseSlider__slider" min="0" value="0" max="4" step="1" list="openCloseSlider__options">
+                <input type="range" class="openCloseSlider__slider" id="openCloseSlider__slider" min="0" value="0" max="2" step="1" list="openCloseSlider__options">
             </section>
             <p>Open</p>
         </section>
