@@ -284,6 +284,10 @@ body {
     position: relative;
 }
 
+.addCurtainCard__title {
+    font-size: 180%;
+}
+
 .addCurtainCard__close {
     position: absolute;
     top: 0px;
@@ -328,6 +332,7 @@ body {
     font-family: var(--ff-primary);
     color: var(--clr-white);
     font-size: 14px;
+    border-radius: 5px;
 }
 .addCurtainCard__form input[type="text"], .addCurtainCard input[type="text"] {
     font-family: var(--ff-primary);
@@ -342,14 +347,25 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    border-radius: 5px;
-    padding: 10px 10px;
-    margin-bottom: 10px;
-
-    font-family: var(--ff-primary);
     text-transform: uppercase;
-    font-size: 16px;
+    display: inline-block;
+    border: none;
+    background-color: var(--clr-yellow);
+    color: var(--clr-dark-blue);
+    border-radius: 8px;
+    padding: 0.5rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    width: 100%;
+    font-family: var(--ff-primary);
+    font-weight: 600;
+    font-size: 120%;
+    margin-bottom: 0.75rem;
+    transition: 0.2s all;
+}
+
+.addCurtainCard__form-addBtn:hover, .addCurtainCard__cancelBtn:hover {
+    transform: scale(1.02);
 }
 .addCurtainCard__form-addBtn{
     background: var(--clr-yellow);
@@ -366,7 +382,8 @@ body {
 .addCurtainCard__form-location{
     display: flex;
     gap: 10px;
-    padding: 5px;
+    padding: 5px 0px 5px 0px;
+    
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
@@ -394,7 +411,7 @@ body {
     color: var(--clr-dark-blue);
     font-size: 80%;
     font-weight: 600;
-    border-radius: 10px;
+    border-radius: 5px;
     transition: 0.2s all;
     flex-shrink: 0; 
 }
@@ -734,7 +751,6 @@ body {
     font-weight: 600;
     border-radius: 100%;
     transition: 0.2s all;
-    
 }
 
 .addNewTimer__dotw input[type="radio"]:hover+label {

@@ -2,7 +2,7 @@
 <article class="addCurtainCard__overlay" id="js--addCurtainOverlay">
     <section class="addCurtainCard">
         <header class="addCurtainCard__header">
-            <h2>Add Curtain</h2>
+            <h2 class="addCurtainCard__title">Add Curtain</h2>
 
             <section class="addCurtainCard__close" id="js--addCurtainCloseIcon">
 
