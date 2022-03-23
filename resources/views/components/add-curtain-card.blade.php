@@ -30,13 +30,15 @@
                     <input type="radio" id="test2" name="locations" value="[location2]">
                     <label for="test2">[location2]</label>
 
-                    <input type="radio" id="test3" name="locations" value="[location2]">
-                    <label for="test3">[location2]</label>
+                <input type="radio" id="test3" name="locations" value="[location3]">
+                <label for="test3">[location3]</label>
 
-                    <input type="radio" id="test4" name="locations" value="[location2]">
-                    <label for="test4">[location2]</label>
-                </section>
-                
+                <input type="radio" id="test4" name="locations" value="[location4]">
+                <label for="test4">[location4]</label>
+
+                <input type="radio" id="test5" name="locations" value="[location5]">
+                <label for="test5">[location5]</label>
+
                 <section class="add">
                     <input type="radio" id="addLocation" name="locations" value="addLocation">
                     <label for="addLocation"> + </label>
