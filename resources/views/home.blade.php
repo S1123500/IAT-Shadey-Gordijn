@@ -29,6 +29,7 @@
             </section>
 
         </section>
+
         
         <!-- Curtain Cards -->
         <section class="curtainList">

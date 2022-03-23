@@ -249,6 +249,186 @@ body {
 }
 
 
+/* Add Curtain Card */
+
+.addCurtainCard__overlay{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.7);
+}
+.addCurtainCard{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    padding: 25px;
+    background: var(--clr-dark-blue);
+    border-radius: 10px;
+}
+
+.addCurtainCard__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.addCurtainCard__close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    transition: 0.4s all;
+    padding: 0.2rem;
+    display: flex;
+}
+.addCurtainCard__close-hoverText {
+    font-family: var(--ff-primary);
+    font-size: 14px;
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    color: var(--clr-orange);
+    cursor: pointer;
+    transition: 0.2s all ease;
+    opacity: 0;
+    transform: scale(0.5);
+}
+.addCurtainCard__close:hover .addCurtainCard__close-hoverText {
+    right: 30px;
+    opacity: 1;
+    transform: scale(1);
+}
+.addCurtainCard__close:hover .addCurtainCard__close-icon {
+    cursor: pointer;
+    color: var(--clr-orange);
+}
+.addCurtainCard__close-hoverText:hover {
+    opacity: 0;
+}
+
+
+.addCurtainCard__form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.addCurtainCard__form label {
+    font-family: var(--ff-primary);
+    color: var(--clr-white);
+    font-size: 14px;
+}
+.addCurtainCard__form input[type="text"], .addCurtainCard input[type="text"] {
+    font-family: var(--ff-primary);
+    width: 100%;
+    background: var(--clr-white);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin-bottom: 15px;
+}
+.addCurtainCard__form-addBtn, .addCurtainCard__cancelBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+
+    font-family: var(--ff-primary);
+    text-transform: uppercase;
+    font-size: 16px;
+}
+.addCurtainCard__form-addBtn{
+    background: var(--clr-yellow);
+    border: none;
+    margin-top: 15px;
+}
+.addCurtainCard__cancelBtn {
+    background: none;
+    border: 2px solid;
+    color: var(--clr-yellow);
+}
+
+.addCurtainCard__form-location{
+    display: flex;
+    gap: 10px;
+    padding: 5px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.addCurtainCard__form-location::-webkit-scrollbar{
+    display: none;
+}
+
+.addCurtainCard__form-location input[type="radio"] {
+    display: none;
+}
+
+.addCurtainCard__form-location label {
+    display: inline-block;
+    background-color: var(--clr-white);
+    width: auto;
+    min-width: 34px;
+    height: 34px;
+    padding: 10px;
+    text-align: center;
+    font-family: Arial;
+    cursor: pointer;
+    color: var(--clr-dark-blue);
+    font-size: 80%;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: 0.2s all;
+    flex-shrink: 0; 
+}
+
+
+.addCurtainCard__form-location .add label{
+    color: var(--clr-white);
+    border: 2px solid var(--clr-white);
+    background-color: transparent;
+}
+
+.addCurtainCard__form-location input[type="radio"]:hover+label {
+    background-color: #FFD60A;
+}
+.addCurtainCard__form-location input[type="radio"]:checked+label {
+    background-color: var(--clr-yellow);
+    transition: 0.2s all;
+    transform: scale(1.1);
+}
+
+.addCurtainCard__form-location .add input[type="radio"]:hover+label {
+    background-color: transparent;
+    border: 2px solid var(--clr-yellow);
+    color: var(--clr-yellow);
+}
+.addCurtainCard__form-location .add input[type="radio"]:checked+label {
+    border: 2px solid var(--clr-yellow);
+    color: var(--clr-yellow);
+    background-color: transparent;
+    transition: 0.2s all;
+    transform: scale(1.1);
+}
+.addCurtainCard__form .newLocationInput {
+    display: none;
+}
+
+
 
 /* Curtain Details Pagina --------- */
 

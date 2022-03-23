@@ -29,6 +29,27 @@ window.onload = () => {
         })
 
 
+        // Get more stuff from DOM
+        const addLocationInput = document.getElementById('js--newLocation');
+        const addLocationBtn = document.getElementById('addLocation');
+        const addCurtainForm = document.getElementById('js--addCurtainForm');
+
+        // Eventlistener on form
+        addCurtainForm.addEventListener('click', function (event) {
+            // If a radio button is checked
+            if (event.target && event.target.matches("input[type='radio']")) {
+                // Check if radio button check is the addLocationBtn
+                if(addLocationBtn.checked) {
+                    addLocationInput.style.display = "inline-block"
+                } else {
+                    addLocationInput.style.display = "none"
+                }
+            }
+        });
+
+
+
+
     }
 
     // /curtain
