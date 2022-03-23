@@ -19,9 +19,10 @@ window.onload = () => {
         const closeAddCurtainBtn = document.getElementById("js--closeAddCurtain");
         const cancelAddCurtainBtn = document.getElementById("js--cancelAddCurtain");
 
+      
 
         // Set outOfHome state to false
-        var isOutOfHome = false;
+        let isOutOfHome = false;
         
         // Out of Home icon toggle
         outOfHomeCard.addEventListener("click", function() {
@@ -77,18 +78,26 @@ window.onload = () => {
         const closeTimerBtn = document.getElementById("js--closeAddNewTimerBtn");
         // are you sure timer
         const areYouSureTimerOverlay = document.getElementById("js--areYouSureTimerOverlay")
-        const deleteTimerBtn = document.getElementById("js--deleteTimerBtn");
         const areYouSureCancelBtn = document.getElementById("js--areYouSureCancelBtn");
         const areYouSureCloseIcon = document.getElementById("js--areYouSureCloseIcon");
+        
         // are you sure curtain
+        
         const areYouSureCurtainOverlay = document.getElementById("js--areYouSureCurtainOverlay");
         const areYouSureCancelCurtainBtn = document.getElementById("js--areYouSureCancelCurtainBtn");
         const removeCurtainBtn = document.getElementById("js--removeCurtainBtn");
         const areYouSureCloseCurtainIcon = document.getElementById("js--areYouSureCloseCurtainIcon");
+        const deleteTimerBtns = document.querySelectorAll(".js--deleteTimerBtn");
+    
+
+        for (let i = 0; i < deleteTimerBtns.length; i++) {
+            deleteTimerBtns[i].addEventListener("click", () => {
+                openOverlay(areYouSureTimerOverlay);
+            });
+        }
+        
 
 
-        const test = document.getElementsByClassName("js--deleteTimerBtn");
-        console.log(test.length);
         // are you sure curtain
 
         areYouSureCancelCurtainBtn.addEventListener("click", () => {
@@ -104,10 +113,6 @@ window.onload = () => {
         })
         
         // are you sure timer
-
-        deleteTimerBtn.addEventListener("click", () => {
-            openOverlay(areYouSureTimerOverlay);
-        })
 
         areYouSureCancelBtn.addEventListener("click", () => {
             closeOverlay(areYouSureTimerOverlay);

@@ -1,6 +1,6 @@
 <article class="singleTimerCard__wrapper">
     <section class="timerCard">
-        <p class="timerCard__p js--deleteTimerBtn   " id="js--deleteTimerBtn">
+        <p class="timerCard__p js--deleteTimerBtn">
             <span class="timerCard__delete material-icons u-noselect">
                 close   
             </span>
