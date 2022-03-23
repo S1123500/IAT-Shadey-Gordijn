@@ -16,7 +16,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .u-noselect {
@@ -60,7 +60,8 @@ body {
     max-width: 100%;
     overflow-x: hidden;
     display: flex;
-    height: calc(200% + 100px);
+    /* height: calc(100% + 500px); */
+    margin-bottom: 100px;
     flex-direction: column;
     align-items: center;
 }
@@ -136,6 +137,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .contentTop {
@@ -547,9 +549,11 @@ body {
 .timerList {
     width: 80%;
     margin-top: 25px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5%;
+    /* display: grid; */
+    display: flex;
+    flex-direction: column;
+    /* grid-template-columns: 1fr; */
+    gap: 10px;
     margin-bottom: 1rem;
 }
 
@@ -774,7 +778,6 @@ body {
 
 .addNewTimer__dotw input[type="radio"] {
     display: none;
-   
 }
 
 .addNewTimer__dotw > label {
@@ -798,10 +801,10 @@ body {
 }
 
 .addNewTimer__dotw input[type="radio"]:checked+label {
-  background-color: var(--clr-yellow);
-  transition: 0.2s all;
-  transform: scale(1.15);
-  animation: radioClick 0.45s ease-out;
+    background-color: var(--clr-yellow);
+    transition: 0.2s all;
+    transform: scale(1.15);
+    animation: radioClick 0.45s ease-out;
 }
 
 @keyframes radioClick {
@@ -990,7 +993,7 @@ body {
 }
 
 .areYouSure__deleteBtn {
-     width: 100%;
+    width: 100%;
     border-radius: 10px;
     height: 3rem;
     border:none;
@@ -999,7 +1002,6 @@ body {
     justify-content: center;
     background: #221305;
     transition: 0.2s all;
-   
     border: 2px solid;
     font-size: 1.2rem;
     color: var(--clr-orange);
@@ -1040,10 +1042,12 @@ body {
 /* Remove */
 
 .removeCurtain {
-    width: 100%;
-    margin-top: 2rem;
+    width: 80%;
     border-top: 2px solid;
+    padding-top: 15px;
     border-color: var(--clr-light-blue);
+    display: flex;
+    justify-content: center;
 }
 
 .removeCurtainBtn {
@@ -1056,7 +1060,6 @@ body {
     justify-content: center;
     background: #221305;
     transition: 0.2s all;
-    margin-top: 25px;
     border: 2px solid;
     font-size: 1.2rem;
     color: var(--clr-orange);
