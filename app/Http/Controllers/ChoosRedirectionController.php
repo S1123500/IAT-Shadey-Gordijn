@@ -28,13 +28,13 @@ class ChoosRedirectionController extends Controller
         $name = 'isOutOfHome';
 
         if ($isOutOfHomeValue == 'true') {
-            //database veranderen naar false
+            //change database variable to false
             $isOutOfHome->delete();
             $isOutOfHomeValue = 'false';
             $stmt1->execute();
             return redirect('/vacationyeeter');  
         } else {
-            // database veranderen naar true
+            //change database variable to true
             $isOutOfHome->delete();
             $isOutOfHomeValue = 'true';
             $stmt1->execute();
