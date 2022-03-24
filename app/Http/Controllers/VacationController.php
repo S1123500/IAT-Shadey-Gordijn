@@ -58,10 +58,6 @@ class VacationController extends Controller
                     $randomOpen = $randomOpen.":00";
                     $randomClose = $randomClose.":00";
                     $random = $randomOpen . " " . $randomClose;
-                    echo $day;
-                    echo " ";
-                    echo $random;
-                    echo "<br>";
                     $stmt->execute();
                     
                 }

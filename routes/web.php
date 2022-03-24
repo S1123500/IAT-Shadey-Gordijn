@@ -13,15 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Dit is de route waar de website je in eerste insantie plaatst
 Route::get('/', 'App\Http\Controllers\MainController@show');
-Route::get('/vacation', 'App\Http\Controllers\ChoosRedirectionController@chooser');
-Route::get('/vacationmaker', 'App\Http\Controllers\VacationController@makevacation');
-Route::get('/vacationyeeter', 'App\Http\Controllers\VacationController@yeetvacation');
 
+//Deze routes worden genomen als je op de vakantie knop klikt. Het gaat ALTIJD naar /vacation, en die bepaalt
+//welke route vervolgens genomen wordt.
+Route::get('/vacation', 'App\Http\Controllers\ChoosRedirectionController@chooser');
+Route::get('/vacationmaker', 'App\Http\Controllers\VacationController@makevacation');   //deze vult de database met vakantie schedules
+Route::get('/vacationyeeter', 'App\Http\Controllers\VacationController@yeetvacation');  //deze haalt de vakantie schedules uit de database
+
+//Deze route wordt genomen als je op een speciefieke curtain klikt
 Route::get('/{name}', 'App\Http\Controllers\MainController@details');
 
-Route::get('/delete/{name}/{day}', 'App\Http\Controllers\DeleteController@deleteSchedule');
-Route::get('/delete/{name}', 'App\Http\Controllers\DeleteController@deleteCurtain');
+
+//Deze routes worden genomen als je een schedule van een curtain verwijderd, of als je een curtain verwijderd
+Route::get('/delete/{name}/{day}', 'App\Http\Controllers\DeleteController@deleteSchedule'); //verwijderd schedule
+Route::get('/delete/{name}', 'App\Http\Controllers\DeleteController@deleteCurtain'); //verwijderd curtain zelf
 
 
 // Dashboard

@@ -11,7 +11,7 @@
                 <h1>My Curtains</h1>
             </header>
 
-            <section class="outOfHomeCard" id="js--outOfHomeCard" data-isoutofhome="{{$isOutOfHome}}" onclick="window.location.href = '/vacation'">
+            <section class="outOfHomeCard" id="js--outOfHomeCard" data-isoutofhome="{{$isOutOfHome}}">
 
                 <section class="outOfHomeCard__label">
                     <span class="material-icons u-noselect">
