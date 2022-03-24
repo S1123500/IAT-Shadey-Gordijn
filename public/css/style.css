@@ -13,18 +13,18 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 6px;
+    width: 8px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--clr-blue); 
+    background: var(--clr-blue); 
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--clr-yellow); 
-  border-radius: 5px;
+    background: var(--clr-yellow); 
+    border-radius: 5px;
 }
 
 * {
@@ -591,18 +591,6 @@ body {
     position: relative;
 }
 
-.singleTimerCard__content{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 75%;
-}
-.timerCard__timeInfo{
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
-
 .timerCard__openToClose-open {
     left: -1.1rem;
 }
@@ -655,6 +643,20 @@ body {
     opacity: 1;
     cursor: pointer;
 } */
+
+.singleTimerCard__content{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 75%;
+}
+.singleTimerCard__timeInfo{
+    width: 85%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
 
 .singleTimerCard__time {
     font-size: 150%;
