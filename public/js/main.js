@@ -3,6 +3,9 @@ window.onload = () => {
     // Get current path name
     var path = window.location.pathname;
 
+    // Regex to check if path is /curtain/{curtain name}
+    const regex = new RegExp("\/curtain\/[A-Za-z0-9]+[A-Za-z0-9]+")
+
     // Depending on pathname, run code..
     if (path === "/") {
         console.log("Homepage")
@@ -26,7 +29,6 @@ window.onload = () => {
         const closeAddCurtainBtn = document.getElementById("js--closeAddCurtain");
         const cancelAddCurtainBtn = document.getElementById("js--cancelAddCurtain");
 
-      
 
         // this piece of code is for the intial state of the button after reloading the page
         if (isOutOfHome) {
@@ -75,7 +77,7 @@ window.onload = () => {
         })
         
     }
-    const regex = new RegExp("\/curtain\/.*");
+
     // /curtain
     if (regex.test(path)) {
         console.log("Curtain Detailpage")
@@ -99,6 +101,10 @@ window.onload = () => {
         const areYouSureCloseCurtainIcon = document.getElementById("js--areYouSureCloseCurtainIcon");
         const deleteTimerBtns = document.querySelectorAll(".js--deleteTimerBtn");
     
+        // system status popup
+        const systemStatusPopup = document.getElementById("js--systemStatusPopup");
+        const systemStatusPopupBtn = document.getElementById("js--systemStatusPopupBtn");
+        const systemStatusPopupBtnClose = document.getElementById("js--systemStatusPopupClose");
 
         for (let i = 0; i < deleteTimerBtns.length; i++) {
             deleteTimerBtns[i].addEventListener("click", () => {
@@ -106,7 +112,6 @@ window.onload = () => {
             });
         }
         
-
 
         // are you sure curtain
 
@@ -146,6 +151,16 @@ window.onload = () => {
             closeOverlay(newTimerOverlay);
         })
 
+        // system status popup
+
+        systemStatusPopupBtnClose.addEventListener("click", function () {
+            systemStatusPopupClose(systemStatusPopup);
+
+            // setTimeout(() => {
+            //     systemStatusPopupOpen(systemStatusPopup);
+            // }, 1000);
+        });
+
         
     }
 
@@ -180,4 +195,32 @@ window.onload = () => {
             el.style.background = "rgba(0, 0, 0, 0.7)";
         },75)
     }
+
+    const systemStatusPopupOpen = (el) => {
+        el.style.display = "flex";
+
+        setTimeout(() => {
+            el.style.top = "0";
+        }, 150)
+
+        console.log('help');
+    }
+
+    const systemStatusPopupClose = (el) => {
+       
+        
+        el.style.top = "-5vh";
+
+        setTimeout(() => {
+            el.style.top = "25vh";
+        }, 175)
+
+        setTimeout(() => {
+            el.style.display = "none"; 
+        }, 350)
+        
+        
+    }
+
+
 };
