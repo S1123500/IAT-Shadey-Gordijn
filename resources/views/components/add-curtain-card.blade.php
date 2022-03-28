@@ -10,14 +10,14 @@
                     close   
                 </span>
                 <span class="addCurtainCard__close-hoverText">Close</span>
-
+            
             </section>
 
         </header>
 
         <form class="addCurtainCard__form" id="js--addCurtainForm">
-            <label for="name">Curtain name</label>
-            <input type="text" id="name" name="name" placeholder="Give your curtain a name" required>
+            <label for="name" class="textError">Curtain name</label>
+            <input class="inputError" type="text" id="name" name="name" placeholder="Give your curtain a name" required>
             
             <label for="location">Curtain location</label>
 
