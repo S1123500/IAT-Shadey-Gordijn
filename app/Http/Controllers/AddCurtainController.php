@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 class AddCurtainController extends Controller
 {
     public function addCurtain(Request $request) {
-
-
         //establish connection with our database
         $servername = "localhost";
         $username = "ipmedt5_user";
@@ -27,7 +25,7 @@ class AddCurtainController extends Controller
         $stmt->bind_param("ss", $name, $location);
 
         $name = $request->input('name');
-        $location = $request->input('location');
+        $location = $request->input('locations');
 
         $stmt->execute();
 
