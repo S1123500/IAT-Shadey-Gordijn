@@ -23,7 +23,7 @@ Route::get('/vacationmaker', 'App\Http\Controllers\VacationController@makevacati
 Route::get('/vacationyeeter', 'App\Http\Controllers\VacationController@yeetvacation');  //deze haalt de vakantie schedules uit de database
 
 //Deze route wordt genomen als je op een speciefieke curtain klikt
-Route::get('/{name}', 'App\Http\Controllers\MainController@details');
+Route::get('/curtain/{name}', 'App\Http\Controllers\MainController@details');
 
 //Deze routes worden genomen als je een schedule van een curtain verwijderd, of als je een curtain verwijderd
 Route::get('/delete/{name}/{day}', 'App\Http\Controllers\DeleteController@deleteSchedule'); //verwijderd schedule

@@ -75,9 +75,9 @@ window.onload = () => {
         })
         
     }
-
+    const regex = new RegExp("\/curtain\/.*");
     // /curtain
-    if (path === "/curtain/") {
+    if (regex.test(path)) {
         console.log("Curtain Detailpage")
         
         // Get js elements from DOM by ID
