@@ -89,6 +89,10 @@ window.onload = () => {
         const areYouSureCloseCurtainIcon = document.getElementById("js--areYouSureCloseCurtainIcon");
         const deleteTimerBtns = document.querySelectorAll(".js--deleteTimerBtn");
     
+        // system status popup
+        const systemStatusPopup = document.getElementById("js--systemStatusPopup");
+        const systemStatusPopupBtn = document.getElementById("js--systemStatusPopupBtn");
+        const systemStatusPopupBtnClose = document.getElementById("js--systemStatusPopupClose");
 
         for (let i = 0; i < deleteTimerBtns.length; i++) {
             deleteTimerBtns[i].addEventListener("click", () => {
@@ -96,7 +100,6 @@ window.onload = () => {
             });
         }
         
-
 
         // are you sure curtain
 
@@ -136,6 +139,16 @@ window.onload = () => {
             closeOverlay(newTimerOverlay);
         })
 
+        // system status popup
+
+        systemStatusPopupBtnClose.addEventListener("click", function () {
+            systemStatusPopupClose(systemStatusPopup);
+
+            // setTimeout(() => {
+            //     systemStatusPopupOpen(systemStatusPopup);
+            // }, 1000);
+        });
+
         
     }
 
@@ -170,5 +183,32 @@ window.onload = () => {
             el.style.background = "rgba(0, 0, 0, 0.7)";
         },75)
     }
+
+    const systemStatusPopupOpen = (el) => {
+        el.style.display = "flex";
+
+        setTimeout(() => {
+            el.style.top = "0";
+        }, 150)
+
+        console.log('help');
+    }
+
+    const systemStatusPopupClose = (el) => {
+       
+        
+        el.style.top = "-5vh";
+
+        setTimeout(() => {
+            el.style.top = "25vh";
+        }, 175)
+
+        setTimeout(() => {
+            el.style.display = "none"; 
+        }, 350)
+        
+        
+    }
+
 
 };
