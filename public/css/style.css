@@ -1178,3 +1178,18 @@ body {
     }
 }
 
+/* error styling */
+
+.inputError {
+    border: 2px solid !important;
+    border-color: var(--clr-orange) !important;
+}
+
+.inputError::placeholder {
+    color: var(--clr-orange);
+}
+
+.textError {
+    color: var(--clr-orange) !important;
+}
+
