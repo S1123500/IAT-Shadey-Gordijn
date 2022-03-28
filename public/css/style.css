@@ -988,7 +988,7 @@ body {
 }
 
 .areYouSure__title {
-     margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
     font-size: 180%;
 }
 
@@ -1096,6 +1096,65 @@ body {
 .removeCurtainBtn:hover .material-icons {
     animation: removeThisCurtainBtnAnimation 0.4s;
 }
+
+
+/* System Status Popup */
+.systemStatusPopup__container{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
+.systemStatusPopup{
+    background: var(--clr-orange);
+    width: 380px;
+    padding: 15px 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 70px;
+}
+.systemStatusPopup p{
+    font-size: 14px;
+    width: 220px;
+}
+.systemStatusPopup__buttons{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.systemStatusPopup__buttons-retry{
+    background: var(--clr-dark-blue);
+    color: var(--clr-white);
+    font-family: var(--ff-primary);
+    font-weight: 600;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    transition: 0.2s all ease-in;
+}
+.systemStatusPopup__buttons-retry:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+.systemStatusPopup__buttons-close.material-icons {
+    color: var(--clr-white);
+    font-size: 26px;
+}
+.systemStatusPopup__buttons-close.material-icons:hover {
+    cursor: pointer;
+    color: var(--clr-dark-blue);
+}
+
 
 
 /* Keyframes --------------- */

@@ -66,6 +66,7 @@
 
     </section>
 
+    @include('./components/system-status-popup')
 
 </main>
 
