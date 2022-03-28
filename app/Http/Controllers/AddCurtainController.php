@@ -44,9 +44,8 @@ class AddCurtainController extends Controller
             };
             if (!in_array($newlocation, $alreadyExistLocations)){
                 $stmt1->execute();
-                $location = $newlocation;
             };
-
+            $location = $newlocation;
         }
 
         $stmt->execute();
