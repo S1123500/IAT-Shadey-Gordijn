@@ -48,6 +48,7 @@ window.onload = () => {
                 outOfHomeCard_toggleIcon.innerHTML = "toggle_on"
                 outOfHomeCard_toggleIcon.classList.remove("active")
             }
+            window.location.href = "http://127.0.0.1:8000/vacation";
         });
 
 

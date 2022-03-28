@@ -16,7 +16,7 @@ class CreateCurtainTable extends Migration
         Schema::create('curtain', function (Blueprint $table) {
             $table->string("name")->unique();
             $table->string("location");
-            $table->integer("percentage"); # 0=0%(open) /// 1=25% /// 2=50% /// 3=75% /// 4=100%(dicht)
+            $table->integer("percentage")->default(0); # 0=0%(open) /// 1=25% /// 2=50% /// 3=75% /// 4=100%(dicht)
             $table->foreign("location")->references("name")->on("location");
         });
     }

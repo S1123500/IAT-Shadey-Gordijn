@@ -16,6 +16,7 @@
         </header>
 
         <form action="addCurtain" method="post" class="addCurtainCard__form" id="js--addCurtainForm">
+        @csrf
             <label for="name" class="textError">Curtain name</label>
             <input class="inputError" type="text" id="name" name="name" placeholder="Give your curtain a name" required pattern="[^()/><\][\\\x22,;|]+">
             
@@ -24,20 +25,17 @@
             <section class="addCurtainCard__form-locations">
 
                 <section class="addCurtainCard__form-location u-noselect">
-                    <input type="radio" id="test" name="locations" value="[location]">
-                    <label for="test">[location]</label>
+                    <input type="radio" id="test" name="locations" value="Bedroom 1">
+                    <label for="test">Bedroom 1</label>
 
-                    <input type="radio" id="test2" name="locations" value="[location2]">
-                    <label for="test2">[location2]</label>
+                    <input type="radio" id="test2" name="locations" value="Bedroom 2">
+                    <label for="test2">Bedroom 2</label>
 
-                    <input type="radio" id="test3" name="locations" value="[location3]">
-                    <label for="test3">[location3]</label>
+                    <input type="radio" id="test3" name="locations" value="Livingroom">
+                    <label for="test3">Livingroom</label>
 
-                    <input type="radio" id="test4" name="locations" value="[location4]">
-                    <label for="test4">[location4]</label>
-
-                    <input type="radio" id="test5" name="locations" value="[location5]">
-                    <label for="test5">[location5]</label>
+                    <input type="radio" id="test4" name="locations" value="Kitchen">
+                    <label for="test4">Kitchen</label>
                 </section>
 
                 <section class="add">

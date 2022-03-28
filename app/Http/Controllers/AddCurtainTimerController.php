@@ -26,10 +26,10 @@ class AddCurtainTimerController extends Controller
         $stmt = $conn->prepare("INSERT INTO schedule (curtainName, whichDay, timeOpen, timeClose) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $name, $radio, $opentime, $closetime);
 
+        $name = $name;
         $radio = $request->input('radios');
         $opentime = $request->input('open-time');
         $closetime = $request->input("close-time");
-        $name = $name;
 
         $stmt->execute();
 
