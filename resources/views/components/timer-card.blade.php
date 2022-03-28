@@ -1,6 +1,6 @@
 <article class="timerCard__wrapper">
     <section class="timerCard">
-        <p onclick="window.location.href = '/delete/{{$curtain->name}}/{{$schedule->whichDay}}/'" class="timerCard__p">
+        <p onclick="window.location.href = '/delete/{{$curtain->name}}/{{$schedule->whichDay}}/'" class="timerCard__p js--deleteTimerBtn" id="js--deleteTimerBtn">
             <span class="timerCard__delete material-icons u-noselect">
                 close   
             </span>

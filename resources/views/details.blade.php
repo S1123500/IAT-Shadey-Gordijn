@@ -1,7 +1,14 @@
 @extends('body')
 @section('content')
 
+
 <main class="content">
+    <!-- Add timer card -->
+    @include('./components/add-timer-card')
+
+    @include('./components/are-you-sure-timer')
+    @include('./components/are-you-sure-curtain')
+
     <!-- Title + Open Close Slider -->
     <section class="contentTop">
 
@@ -17,7 +24,7 @@
         <section class="openCloseSlider__container">
             <p>Open</p>
             <section class="openCloseSlider">
-                <input type="range" class="openCloseSlider__slider" id="openCloseSlider__slider" min="0" value="0" max="4" step="1" list="openCloseSlider__options">
+                <input type="range" class="openCloseSlider__slider" id="openCloseSlider__slider" min="0" value="0" max="2" step="1" list="openCloseSlider__options">
             </section>
             <p>Close</p>
         </section>
@@ -31,27 +38,33 @@
             @include('./components/timer-card')
         @endif
     @endforeach
-        <button class="timerList__addTimerBtn">
+    @include('./components/single-timer-card')
+
+        <button class="timerList__addTimerBtn" id="js--addTimerBtn">
             <span class="material-icons u-noselect">
                 add
             </span>
-            <p class="timerList__addTimerText">
+            <p class="timerList__addTimerText ">
                 ADD NEW TIMER
             </p>
         </button>
 
+
     </section>
 
-    <!-- Remove section -->
     <section class="removeCurtain">
         
-        <button onclick="window.location.href = '/delete/{{$curtain->name}}'" class="removeCurtainBtn"> 
+        <button onclick="window.location.href = '/delete/{{$curtain->name}}'" class="removeCurtainBtn" id="js--removeCurtainBtn">  
             <span class="material-icons u-noselect">
                 delete
             </span>    
             Remove This Curtain
         </button>
+
     </section>
+
+
 </main>
 
 @endsection
+
