@@ -3,6 +3,9 @@ window.onload = () => {
     // Get current path name
     var path =  window.location.pathname;
 
+    // Regex to check if path is /curtain/{curtain name}
+    const regex = new RegExp("\/curtain\/[A-Za-z0-9]+[A-Za-z0-9]+")
+
     // Depending on pathname, run code..
 
     if (path === "/") {
@@ -19,7 +22,6 @@ window.onload = () => {
         const closeAddCurtainBtn = document.getElementById("js--closeAddCurtain");
         const cancelAddCurtainBtn = document.getElementById("js--cancelAddCurtain");
 
-      
 
         // Set outOfHome state to false
         let isOutOfHome = false;
@@ -67,7 +69,7 @@ window.onload = () => {
     }
 
     // /curtain
-    if (path === "/curtain/") {
+    if (regex.test(path)) {
         console.log("Curtain Detailpage")
         
         // Get js elements from DOM by ID
