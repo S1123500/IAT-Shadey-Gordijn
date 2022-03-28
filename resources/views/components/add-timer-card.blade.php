@@ -10,27 +10,28 @@
             <h2 class="addNewTimer__title"> ADD A TIMER </h2>
             
             <form action="addTimer" method="post" class="addNewTimer__form">
+            @csrf
                 <p>Day of the week</p>
                 <section class="addNewTimer__dotw u-noselect">
-                        <input type="radio" id="monday" name="radios" value="monday" checked>
+                        <input type="radio" id="Mon" name="radios" value="Mon" checked>
                         <label for="monday" >M</label>
 
-                        <input type="radio" id="tuesday" name="radios" value="tuesday">
+                        <input type="radio" id="tuesday" name="radios" value="Tue">
                         <label for="tuesday">T</label>
 
-                        <input type="radio" id="wednesday" name="radios" value="wednesday">
+                        <input type="radio" id="wednesday" name="radios" value="Wed">
                         <label for="wednesday">W</label>
 
-                        <input type="radio" id="thursday" name="radios" value="thursday">
+                        <input type="radio" id="thursday" name="radios" value="Thu">
                         <label for="thursday">T</label>
 
-                        <input type="radio" id="friday" name="radios" value="friday">
+                        <input type="radio" id="friday" name="radios" value="Fri">
                         <label for="friday">F</label>
 
-                        <input type="radio" id="saturday" name="radios" value="saturday">
+                        <input type="radio" id="saturday" name="radios" value="Sat">
                         <label for="saturday">S</label>
 
-                        <input type="radio" id="sunday" name="radios" value="sunday">
+                        <input type="radio" id="sunday" name="radios" value="Sun">
                         <label for="sunday">S</label>
                 </section>
 

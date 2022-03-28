@@ -22,6 +22,10 @@ Route::get('/vacation', 'App\Http\Controllers\ChoosRedirectionController@chooser
 Route::get('/vacationmaker', 'App\Http\Controllers\VacationController@makevacation');   //deze vult de database met vakantie schedules
 Route::get('/vacationyeeter', 'App\Http\Controllers\VacationController@yeetvacation');  //deze haalt de vakantie schedules uit de database
 
+//Het toevoegen van gordijnen en timers voor die gordijnen
+Route::post('/addCurtain', 'App\Http\Controllers\AddCurtainController@addCurtain');
+Route::post('/curtain/{name}/addTimer', 'App\Http\Controllers\AddCurtainTimerController@addCurtainTimer');
+
 //Deze route wordt genomen als je op een speciefieke curtain klikt
 Route::get('/curtain/{name}', 'App\Http\Controllers\MainController@details');
 
