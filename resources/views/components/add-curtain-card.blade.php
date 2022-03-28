@@ -25,17 +25,10 @@
             <section class="addCurtainCard__form-locations">
 
                 <section class="addCurtainCard__form-location u-noselect">
-                    <input type="radio" id="test" name="locations" value="Bedroom 1">
-                    <label for="test">Bedroom 1</label>
-
-                    <input type="radio" id="test2" name="locations" value="Bedroom 2">
-                    <label for="test2">Bedroom 2</label>
-
-                    <input type="radio" id="test3" name="locations" value="Livingroom">
-                    <label for="test3">Livingroom</label>
-
-                    <input type="radio" id="test4" name="locations" value="Kitchen">
-                    <label for="test4">Kitchen</label>
+                    @foreach ($locations as $location)
+                        <input type="radio" id="{{$location->name}}" name="locations" value="{{$location->name}}">
+                        <label for="{{$location->name}}">{{$location->name}}</label>
+                    @endforeach
                 </section>
 
                 <section class="add">
