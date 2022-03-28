@@ -17,7 +17,7 @@
 
         <form class="addCurtainCard__form" id="js--addCurtainForm">
             <label for="name" class="textError">Curtain name</label>
-            <input class="inputError" type="text" id="name" name="name" placeholder="Give your curtain a name" required>
+            <input class="inputError" type="text" id="name" name="name" placeholder="Give your curtain a name" required pattern="[^()/><\][\\\x22,;|]+">
             
             <label for="location">Curtain location</label>
 

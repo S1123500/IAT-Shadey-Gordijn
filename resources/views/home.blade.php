@@ -33,7 +33,7 @@
         <!-- Curtain Cards -->
         <section class="curtainList">
 
-            <a href="{{'/curtain/'}}">
+            <a href="{{'/curtain/x'}}">
                 @include('./components/curtain-card')
             </a>
             

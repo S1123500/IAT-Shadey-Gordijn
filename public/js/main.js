@@ -4,7 +4,7 @@ window.onload = () => {
     var path =  window.location.pathname;
 
     // Regex to check if path is /curtain/{curtain name}
-    const regex = new RegExp("\/curtain\/[A-Za-z0-9]+[A-Za-z0-9]+")
+    const regex = new RegExp("\/curtain\/[A-Za-z0-9]+")
 
     // Depending on pathname, run code..
 
@@ -65,7 +65,6 @@ window.onload = () => {
         cancelAddCurtainBtn.addEventListener("click", () => {
             closeOverlay(addCurtainOverlay);
         })
-        
     }
 
     // /curtain
