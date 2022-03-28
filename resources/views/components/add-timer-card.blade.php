@@ -9,7 +9,7 @@
         <section class="addNewTimer">
             <h2 class="addNewTimer__title"> ADD A TIMER </h2>
             
-            <form action="post" class="addNewTimer__form">
+            <form action="addTimer" method="post" class="addNewTimer__form">
                 <p>Day of the week</p>
                 <section class="addNewTimer__dotw u-noselect">
                         <input type="radio" id="monday" name="radios" value="monday" checked>
