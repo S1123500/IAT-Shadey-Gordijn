@@ -13,7 +13,7 @@
             You won’t be able to get it back. Continue?
         </p>
         <section class="areYouSure__buttons">
-            <button class="areYouSure__deleteBtn">
+            <button onclick="window.location.href = '/delete/{{$curtain->name}}/{{$schedule->whichDay}}/'" class="areYouSure__deleteBtn">
                 <span class="material-icons u-noselect">
                     delete
                 </span>

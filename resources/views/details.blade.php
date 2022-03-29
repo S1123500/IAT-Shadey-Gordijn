@@ -6,7 +6,6 @@
     <!-- Add timer card -->
     @include('./components/add-timer-card')
 
-    @include('./components/are-you-sure-timer')
     @include('./components/are-you-sure-curtain')
 
     <!-- Title + Open Close Slider -->
@@ -34,11 +33,16 @@
     <!-- Timers -->
     <section class="timerList">
     @foreach ($schedules as $schedule)
+        @include('./components/are-you-sure-timer')
+
         @if($schedule->vacation == 0)
             @include('./components/timer-card')
         @endif
+        @if($schedule->timeOpen == NULL || $schedule->timeClose == NULL)
+            @include('./components/single-timer-card')
+        @endif
     @endforeach
-    @include('./components/single-timer-card')
+    
 
         <button class="timerList__addTimerBtn" id="js--addTimerBtn">
             <span class="material-icons u-noselect">
@@ -54,7 +58,7 @@
 
     <section class="removeCurtain">
         
-        <button onclick="window.location.href = '/delete/{{$curtain->name}}'" class="removeCurtainBtn" id="js--removeCurtainBtn">  
+        <button class="removeCurtainBtn" id="js--removeCurtainBtn">  
             <span class="material-icons u-noselect">
                 delete
             </span>    
