@@ -110,11 +110,7 @@ window.onload = () => {
         const addOpenAndCloseEvents = (arr) => {
             for (let i = 0; i < arr.length; i++) {
                 arr[i][0].addEventListener("click", () => {
-                    if (arr[i][2] === "open") {
-                        openOverlay(arr[i][1]);
-                    } else if (arr[i][2] === "close") {
-                        closeOverlay(arr[i][1]);
-                    };
+                    arr[i][2] === "open" ? openOverlay(arr[i][1]) : closeOverlay(arr[i][1]);
                 });
             };
         };
