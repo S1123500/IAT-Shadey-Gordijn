@@ -18,12 +18,16 @@ class DetailsController extends Controller
         $lightsensors = Curtain::where('name', $name)->first()->curtainLocation->allLightSensors->first();
         $location = $curtain->curtainLocation;
         $schedules = $curtain->allSchedules;
+        // $timeOpen = $schedules->timeOpen;
+        // $timeClose = $schedules->timeClose;
         return view('details',[
             'curtain' => $curtain,
             'lightsensors' => $lightsensors,
             'location' => $location,
             'schedules' => $schedules,
             'name' => $name
+            // 'timeOpen' => $timeOpen,
+            // 'timeClose' => $timeClose
         ]);
     }
 }
