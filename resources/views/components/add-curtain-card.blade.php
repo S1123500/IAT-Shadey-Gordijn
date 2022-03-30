@@ -20,7 +20,7 @@
             <label for="name">Curtain name</label>
             <input type="text" id="name" name="name" placeholder="Give your curtain a name" required pattern="[^()/><\][\\\x22,;|]+">
             
-            <label for="location">Curtain location</label>
+            <label for="location">Curtain Location</label>
 
             <section class="addCurtainCard__form-locations">
 
@@ -39,6 +39,11 @@
             </section>
 
             <input type="text" id="js--newLocation" class="newLocationInput" name="location" placeholder="Add new location">
+
+            <section class="addCurtainCard__pairCode">
+                <label for="pairCode">Unique Pair Code</label>
+                <input type="text" id="pairCode" name="pairCode" placeholder="SHDY0000" required>
+            </section>
 
             <input type="submit" class="addCurtainCard__form-addBtn" id="js--addCurtainBtn" value="Add Curtain">
         </form> 

@@ -102,6 +102,8 @@ window.onload = () => {
         const systemStatusPopup = document.getElementById("js--systemStatusPopup");
         const systemStatusPopupBtnClose = document.getElementById("js--systemStatusPopupClose");
         const systemStatusPopupBtn = document.getElementById("js--systemStatusPopupBtn");
+        // Slider
+        const openCloseSlider = document.getElementById("openCloseSlider__slider");
 
         // ------ Arrays ------
         // 1: Button el that needs evtlistener, 2: Overlay el that needs animation, 3: Give it either open or close animation
@@ -139,6 +141,12 @@ window.onload = () => {
                 openOverlay(areYouSureTimerOverlay);
             });
         };
+
+        // Open close slider
+        openCloseSlider.addEventListener("mouseup", () => {
+            console.log(openCloseSlider.value);
+            window.location.href = `http://127.0.0.1:8000/curtains/sliderChange/${openCloseSlider.value}`;
+        })
     }
 
     // ------ Animation Functions ------
