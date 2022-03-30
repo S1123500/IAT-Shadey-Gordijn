@@ -8,14 +8,11 @@ window.onload = () => {
     
     // get time each 5 minutes and refresh the page
     setInterval(() => {
-        let date = new Date().getHours() + ":" + new Date().getMinutes();
-        window.location.reload();
-    }, 300000);
-
-
+        let reloadTime = new Date().getHours() + ":" + new Date().getMinutes();
+        window.location.replace(`http://127.0.0.1:8000/autoReload/${reloadTime}`);
+    }, 3000);
 
     // Depending on pathname, run code..
-
     if (path === "/") {
         console.log("Homepage")
 
@@ -29,7 +26,6 @@ window.onload = () => {
         const addCurtainBtn = document.getElementById("js--addCurtainBtn");
         const closeAddCurtainBtn = document.getElementById("js--closeAddCurtain");
         const cancelAddCurtainBtn = document.getElementById("js--cancelAddCurtain");
-
 
         // Set outOfHome state to false
         let isOutOfHome = false;
@@ -49,7 +45,6 @@ window.onload = () => {
             }
             window.location.replace("http://127.0.0.1:8000/vacation");
         })
-
 
         // Eventlistener on form
         addCurtainForm.addEventListener('click', function (event) {
@@ -147,7 +142,7 @@ window.onload = () => {
             console.log(openCloseSlider.value);
             window.location.replace(`http://127.0.0.1:8000/curtain/${curtainName}/update/${openCloseSlider.value}`);
         };
-        
+
         ["mouseup", "touchend"].forEach((i) => {
             openCloseSlider.addEventListener(i, handleSliderClick);
         });
