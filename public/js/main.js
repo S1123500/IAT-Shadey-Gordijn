@@ -133,9 +133,16 @@ window.onload = () => {
 
         // Open close slider
         openCloseSlider.addEventListener("mouseup", () => {
+            handleSliderClick();
+        })
+        openCloseSlider.addEventListener("touchend", () => {
+            handleSliderClick();
+        })
+        
+        const handleSliderClick = () => {
             console.log(openCloseSlider.value);
             window.location.href = `http://127.0.0.1:8000/curtains/sliderChange/${openCloseSlider.value}`;
-        })
+        }
     }
 
     // ------ Animation Functions ------
