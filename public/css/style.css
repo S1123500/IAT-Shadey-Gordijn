@@ -487,6 +487,14 @@ body {
     display: none;
 }
 
+.addCurtainCard__pairCode input {
+    margin-top: 10px;
+}
+
+.addCurtainCard__pairCode {
+    margin-top: 15px;
+}
+
 /* Curtain Details Pagina --------- */
 
 /* Header */
@@ -580,6 +588,7 @@ body {
 .timerCard__wrapper {
     background: var(--clr-dark-blue);
     height: 8.5rem;
+    width: 100%;
 }
 .singleTimerCard__wrapper {
     background: var(--clr-dark-blue);

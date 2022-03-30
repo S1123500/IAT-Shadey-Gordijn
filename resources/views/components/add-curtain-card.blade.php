@@ -24,7 +24,7 @@
             <section class="addCurtainCard__form-locations">
 
                 <section class="addCurtainCard__form-location u-noselect">
-                    <input type="radio" id="test" name="locations" value="[location]">
+                    <input type="radio" id="test" name="locations" value="[location]" required>
                     <label for="test">[location]</label>
 
                     <input type="radio" id="test2" name="locations" value="[location2]">
@@ -48,6 +48,11 @@
             </section>
 
             <input type="text" id="js--newLocation" class="newLocationInput" name="location" placeholder="Add new location">
+
+            <section class="addCurtainCard__pairCode">
+                <label for="pairCode">Unique Pair Code</label>
+                <input type="text" id="pairCode" name="pairCode" placeholder="SHDY0000" required>
+            </section>
 
             <input type="submit" class="addCurtainCard__form-addBtn" id="js--addCurtainBtn" value="Add Curtain">
         </form> 
