@@ -7,10 +7,12 @@ window.onload = () => {
     const regex = new RegExp("\/curtain\/[A-Za-z0-9]+")
     
     // get time each 5 minutes and refresh the page
+    const refreshDelay = 300000;
+
     setInterval(() => {
         let reloadTime = new Date().getHours() + ":" + new Date().getMinutes();
         window.location.replace(`http://127.0.0.1:8000/autoReload/${reloadTime}`);
-    }, 3000);
+    }, refreshDelay);
 
     // Depending on pathname, run code..
     if (path === "/") {
