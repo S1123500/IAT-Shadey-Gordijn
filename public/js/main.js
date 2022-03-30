@@ -1,4 +1,6 @@
 window.onload = () => {
+    // Get current domain name, only add port if it exists
+    let domainName = `${window.location.hostname}${window.location.port ? `:${window.location.port}` : ''}`;
 
     // Get current path name
     let path =  window.location.pathname;
@@ -11,7 +13,7 @@ window.onload = () => {
 
     setInterval(() => {
         let reloadTime = new Date().getHours() + ":" + new Date().getMinutes();
-        window.location.replace(`http://127.0.0.1:8000/autoReload/${reloadTime}`);
+        window.location.replace(`http://${domainName}/autoReload/${reloadTime}`);
     }, refreshDelay);
 
     // Depending on pathname, run code..
@@ -45,7 +47,7 @@ window.onload = () => {
                 outOfHomeCard_toggleIcon.innerHTML = "toggle_off"
                 outOfHomeCard_toggleIcon.classList.remove("active")
             }
-            window.location.replace("http://127.0.0.1:8000/vacation");
+            window.location.replace(`http://${domainName}/vacation`);
         })
 
         // Eventlistener on form
@@ -142,7 +144,7 @@ window.onload = () => {
         // Open close slider events
         const handleSliderClick = () => {
             console.log(openCloseSlider.value);
-            window.location.replace(`http://127.0.0.1:8000/curtain/${curtainName}/update/${openCloseSlider.value}`);
+            window.location.replace(`http://${domainName}/curtain/${curtainName}/update/${openCloseSlider.value}`);
         };
 
         ["mouseup", "touchend"].forEach((i) => {
