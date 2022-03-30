@@ -103,6 +103,8 @@ window.onload = () => {
         const openCloseSlider = document.getElementById("openCloseSlider__slider");
         // Curtain name
         const curtainName = document.getElementById("js--curtainName").innerHTML;
+        // Timer timeline
+        const timersTimeline = document.getElementsByClassName("timerCard__openToClose");
 
         // ------ Arrays ------
         // 1: Button el that needs evtlistener, 2: Overlay el that needs animation, 3: Give it either open or close animation
@@ -150,6 +152,27 @@ window.onload = () => {
         ["mouseup", "touchend"].forEach((i) => {
             openCloseSlider.addEventListener(i, handleSliderClick);
         });
+
+        // Timer card timeline percentage calculations
+        for (let i = 0; i < timersTimeline.length; i++) {
+            let openTime = timersTimeline[i].dataset.opentime;
+            let closeTime = timersTimeline[i].dataset.closetime;
+
+            // Gets a number from 0 to 100 based on a 24 hour time scale (00:00 - 23:59)
+            const getPercentageFromTime = (time) => {
+                let timeArr = time.split(":");
+                let hours = parseInt(timeArr[0]);
+                let minutes = parseInt(timeArr[1]);
+                let percentage = (hours * 60 + minutes) / 1440 * 100;
+                return percentage;
+            };
+
+            let openTimeMarginLeft = getPercentageFromTime(openTime) + "%";
+            let closeTimeWidth = getPercentageFromTime(closeTime) - getPercentageFromTime(openTime) + "%";
+
+            timersTimeline[i].style.marginLeft = openTimeMarginLeft;
+            timersTimeline[i].style.width = closeTimeWidth;
+        };
     }
 
     // ------ Animation Functions ------
