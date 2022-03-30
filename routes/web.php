@@ -27,9 +27,12 @@ Route::post('/addCurtain', 'App\Http\Controllers\AddCurtainController@addCurtain
 Route::post('/curtain/{name}/addTimer', 'App\Http\Controllers\AddCurtainTimerController@addCurtainTimer');
 
 //Deze route wordt genomen als je op een speciefieke curtain klikt
-Route::get('/curtain/{name}', 'App\Http\Controllers\MainController@details');
+Route::get('/curtain/{name}', 'App\Http\Controllers\DetailsController@details');
 
 //Deze routes worden genomen als je een schedule van een curtain verwijderd, of als je een curtain verwijderd
 Route::get('/delete/{name}/{day}', 'App\Http\Controllers\DeleteController@deleteSchedule'); //verwijderd schedule
 Route::get('/delete/{name}', 'App\Http\Controllers\DeleteController@deleteCurtain'); //verwijderd curtain zelf
+
+// Update slider met redirect
+Route::get('/curtain/{name}/update/{value}', 'App\Http\Controllers\CurtainUpdateController@updateSlider'); 
 

@@ -24,8 +24,8 @@ class AddCurtainController extends Controller
         }
         
         //prepare the insert into statement with variables that we can change
-        $stmt = $conn->prepare("INSERT INTO curtain (name, location) VALUES (?, ?)");
-        $stmt->bind_param("ss", $name, $location);
+        $stmt = $conn->prepare("INSERT INTO curtain (name, location, pairingcode) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $name, $location, $pairingcode);
         
         $stmt1 = $conn->prepare("INSERT INTO location (name) VALUES (?)");
         $stmt1->bind_param("s", $newlocation);
@@ -34,6 +34,7 @@ class AddCurtainController extends Controller
         $name = $request->input('name');
         $location = $request->input('locations');
         $newlocation = $request->input('location');
+        $pairingcode = $request->input('pairCode');
         
         $locations = Location::all();
         

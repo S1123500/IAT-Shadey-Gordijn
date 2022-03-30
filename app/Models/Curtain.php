@@ -13,6 +13,7 @@ class Curtain extends Model
         return $this->hasMany('\App\Models\Schedule',"curtainName","name");
     }
 
+    //model function for all locations
     public function curtainLocation(){
         return $this->belongsTo('\App\Models\Location',"location","name");
     }

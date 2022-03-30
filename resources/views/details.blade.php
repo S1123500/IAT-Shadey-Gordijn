@@ -17,13 +17,13 @@
                     keyboard_backspace
                 </span>
             </a>
-            <h1>{{$name}}</h1>
+            <h1 id="js--curtainName">{{$name}}</h1>
         </header>
 
         <section class="openCloseSlider__container">
             <p>Open</p>
             <section class="openCloseSlider">
-                <input type="range" class="openCloseSlider__slider" id="openCloseSlider__slider" min="0" value="0" max="2" step="1" list="openCloseSlider__options">
+                <input type="range" class="openCloseSlider__slider" id="openCloseSlider__slider" min="0" value="{{$curtain->percentage}}" max="2" step="1" list="openCloseSlider__options">
             </section>
             <p>Close</p>
         </section>

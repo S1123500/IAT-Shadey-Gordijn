@@ -27,21 +27,4 @@ class MainController extends Controller
             'schedules' => $schedules,
         ]);
     }
-
-    public function details($name) {
-        $name = $name;
-        $curtain = Curtain::where('name', $name)->first();
-        $lightsensors = Curtain::where('name', $name)->first()->curtainLocation->allLightsensors;
-        $location = Curtain::where('name', $name)->first()->curtainLocation;
-        $schedules = Curtain::where('name', $name)->first()->allSchedules;
-        return view('details',[
-            'curtain' => $curtain,
-            'lightsensors' => $lightsensors,
-            'location' => $location,
-            'schedules' => $schedules,
-            'name' => $name
-        ]);
-    }
-
-
 }

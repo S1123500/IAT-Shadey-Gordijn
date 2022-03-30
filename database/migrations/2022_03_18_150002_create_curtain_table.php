@@ -17,6 +17,7 @@ class CreateCurtainTable extends Migration
             $table->string("name")->unique();
             $table->string("location");
             $table->integer("percentage")->default(0); # 0=0%(open) /// 1=25% /// 2=50% /// 3=75% /// 4=100%(dicht)
+            $table->string("pairingcode");
             $table->foreign("location")->references("name")->on("location");
         });
     }

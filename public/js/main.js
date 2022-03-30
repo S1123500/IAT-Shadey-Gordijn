@@ -1,10 +1,18 @@
 window.onload = () => {
 
     // Get current path name
-    var path = window.location.pathname;
+    let path = window.location.pathname;
 
     // Regex to check if path is /curtain/{curtain name}
     const regex = new RegExp("\/curtain\/[A-Za-z0-9]+")
+    
+    // get time each 5 minutes and refresh the page
+    setInterval(() => {
+        let date = new Date().getHours() + ":" + new Date().getMinutes();
+        window.location.reload();
+    }, 300000);
+
+    
 
     // Depending on pathname, run code..
     if (path === "/") {
@@ -48,7 +56,7 @@ window.onload = () => {
                 outOfHomeCard_toggleIcon.innerHTML = "toggle_on"
                 outOfHomeCard_toggleIcon.classList.remove("active")
             }
-            window.location.href = "http://127.0.0.1:8000/vacation";
+            window.location.replace("http://127.0.0.1:8000/vacation");
         });
 
 
@@ -104,6 +112,8 @@ window.onload = () => {
         const systemStatusPopupBtn = document.getElementById("js--systemStatusPopupBtn");
         // Slider
         const openCloseSlider = document.getElementById("openCloseSlider__slider");
+        // Name
+        const curtainName = document.getElementById("js--curtainName").innerHTML;
 
         // ------ Arrays ------
         // 1: Button el that needs evtlistener, 2: Overlay el that needs animation, 3: Give it either open or close animation
@@ -152,7 +162,10 @@ window.onload = () => {
         
         const handleSliderClick = () => {
             console.log(openCloseSlider.value);
-            window.location.href = `http://127.0.0.1:8000/curtains/sliderChange/${openCloseSlider.value}`;
+            // replace url with http://127.0.0.1:8000/curtain/${curtainName}/update/${openCloseSlider.value}
+            window.location.replace(`http://127.0.0.1:8000/curtain/${curtainName}/update/${openCloseSlider.value}`);
+
+           
         }
     }
 
