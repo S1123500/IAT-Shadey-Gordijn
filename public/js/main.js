@@ -102,7 +102,7 @@ window.onload = () => {
         const systemStatusPopupBtn = document.getElementById("js--systemStatusPopupBtn");
         // Slider
         const openCloseSlider = document.getElementById("openCloseSlider__slider");
-        // Name
+        // Curtain name
         const curtainName = document.getElementById("js--curtainName").innerHTML;
 
         // ------ Arrays ------
@@ -142,18 +142,15 @@ window.onload = () => {
             });
         };
 
-        // Open close slider
-        openCloseSlider.addEventListener("mouseup", () => {
-            handleSliderClick();
-        })
-        openCloseSlider.addEventListener("touchend", () => {
-            handleSliderClick();
-        })
-        
+        // Open close slider events
         const handleSliderClick = () => {
             console.log(openCloseSlider.value);
             window.location.replace(`http://127.0.0.1:8000/curtain/${curtainName}/update/${openCloseSlider.value}`);
-        }
+        };
+        
+        ["mouseup", "touchend"].forEach((i) => {
+            openCloseSlider.addEventListener(i, handleSliderClick);
+        });
     }
 
     // ------ Animation Functions ------
