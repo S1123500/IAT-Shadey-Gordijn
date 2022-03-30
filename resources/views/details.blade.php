@@ -1,3 +1,7 @@
+@section('title')
+    {{"S H A D E Y | [name]"}}
+@endsection
+
 @extends('body')
 @section('content')
 
@@ -18,7 +22,7 @@
                     keyboard_backspace
                 </span>
             </a>
-            <h1>[curtain name]</h1>
+            <h1 id="js--curtainName">[curtain name]</h1>
         </header>
 
         <section class="openCloseSlider__container">

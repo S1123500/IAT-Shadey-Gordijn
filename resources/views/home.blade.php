@@ -1,3 +1,7 @@
+@section('title')
+    {{"S H A D E Y | Home"}}
+@endsection
+
 @extends('body')
 @section('content')
 
