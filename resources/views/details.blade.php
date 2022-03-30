@@ -1,3 +1,7 @@
+@section('title')
+    {{"S H A D E Y | $name"}}
+@endsection
+
 @extends('body')
 @section('content')
 

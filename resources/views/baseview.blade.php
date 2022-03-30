@@ -17,7 +17,7 @@
         <!-- google icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
-        <title>S H A D E Y - [page name]</title>
+        <title>@yield('title')</title>
     </head>
 
     @yield('body')
