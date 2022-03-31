@@ -5,14 +5,14 @@ window.onload = () => {
 
     // Regex to check if path is /curtain/{curtain name}
     const regex = new RegExp("\/curtain\/[A-Za-z0-9]+")
-    
+
     // get time each 5 minutes and refresh the page
     setInterval(() => {
         let date = new Date().getHours() + ":" + new Date().getMinutes();
         window.location.reload();
     }, 300000);
 
-    
+
 
     // Depending on pathname, run code..
     if (path === "/") {
@@ -41,8 +41,10 @@ window.onload = () => {
         // this piece of code is for the intial state of the button after reloading the page
         if (isOutOfHome) {
             outOfHomeCard_toggleIcon.innerHTML = "toggle_on"
+            outOfHomeCard_toggleIcon.classList.add("active")
         } else {
             outOfHomeCard_toggleIcon.innerHTML = "toggle_off"
+            outOfHomeCard_toggleIcon.classList.remove("active")
         }
 
         // This event listener is for the animation -> href is for the actual change in database
@@ -51,10 +53,8 @@ window.onload = () => {
             // change icon by changing the innerHTML, depending on Out of Home state
             if (isOutOfHome) {
                 outOfHomeCard_toggleIcon.innerHTML = "toggle_off"
-                outOfHomeCard_toggleIcon.classList.add("active")
             } else {
                 outOfHomeCard_toggleIcon.innerHTML = "toggle_on"
-                outOfHomeCard_toggleIcon.classList.remove("active")
             }
             window.location.replace("http://127.0.0.1:8000/vacation");
         });
@@ -141,9 +141,9 @@ window.onload = () => {
 
         // ------ Other Animations & Elements ------
         // System status popup close button
-        systemStatusPopupBtnClose.addEventListener("click", () => {
-            systemStatusPopupClose(systemStatusPopup);
-        });
+        // systemStatusPopupBtnClose.addEventListener("click", () => {
+        //     systemStatusPopupClose(systemStatusPopup);
+        // });
 
         // Adds eventlistener to all deleteTimer buttons
         for (let i = 0; i < deleteTimerBtns.length; i++) {
@@ -159,13 +159,13 @@ window.onload = () => {
         openCloseSlider.addEventListener("touchend", () => {
             handleSliderClick();
         })
-        
+
         const handleSliderClick = () => {
             console.log(openCloseSlider.value);
             // replace url with http://127.0.0.1:8000/curtain/${curtainName}/update/${openCloseSlider.value}
             window.location.replace(`http://127.0.0.1:8000/curtain/${curtainName}/update/${openCloseSlider.value}`);
 
-           
+
         }
     }
 

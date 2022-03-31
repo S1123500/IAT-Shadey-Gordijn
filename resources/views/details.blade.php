@@ -71,7 +71,7 @@
 
     </section>
 
-    @include('./components/system-status-popup')
+    <!-- @include('./components/system-status-popup') -->
 
 </main>
 

@@ -13,7 +13,7 @@
             @csrf
                 <p>Day of the week</p>
                 <section class="addNewTimer__dotw u-noselect">
-                        <input type="radio" id="Mon" name="radios" value="Mon" checked>
+                        <input type="radio" id="monday" name="radios" value="Mon" checked>
                         <label for="monday" >M</label>
 
                         <input type="radio" id="tuesday" name="radios" value="Tue">
