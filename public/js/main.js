@@ -103,7 +103,8 @@ window.onload = () => {
         const openCloseSlider = document.getElementById("openCloseSlider__slider");
         // Curtain name
         const curtainName = document.getElementById("js--curtainName").innerHTML;
-        // Timer timeline
+        // Timer card
+        const timerCardDay = document.getElementsByClassName("timerCard__title");
         const timersTimeline = document.getElementsByClassName("timerCard__openToClose");
 
         // ------ Arrays ------
@@ -176,6 +177,34 @@ window.onload = () => {
             timersTimeline[i].style.marginLeft = openTimeMarginLeft;
             timersTimeline[i].style.width = closeTimeWidth;
         };
+
+        // Timer card day abbreviation to full word
+        for (let i = 0; i < timerCardDay.length; i++) {
+            let day = timerCardDay[i].innerHTML;
+            switch (day) {
+                case "Mon":
+                    timerCardDay[i].innerHTML = "Monday";
+                    break;
+                case "Tue":
+                    timerCardDay[i].innerHTML = "Tuesday";
+                    break;
+                case "Wed":
+                    timerCardDay[i].innerHTML = "Wednesday";
+                    break;
+                case "Thu":
+                    timerCardDay[i].innerHTML = "Thursday";
+                    break;
+                case "Fri":
+                    timerCardDay[i].innerHTML = "Friday";
+                    break;
+                case "Sat":
+                    timerCardDay[i].innerHTML = "Saturday";
+                    break;
+                case "Sun":
+                    timerCardDay[i].innerHTML = "Sunday";
+                    break;
+            }
+        }
     }
 
     // ------ Animation Functions ------

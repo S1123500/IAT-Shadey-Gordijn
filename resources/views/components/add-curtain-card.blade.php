@@ -17,7 +17,7 @@
 
         <form action="addCurtain" method="post" class="addCurtainCard__form" id="js--addCurtainForm">
             <!-- class="textError" -->
-            <label for="name">Curtain Name</label>
+            <label for="name" class="addCurtainCard__nameLabel" >Curtain Name</label>
             <!-- class="inputError" -->
             <input type="text" id="name" name="name" placeholder="Give your curtain a name" required pattern="[^()/><\][\\\x22,;|]+">
             
@@ -52,7 +52,16 @@
             <input type="text" id="js--newLocation" class="newLocationInput" name="location" placeholder="Add new location">
 
             <section class="addCurtainCard__pairCode">
-                <label for="pairCode">Unique Pair Code</label>
+                <label for="pairCode">
+                    Unique Pair Code 
+                    
+                </label>
+                <p class="addCurtainCard__tooltip u-noselect"> 
+                        ?
+                        <span class="addCurtainCard__tooltipText">
+                            Enter the Pair Code found on the back of your Shadey device to connect it to the app.
+                        </span>
+                    </p>
                 <input type="text" id="pairCode" name="pairCode" placeholder="SHDY0000" required>
             </section>
 

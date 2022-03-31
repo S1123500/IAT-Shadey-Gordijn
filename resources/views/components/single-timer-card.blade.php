@@ -8,9 +8,9 @@
         </p>
 
         <section class="singleTimerCard__content">
-            <h3 class="timerCard__title">[Day]</h3>
+            <h3 class="timerCard__title singleTimerCard__title">[Day]</h3>
             <section class="singleTimerCard__timeInfo">
-                <p> [Open/Close] at </p>
+                <p class="singleTimerCard__closeOrOpen"> [Open/Close] at </p>
                 <p class="singleTimerCard__time">22:00</p>
             </section>
         </section>
