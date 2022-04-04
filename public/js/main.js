@@ -44,13 +44,18 @@ window.onload = () => {
         const addCurtainBtnSubmit = document.getElementById("js--addCurtainBtnSubmit");
         const closeAddCurtainBtn = document.getElementById("js--closeAddCurtain");
         const cancelAddCurtainBtn = document.getElementById("js--cancelAddCurtain");
-        const curtainCard = document.getElementById("js--curtainCard");
+        const curtainCard = document.getElementsByClassName("js--curtainCard");
 
         // Loading animation
-        curtainCard.addEventListener("click", (e) => {
-            loadingSpinnerContainer.style.display = "flex";
-            loadingSpinnerContainer.style.opacity = "1";
-        });
+        for (let i = 0; i < curtainCard.length; i++) {
+            const element = curtainCard[i];
+            console.log(element);
+            element ? element.addEventListener("click", (e) => {
+                loadingSpinnerContainer.style.display = "flex";
+                loadingSpinnerContainer.style.opacity = "1";
+            }) : null;
+        }
+
         addCurtainBtnSubmit.addEventListener("click", (e) => {
             loadingSpinnerContainer.style.display = "flex";
             loadingSpinnerContainer.style.opacity = "1";
@@ -120,6 +125,7 @@ window.onload = () => {
         // Add timer to curtain
         const newTimerOverlay = document.getElementById("js--newTimerOverlay");
         const addTimerBtn = document.getElementById("js--addTimerBtn");
+        const addTimerBtnSubmit = document.getElementById("js--addTimerBtnSubmit");
         const closeTimerIcon = document.getElementById("js--closeAddNewTimerIcon");
         const closeTimerBtn = document.getElementById("js--closeAddNewTimerBtn");
         // Are you sure timer
@@ -181,11 +187,14 @@ window.onload = () => {
             startLoadingAnimation(loadingSpinnerContainer);
 
         });
-        areYouSureDeleteTimerBtn.addEventListener("click", () => {
-            closeOverlay(areYouSureTimerOverlay);
+        addTimerBtnSubmit.addEventListener("click", () => {
             startLoadingAnimation(loadingSpinnerContainer);
         });
-        backToHome.addEventListener("click" = () => {
+        areYouSureDeleteTimerBtn ? areYouSureDeleteTimerBtn.addEventListener("click", () => {
+            closeOverlay(areYouSureTimerOverlay);
+            startLoadingAnimation(loadingSpinnerContainer);
+        }) : null;
+        backToHome.addEventListener("click", () => {
             startLoadingAnimation(loadingSpinnerContainer);
         })
 

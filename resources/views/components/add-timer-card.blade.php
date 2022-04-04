@@ -46,7 +46,7 @@
                     </section>
                 </section>
 
-                <input class="addNewTimer__addCurtainBtn" type="submit" value="ADD CURTAIN">
+                <input class="addNewTimer__addCurtainBtn" type="submit" id="js--addTimerBtnSubmit" value="ADD TIMER">
             </form>
             
             <button class="addNewTimer__cancelBtn" id="js--closeAddNewTimerBtn"> CANCEL </button>
