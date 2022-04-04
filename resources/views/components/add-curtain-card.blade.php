@@ -56,7 +56,7 @@
                 <input type="text" id="pairCode" name="pairCode" placeholder="SHDY0000" required>
             </section>
 
-            <input type="submit" class="addCurtainCard__form-addBtn" id="js--addCurtainBtn" value="Add Curtain">
+            <input type="submit" class="addCurtainCard__form-addBtn" id="js--addCurtainBtnSubmit" value="Add Curtain">
         </form> 
 
         <input type="submit" class="addCurtainCard__cancelBtn" id="js--cancelAddCurtain" value="Cancel">

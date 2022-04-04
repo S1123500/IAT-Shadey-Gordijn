@@ -37,7 +37,7 @@
         <!-- Curtain Cards -->
         <section class="curtainList">
         @foreach ($curtains as $curtain)
-            <a href= '/curtain/{{$curtain->name}}/'>
+            <a href= '/curtain/{{$curtain->name}}/' id="js--curtainCard">
                 @include('./components/curtain-card')
             </a>
         @endforeach

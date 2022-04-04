@@ -36,3 +36,6 @@ Route::get('/delete/{name}', 'App\Http\Controllers\DeleteController@deleteCurtai
 // Update slider met redirect
 Route::get('/curtain/{name}/update/{value}', 'App\Http\Controllers\CurtainUpdateController@updateSlider'); 
 
+// Curtain details link voor later
+// Route::get('/curtains/{$curtain}', function () {return view('details');});
+Route::get("/404", function () {return view('404');});
