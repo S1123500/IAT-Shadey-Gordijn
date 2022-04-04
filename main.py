@@ -1,6 +1,3 @@
-from ast import If
-from calendar import TUESDAY
-from nis import match
 import serial
 import os
 import mysql.connector
@@ -15,9 +12,12 @@ mydb = mysql.connector.connect(
     database = "ipmedt5"
 )
 
-mycursor = mydb.cursor()
+mycursor = mydb.cursor(buffered = True)
 # port = serial.Serial("COM5", baudrate=9600, timeout=3.0)
 
+def update(name, value):
+    mycursor.execute("UPDATE curtain SET percentage = %s WHERE name = '%s'" % (value, name))
+    print("curtain updated")   
 
 while True:
     t = time.localtime()
@@ -35,11 +35,11 @@ while True:
     #      case "Sunday": current_day = "Sun";
     if current_day == "Monday":
         current_day = "Mon"
-    if current_day == "Tueseday":
+    if current_day == "Tuesday":
         current_day = "Tue"
     if current_day == "Wednesday":
         current_day = "Wed"
-    if current_day == "Thusday":
+    if current_day == "Thursday":
         current_day = "Thu"
     if current_day == "Friday":
         current_day = "Fri"
@@ -50,7 +50,23 @@ while True:
 
 
     print(current_time)
-    timers = mycursor.excecute("SELECT * FROM schedule WHERE whichDay = current_day;")
-    for index in timers:
-        print(index)
+    mycursor.execute("SELECT curtainName FROM schedule WHERE whichDay = '%s' AND timeOpen = '%s' " % ('Mon', '16:21'))
+    list=[]
+    for index in mycursor:
+        curtain = index[0]
+        list.append(curtain)
+    percentage = 0
+    for x in list:
+        update(x, percentage)
+    # for index in mycursor:
+    #     curtain = index[0]
+    #     percentage = 0
+    #     update(curtain, percentage)
+    # mycursor.execute("SELECT curtainName FROM schedule WHERE whichDay =%s AND timeClose =%s", (current_day, current_time))
+    # for index in mycursor:
+    #     curtain = index[0]
+    #     percentage = 2
+    #     update(curtain, percentage)
+    mydb.commit()
     time.sleep(60)
+

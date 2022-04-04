@@ -17,18 +17,18 @@ class ScheduleTableSeeder extends Seeder
         DB::table('schedule')->insert([
             'curtainName' => 'Betty', 
             'whichDay' => 'Mon', 
-            'timeOpen' => '06:00',
-            'timeClose' => '17:50']);
+            'timeOpen' => '16:21',
+            'timeClose' => '16:22']);
         DB::table('schedule')->insert([
             'curtainName' => 'Betty', 
             'whichDay' => 'Tue', 
-            'timeOpen' => '08:00',
-            'timeClose' => '20:00']);
+            'timeOpen' => '06:00',
+            'timeClose' => '16:15']);
         DB::table('schedule')->insert([
             'curtainName' => 'Jaap', 
-            'whichDay' => 'Wed', 
-            'timeOpen' => '04:00',
-            'timeClose' => '21:00']);
+            'whichDay' => 'Mon', 
+            'timeOpen' => '16:21',
+            'timeClose' => '16:22']);
         DB::table('schedule')->insert([
             'curtainName' => 'Gerda', 
             'whichDay' => 'Thu', 
