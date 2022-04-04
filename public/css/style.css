@@ -5,6 +5,7 @@
     --clr-light-blue: #394266;
     --clr-white: #FFFCF9;
     --clr-orange: #FF620A;
+    --clr-grey: #bababa;
 
     --max-width: 500px;
 
@@ -907,6 +908,14 @@ body {
     transition: 0.2s all;
     transform: scale(1.15);
     animation: radioClick 0.45s ease-out;
+}
+.addNewTimer__dotw input[type="radio"]:disabled+label {
+    opacity: 0.5;
+}
+.addNewTimer__dotw input[type="radio"]:hover:disabled+label {
+    background: var(--clr-white);
+    opacity: 0.5;
+    cursor:not-allowed;
 }
 
 @keyframes radioClick {

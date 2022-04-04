@@ -18,7 +18,7 @@
                         <input type="radio" id="tuesday" name="radios" value="tuesday">
                         <label for="tuesday">T</label>
 
-                        <input type="radio" id="wednesday" name="radios" value="wednesday">
+                        <input type="radio" id="wednesday" name="radios" value="wednesday" disabled>
                         <label for="wednesday">W</label>
 
                         <input type="radio" id="thursday" name="radios" value="thursday">
