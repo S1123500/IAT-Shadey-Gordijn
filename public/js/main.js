@@ -12,8 +12,8 @@ window.onload = () => {
     const refreshDelay = 300000;
 
     setInterval(() => {
-        let reloadTime = new Date().getHours() + ":" + new Date().getMinutes();
-        window.location.replace(`http://${domainName}/autoReload/${reloadTime}`);
+        // let reloadTime = new Date().getHours() + ":" + new Date().getMinutes();
+        // window.location.replace(`http://${domainName}/autoReload/${reloadTime}`);
     }, refreshDelay);
 
     // Depending on pathname, run code..
@@ -135,11 +135,12 @@ window.onload = () => {
         // Adds correct evtlistener & animation to elements from array
         const addOpenAndCloseEvents = (arr) => {
             for (let i = 0; i < arr.length; i++) {
-                arr[i][0].addEventListener("click", () => {
+                arr[i][0] ? arr[i][0].addEventListener("click", () => {
                     arr[i][2] === "open" ? openOverlay(arr[i][1]) : closeOverlay(arr[i][1]);
-                });
+                }) : null;
             };
         };
+        console.log(OpenAndCloseButtons);
         addOpenAndCloseEvents(OpenAndCloseButtons);
 
         // ------ Other Animations & Elements ------
