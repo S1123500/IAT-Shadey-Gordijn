@@ -55,8 +55,10 @@ window.onload = () => {
             // change icon by changing the innerHTML, depending on Out of Home state
             if (isOutOfHome) {
                 outOfHomeCard_toggleIcon.innerHTML = "toggle_off"
+                outOfHomeCard_toggleIcon.classList.remove("active")
             } else {
                 outOfHomeCard_toggleIcon.innerHTML = "toggle_on"
+                outOfHomeCard_toggleIcon.classList.add("active")
             }
             window.location.replace(`http://${domainName}/vacation`);
         })
