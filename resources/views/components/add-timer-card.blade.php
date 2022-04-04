@@ -13,26 +13,17 @@
             @csrf
                 <p>Day of the week</p>
                 <section class="addNewTimer__dotw u-noselect">
-                        <input type="radio" id="monday" name="radios" value="Mon" checked>
-                        <label for="monday" >M</label>
 
-                        <input type="radio" id="tuesday" name="radios" value="Tue">
-                        <label for="tuesday">T</label>
-
-                        <input type="radio" id="wednesday" name="radios" value="Wed">
-                        <label for="wednesday">W</label>
-
-                        <input type="radio" id="thursday" name="radios" value="Thu">
-                        <label for="thursday">T</label>
-
-                        <input type="radio" id="friday" name="radios" value="Fri">
-                        <label for="friday">F</label>
-
-                        <input type="radio" id="saturday" name="radios" value="Sat">
-                        <label for="saturday">S</label>
-
-                        <input type="radio" id="sunday" name="radios" value="Sun">
-                        <label for="sunday">S</label>
+                    @foreach($daysInAWeek as $day)
+                        @if (!in_array($day, $daysAlreadyExist))
+                            <input type="radio" id="{{$day}}" name="radios" value="{{$day}}">
+                            <label for="{{$day}}">{{$day[0]}}</label>
+                        @else
+                            <input type="radio" id="{{$day}}" name="radios" value="{{$day}}" disabled>
+                            <label for="{{$day}}">{{$day[0]}}</label>
+                        @endif
+                    @endforeach
+                
                 </section>
 
                 <section class="addNewTimer__openAndCloseTimes">
