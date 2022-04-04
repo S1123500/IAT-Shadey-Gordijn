@@ -23,7 +23,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: var(--clr-yellow); 
+    background: var(--clr-light-blue); 
     border-radius: 5px;
 }
 
@@ -227,7 +227,7 @@ body {
     margin-top: 25px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5%;
+    gap: 1.4rem;
 }
 .curtainCard__wrapper, .curtainList__add {
     width: 100%;
@@ -249,7 +249,7 @@ body {
     transition: 0.2s all ease;
 }
 .curtainCard__wrapper:hover{
-    transform: scale(1.03);
+    transform: scale(1.025);
 }
 .curtainCard {
     padding: 15px;
@@ -359,6 +359,12 @@ body {
     flex-direction: column;
     gap: 5px;
 }
+
+.addCurtainCard__nameLabel {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
 .addCurtainCard__form label {
     font-family: var(--ff-primary);
     color: var(--clr-white);
@@ -386,7 +392,6 @@ body {
     border-radius: 8px;
     padding: 0.5rem;
     padding-top: 0.7rem;
-    padding-bottom: 0.7rem;
     width: 100%;
     font-family: var(--ff-primary);
     font-weight: 600;
@@ -402,6 +407,7 @@ body {
     background: var(--clr-yellow);
     border: none;
     margin-top: 15px;
+    padding-bottom: 0.7rem;
 }
 .addCurtainCard__cancelBtn {
     background: none;
@@ -475,7 +481,7 @@ body {
 .addCurtainCard__form-locations input[type="radio"]:checked+label {
     background-color: var(--clr-yellow);
     transition: 0.2s all;
-    transform: scale(1.1);
+    transform: scale(1.075);
 }
 
 .addCurtainCard__form-locations .add input[type="radio"]:hover+label {
@@ -501,6 +507,47 @@ body {
 
 .addCurtainCard__pairCode {
     margin-top: 15px;
+}
+
+.addCurtainCard__tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    background-color: var(--clr-light-blue);
+    border-radius: 100px;
+    padding: 0px 5px;   
+    margin-left: 0.25rem;
+}
+
+.addCurtainCard__tooltipText {
+    visibility: hidden;
+    width: 160px;
+    background-color: var(--clr-light-blue);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 150%;
+    cursor: auto;
+    user-select:text;
+}
+
+.addCurtainCard__tooltipText::after {
+    content: "";
+    position: absolute;
+    top: 18%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent var(--clr-light-blue) transparent transparent;
+}
+
+.addCurtainCard__tooltip:hover .addCurtainCard__tooltipText {
+    visibility: visible;
 }
 
 /* Curtain Details Pagina --------- */
@@ -608,12 +655,32 @@ body {
     position: relative;
 }
 
+.timerCard__openToClose {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 100px;
+    background-color: var(--clr-yellow);
+    width: 50%;
+    margin-left: 20%;
+    /* animation: openToClose 0.6s ease-out; */
+}
+
+.timerCard__openToClose p {
+    font-size: 90%;
+    color: var(--clr-yellow);
+    position: relative;
+    line-height: 0.85rem;
+    top: 1.5rem;
+    opacity: 1;
+    /* animation: openToCloseP 0.65s; */
+}
+
 .timerCard__openToClose-open {
-    left: -1.1rem;
+    text-align: left;
 }
 
 .timerCard__openToClose-close {
-    right: -1.1rem;
+    text-align: right;
 }
 
 .timerCard__delete {
@@ -662,21 +729,37 @@ body {
 } */
 
 .singleTimerCard__content{
+    padding-right: 1.75rem;
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 75%;
-}
-.singleTimerCard__timeInfo{
-    width: 85%;
-    display: flex;
-    gap: 10px;
-    align-items: center;
     justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+}
+
+.singleTimerCard__title {
+    display: inline;
+    margin-top: 0.8rem;
+}
+
+.singleTimerCard__timeInfo{
+    line-height: 3rem;
+    text-align: center;
+    width: 100%;
+    text-align: right;
+    display: block;
+   
+    align-items: center;
+}
+
+.singleTimerCard__closeOrOpen {
+    display: inline;
+    font-size: 105%;
 }
 
 .singleTimerCard__time {
-    font-size: 150%;
+    
+    display: inline;
+    font-size: 140%;
     font-weight: 200;
 }
 
@@ -688,15 +771,7 @@ body {
     box-shadow: inset 0px 0px 39px -6px rgba(0, 0, 0, 0.624);
 }
 
-.timerCard__openToClose {
-    display: flex;
-    justify-content: space-between;
-    border-radius: 100px;
-    background-color: var(--clr-yellow);
-    width: 50%;
-    margin-left: 20%;
-    /* animation: openToClose 0.6s ease-out; */
-}
+
 
 /* @keyframes openToClose {
     0% {
@@ -723,15 +798,7 @@ body {
     }
 } */
 
-.timerCard__openToClose p {
-    font-size: 90%;
-    color: var(--clr-yellow);
-    position: relative;
-    line-height: 0.85rem;
-    top: 1.5rem;
-    opacity: 1;
-    /* animation: openToCloseP 0.65s; */
-}
+
 
 .timerList__addTimerBtn {
     padding-top: 0.65rem;

@@ -114,7 +114,8 @@ window.onload = () => {
         const openCloseSlider = document.getElementById("openCloseSlider__slider");
         // Curtain name
         const curtainName = document.getElementById("js--curtainName").innerHTML;
-        // Timer timeline
+        // Timer card
+        const timerCardDay = document.getElementsByClassName("timerCard__title");
         const timersTimeline = document.getElementsByClassName("timerCard__openToClose");
 
         // ------ Arrays ------
@@ -171,26 +172,57 @@ window.onload = () => {
             openCloseSlider.addEventListener(i, handleSliderClick);
         });
 
+        // Gets a number from 0 to 100 based on a 24 hour time scale (00:00 - 23:59)
+        const getPercentageFromTime = (time) => {
+            let timeArr = time.split(":");
+            let hours = parseInt(timeArr[0]);
+            let minutes = parseInt(timeArr[1]);
+            let percentage = (hours * 60 + minutes) / 1440 * 100;
+            return Math.round(percentage);
+        };
+
         // Timer card timeline percentage calculations
         for (let i = 0; i < timersTimeline.length; i++) {
             let openTime = timersTimeline[i].dataset.opentime;
             let closeTime = timersTimeline[i].dataset.closetime;
 
-            // Gets a number from 0 to 100 based on a 24 hour time scale (00:00 - 23:59)
-            const getPercentageFromTime = (time) => {
-                let timeArr = time.split(":");
-                let hours = parseInt(timeArr[0]);
-                let minutes = parseInt(timeArr[1]);
-                let percentage = (hours * 60 + minutes) / 1440 * 100;
-                return percentage;
-            };
+            let openTimePercentage = getPercentageFromTime(openTime);
+            let closeTimePercentage = getPercentageFromTime(closeTime);
 
-            let openTimeMarginLeft = getPercentageFromTime(openTime) + "%";
-            let closeTimeWidth = getPercentageFromTime(closeTime) - getPercentageFromTime(openTime) + "%";
+            let openTimeMarginLeft = openTimePercentage + "%";
+            let closeTimeWidth = closeTimePercentage - openTimePercentage + "%";
 
             timersTimeline[i].style.marginLeft = openTimeMarginLeft;
             timersTimeline[i].style.width = closeTimeWidth;
         };
+
+        // Timer card day abbreviation to full word
+        for (let i = 0; i < timerCardDay.length; i++) {
+            let day = timerCardDay[i].innerHTML;
+            switch (day) {
+                case "Mon":
+                    timerCardDay[i].innerHTML = "Monday";
+                    break;
+                case "Tue":
+                    timerCardDay[i].innerHTML = "Tuesday";
+                    break;
+                case "Wed":
+                    timerCardDay[i].innerHTML = "Wednesday";
+                    break;
+                case "Thu":
+                    timerCardDay[i].innerHTML = "Thursday";
+                    break;
+                case "Fri":
+                    timerCardDay[i].innerHTML = "Friday";
+                    break;
+                case "Sat":
+                    timerCardDay[i].innerHTML = "Saturday";
+                    break;
+                case "Sun":
+                    timerCardDay[i].innerHTML = "Sunday";
+                    break;
+            }
+        }
     }
 
     // ------ Animation Functions ------

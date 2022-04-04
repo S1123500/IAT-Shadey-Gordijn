@@ -4,7 +4,7 @@
                 <span class="addNewTimer__closeIcon material-icons u-noselect">
                     close   
                 </span>
-                <span class="addNewTimer__closeHoverText"> Close </span>
+                <span class="addNewTimer__closeHoverText"> Cancel </span>
             </p>
         <section class="addNewTimer">
             <h2 class="addNewTimer__title"> ADD A TIMER </h2>
