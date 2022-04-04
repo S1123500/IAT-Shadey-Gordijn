@@ -37,7 +37,7 @@
         <!-- Curtain Cards -->
         <section class="curtainList">
 
-            <a href="{{'/curtain/x'}}">
+            <a href="{{'/curtain/x'}}" id="js--curtainCard">
                 @include('./components/curtain-card')
             </a>
             

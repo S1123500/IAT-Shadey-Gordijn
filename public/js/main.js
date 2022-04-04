@@ -11,10 +11,15 @@ window.onload = () => {
     // get time each 5 minutes and refresh the page
     const refreshDelay = 300000;
 
+    // only if url is not 404
     setInterval(() => {
         let reloadTime = new Date().getHours() + ":" + new Date().getMinutes();
         window.location.replace(`http://${domainName}/autoReload/${reloadTime}`);
     }, refreshDelay);
+   
+
+    // All pages
+    const loadingSpinnerContainer = document.getElementById("js--loadingSpinner__container");
 
     // Depending on pathname, run code..
     if (path === "/") {
@@ -28,9 +33,22 @@ window.onload = () => {
         const addCurtainForm = document.getElementById('js--addCurtainForm');
         const addCurtainOverlay = document.getElementById("js--addCurtainOverlay");
         const addCurtainBtn = document.getElementById("js--addCurtainBtn");
+        const addCurtainBtnSubmit = document.getElementById("js--addCurtainBtnSubmit");
         const closeAddCurtainBtn = document.getElementById("js--closeAddCurtain");
         const cancelAddCurtainBtn = document.getElementById("js--cancelAddCurtain");
+        const curtainCard = document.getElementById("js--curtainCard");
 
+        // Loading animation
+        curtainCard.addEventListener("click", (e) => {
+            loadingSpinnerContainer.style.display = "flex";
+            loadingSpinnerContainer.style.opacity = "1";
+        });
+        addCurtainBtnSubmit.addEventListener("click", (e) => {
+            loadingSpinnerContainer.style.display = "flex";
+            loadingSpinnerContainer.style.opacity = "1";
+        });
+
+            
         // Set outOfHome state to false
         let isOutOfHome = false;
         
@@ -47,6 +65,11 @@ window.onload = () => {
                 outOfHomeCard_toggleIcon.innerHTML = "toggle_off"
                 outOfHomeCard_toggleIcon.classList.remove("active")
             }
+
+            // load spinner
+            loadingSpinnerContainer.style.display = "flex";
+            loadingSpinnerContainer.style.opacity = "1";
+
             window.location.replace(`http://${domainName}/vacation`);
         })
 
@@ -80,6 +103,8 @@ window.onload = () => {
         console.log("Curtain Detailpage")
 
         // ------ Elements ------
+        // Back
+        const backToHome = document.getElementById("js--backToHome")
         // Add timer to curtain
         const newTimerOverlay = document.getElementById("js--newTimerOverlay");
         const addTimerBtn = document.getElementById("js--addTimerBtn");
@@ -89,10 +114,12 @@ window.onload = () => {
         const areYouSureTimerOverlay = document.getElementById("js--areYouSureTimerOverlay")
         const areYouSureCancelBtn = document.getElementById("js--areYouSureCancelBtn");
         const areYouSureCloseIcon = document.getElementById("js--areYouSureCloseIcon");
+        const areYouSureDeleteTimerBtn = document.getElementById("js--areYouSure__deleteTimerBtn");
         // Are you sure curtain 
         const areYouSureCurtainOverlay = document.getElementById("js--areYouSureCurtainOverlay");
         const areYouSureCancelCurtainBtn = document.getElementById("js--areYouSureCancelCurtainBtn");
         const removeCurtainBtn = document.getElementById("js--removeCurtainBtn");
+        const areYouSureDeleteCurtainBtn = document.getElementById("js--areYouSure__deleteCurtainBtn");
         const areYouSureCloseCurtainIcon = document.getElementById("js--areYouSureCloseCurtainIcon");
         const deleteTimerBtns = document.querySelectorAll(".js--deleteTimerBtn");
         // System status popup 
@@ -124,11 +151,13 @@ window.onload = () => {
         // Adds correct evtlistener & animation to elements from array
         const addOpenAndCloseEvents = (arr) => {
             for (let i = 0; i < arr.length; i++) {
-                arr[i][0].addEventListener("click", () => {
+                // if element is defined add evtlistener
+                arr[i][0] ? arr[i][0].addEventListener("click", () => {
                     arr[i][2] === "open" ? openOverlay(arr[i][1]) : closeOverlay(arr[i][1]);
-                });
+                }) : null;
             };
         };
+        
         addOpenAndCloseEvents(OpenAndCloseButtons);
 
         // ------ Other Animations & Elements ------
@@ -136,6 +165,18 @@ window.onload = () => {
         systemStatusPopupBtnClose.addEventListener("click", () => {
             systemStatusPopupClose(systemStatusPopup);
         });
+        areYouSureDeleteCurtainBtn.addEventListener("click", () => {
+            closeOverlay(areYouSureCurtainOverlay);
+            startLoadingAnimation(loadingSpinnerContainer);
+
+        });
+        areYouSureDeleteTimerBtn.addEventListener("click", () => {
+            closeOverlay(areYouSureTimerOverlay);
+            startLoadingAnimation(loadingSpinnerContainer);
+        });
+        backToHome.addEventListener("click" = () => {
+            startLoadingAnimation(loadingSpinnerContainer);
+        })
 
         // Adds eventlistener to all deleteTimer buttons
         for (let i = 0; i < deleteTimerBtns.length; i++) {
@@ -146,7 +187,7 @@ window.onload = () => {
 
         // Open close slider events
         const handleSliderClick = () => {
-            console.log(openCloseSlider.value);
+            startLoadingAnimation(loadingSpinnerContainer);
             window.location.replace(`http://${domainName}/curtain/${curtainName}/update/${openCloseSlider.value}`);
         };
 
@@ -246,5 +287,10 @@ window.onload = () => {
         setTimeout(() => {
             el.style.display = "none"; 
         }, 500)     
+    }
+
+    const startLoadingAnimation = (el) => {
+        el.style.display = "flex";
+        el.style.opacity = "1";
     }
 };

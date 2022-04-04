@@ -7,6 +7,7 @@
 
 
 <main class="content">
+  
     <!-- Add timer card -->
     @include('./components/add-timer-card')
 
@@ -17,7 +18,7 @@
     <section class="contentTop">
 
         <header class="detailsHeader">
-            <a href="{{'/'}}">
+            <a href="{{'/'}}" id="js--backToHome">
                 <span class="material-icons u-noselect">
                     keyboard_backspace
                 </span>

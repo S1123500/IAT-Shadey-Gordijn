@@ -13,7 +13,7 @@
             You won’t be able to get it back. Continue?
         </p>
         <section class="areYouSure__buttons">
-            <button class="areYouSure__deleteBtn">
+            <button class="areYouSure__deleteBtn" id="js--areYouSure__deleteTimerBtn">
                 <span class="material-icons u-noselect">
                     delete
                 </span>

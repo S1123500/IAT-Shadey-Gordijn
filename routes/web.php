@@ -21,3 +21,4 @@ Route::get('/curtain/{id}', function () {return view('details');});
 
 // Curtain details link voor later
 // Route::get('/curtains/{$curtain}', function () {return view('details');});
+Route::get("/404", function () {return view('404');});
