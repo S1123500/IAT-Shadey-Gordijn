@@ -174,7 +174,7 @@ window.onload = () => {
             closeOverlay(areYouSureTimerOverlay);
             startLoadingAnimation(loadingSpinnerContainer);
         });
-        backToHome.addEventListener("click" = () => {
+        backToHome.addEventListener("click", () => {
             startLoadingAnimation(loadingSpinnerContainer);
         })
 
