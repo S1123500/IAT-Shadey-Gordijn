@@ -1,4 +1,6 @@
 window.onload = () => {
+    // Get current domain name, only add port if it exists
+    let domainName = `${window.location.hostname}${window.location.port ? `:${window.location.port}` : ''}`;
 
     // Get current path name
     let path = window.location.pathname;
@@ -7,12 +9,12 @@ window.onload = () => {
     const regex = new RegExp("\/curtain\/[A-Za-z0-9]+")
 
     // get time each 5 minutes and refresh the page
+    const refreshDelay = 300000;
+
     setInterval(() => {
-        let date = new Date().getHours() + ":" + new Date().getMinutes();
-        window.location.reload();
-    }, 300000);
-
-
+        let reloadTime = new Date().getHours() + ":" + new Date().getMinutes();
+        window.location.replace(`http://${domainName}/autoReload/${reloadTime}`);
+    }, refreshDelay);
 
     // Depending on pathname, run code..
     if (path === "/") {
@@ -56,10 +58,8 @@ window.onload = () => {
             } else {
                 outOfHomeCard_toggleIcon.innerHTML = "toggle_on"
             }
-            window.location.replace("http://127.0.0.1:8000/vacation");
-        });
-
-
+            window.location.replace(`http://${domainName}/vacation`);
+        })
 
         // Eventlistener on form
         addCurtainForm.addEventListener('click', function (event) {
@@ -112,8 +112,10 @@ window.onload = () => {
         const systemStatusPopupBtn = document.getElementById("js--systemStatusPopupBtn");
         // Slider
         const openCloseSlider = document.getElementById("openCloseSlider__slider");
-        // Name
+        // Curtain name
         const curtainName = document.getElementById("js--curtainName").innerHTML;
+        // Timer timeline
+        const timersTimeline = document.getElementsByClassName("timerCard__openToClose");
 
         // ------ Arrays ------
         // 1: Button el that needs evtlistener, 2: Overlay el that needs animation, 3: Give it either open or close animation
@@ -162,11 +164,33 @@ window.onload = () => {
 
         const handleSliderClick = () => {
             console.log(openCloseSlider.value);
-            // replace url with http://127.0.0.1:8000/curtain/${curtainName}/update/${openCloseSlider.value}
-            window.location.replace(`http://127.0.0.1:8000/curtain/${curtainName}/update/${openCloseSlider.value}`);
+            window.location.replace(`http://${domainName}/curtain/${curtainName}/update/${openCloseSlider.value}`);
+        };
 
+        ["mouseup", "touchend"].forEach((i) => {
+            openCloseSlider.addEventListener(i, handleSliderClick);
+        });
 
-        }
+        // Timer card timeline percentage calculations
+        for (let i = 0; i < timersTimeline.length; i++) {
+            let openTime = timersTimeline[i].dataset.opentime;
+            let closeTime = timersTimeline[i].dataset.closetime;
+
+            // Gets a number from 0 to 100 based on a 24 hour time scale (00:00 - 23:59)
+            const getPercentageFromTime = (time) => {
+                let timeArr = time.split(":");
+                let hours = parseInt(timeArr[0]);
+                let minutes = parseInt(timeArr[1]);
+                let percentage = (hours * 60 + minutes) / 1440 * 100;
+                return percentage;
+            };
+
+            let openTimeMarginLeft = getPercentageFromTime(openTime) + "%";
+            let closeTimeWidth = getPercentageFromTime(closeTime) - getPercentageFromTime(openTime) + "%";
+
+            timersTimeline[i].style.marginLeft = openTimeMarginLeft;
+            timersTimeline[i].style.width = closeTimeWidth;
+        };
     }
 
     // ------ Animation Functions ------
