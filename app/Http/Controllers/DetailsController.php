@@ -18,6 +18,15 @@ class DetailsController extends Controller
         $lightsensors = Curtain::where('name', $name)->first()->curtainLocation->allLightSensors->first();
         $location = $curtain->curtainLocation;
         $schedules = $curtain->allSchedules;
+
+        $daysInAWeek = array('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
+        $daysAlreadyExist = array();
+        $scheduleDays = Curtain::where('name', $name)->first()->allSchedules;
+
+        foreach ($scheduleDays as $schedule){
+                $day = $schedule->whichDay;
+                array_push($daysAlreadyExist, $day);
+        };
         // $timeOpen = $schedules->timeOpen;
         // $timeClose = $schedules->timeClose;
         return view('details',[
@@ -25,7 +34,11 @@ class DetailsController extends Controller
             'lightsensors' => $lightsensors,
             'location' => $location,
             'schedules' => $schedules,
-            'name' => $name
+            'name' => $name,
+            'daysInAWeek' => $daysInAWeek,
+            'daysAlreadyExist' => $daysAlreadyExist,
+            'scheduleDays' => $scheduleDays,
+            'day' => $day,
             // 'timeOpen' => $timeOpen,
             // 'timeClose' => $timeClose
         ]);
