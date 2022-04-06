@@ -14,7 +14,7 @@ window.onload = () => {
     // All pages
     const loadingSpinnerContainer = document.getElementById("js--loadingSpinner__container");
 
-        // ------ Animation Functions ------
+    // ------ Animation Functions ------
     // css van 'el' -> top: -2vh; display: none; opacity: 0; background: none; transition: 0.2s all;
     const closeOverlay = (el) => {
         el.style.background = "none";
@@ -60,12 +60,11 @@ window.onload = () => {
         el.style.opacity = "1";
     }
 
-    // Depending on pathname, run code..
+// ========================================= HOMEPAGE =========================================
     if (path === "/") {
         console.log("Homepage")
 
 
-        // // Get js elements from DOM by ID
         const outOfHomeCard = document.getElementById("js--outOfHomeCard");
         const outOfHomeCard_toggleIcon = document.getElementById("js--outOfHomeCard-toggleIcon");
         const addLocationInput = document.getElementById('js--newLocation');
@@ -80,7 +79,7 @@ window.onload = () => {
         const duplicatePopup = document.getElementById("js--duplicatePopup");
         const duplicatePopupBtnClose = document.getElementById("js--duplicatePopupClose");
 
-
+        // =========================== Vacation ===========================
         // getting the variable from database and making it boolean
         var isOutOfHome = outOfHomeCard.dataset.isoutofhome;
         if (isOutOfHome === 'false') {
@@ -88,31 +87,6 @@ window.onload = () => {
         } else {
             isOutOfHome = true;
         }
-
-        var Error = duplicatePopup.dataset.error;
-        if (Error === 'true') {
-            systemStatusPopupOpen(duplicatePopup);
-        }
-
-        duplicatePopupBtnClose.addEventListener("click", () => {
-            systemStatusPopupClose(duplicatePopup);
-            window.location.replace(`http://${domainName}/errorClose`);
-        });
-
-        // Loading animation
-        for (let i = 0; i < curtainCard.length; i++) {
-            const element = curtainCard[i];
-            element ? element.addEventListener("click", (e) => {
-                loadingSpinnerContainer.style.display = "flex";
-                loadingSpinnerContainer.style.opacity = "1";
-            }) : null;
-        }
-
-        addCurtainBtnSubmit.addEventListener("click", (e) => {
-            loadingSpinnerContainer.style.display = "flex";
-            loadingSpinnerContainer.style.opacity = "1";
-        });
-
 
         // this piece of code is for the intial state of the button after reloading the page
         if (isOutOfHome) {
@@ -142,7 +116,29 @@ window.onload = () => {
             window.location.replace(`http://${domainName}/vacation`);
         })
 
-        // Eventlistener on form
+        // =========================== Error popup ===========================
+        //Error massage if adding a duplicate name
+        var Error = duplicatePopup.dataset.error;
+        if (Error === 'true') {
+            systemStatusPopupOpen(duplicatePopup);
+        }
+
+        duplicatePopupBtnClose.addEventListener("click", () => {
+            systemStatusPopupClose(duplicatePopup);
+            window.location.replace(`http://${domainName}/errorClose`);
+        });
+
+        
+        // =========================== Loading Animation ===========================
+        for (let i = 0; i < curtainCard.length; i++) {
+            const element = curtainCard[i];
+            element ? element.addEventListener("click", (e) => {
+                loadingSpinnerContainer.style.display = "flex";
+                loadingSpinnerContainer.style.opacity = "1";
+            }) : null;
+        }
+
+        // =========================== Form for adding curtain ===========================
         addCurtainForm.addEventListener('click', function (event) {
             // If a radio button is checked
             if (event.target && event.target.matches("input[type='radio']")) {
@@ -153,6 +149,11 @@ window.onload = () => {
                     addLocationInput.style.display = "none"
                 }
             }
+        });
+
+        addCurtainBtnSubmit.addEventListener("click", (e) => {
+            loadingSpinnerContainer.style.display = "flex";
+            loadingSpinnerContainer.style.opacity = "1";
         });
 
         addCurtainBtn.addEventListener("click", () => {
@@ -167,7 +168,7 @@ window.onload = () => {
         })
     }
 
-    // /curtain
+    // ========================================= DETAIL =========================================
     if (regex.test(path)) {
         console.log("Curtain Detailpage")
 
@@ -257,7 +258,7 @@ window.onload = () => {
             });
         };
 
-        // Open close slider
+        // =========================== Slider ===========================
         openCloseSlider.addEventListener("mouseup", () => {
             handleSliderClick();
         })
@@ -274,6 +275,8 @@ window.onload = () => {
             openCloseSlider.addEventListener(i, handleSliderClick);
         });
 
+
+        // =========================== Timer cards ===========================
         // Gets a number from 0 to 100 based on a 24 hour time scale (00:00 - 23:59)
         const getPercentageFromTime = (time) => {
             let timeArr = time.split(":");
