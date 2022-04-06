@@ -36,11 +36,11 @@
 
         <!-- Curtain Cards -->
         <section class="curtainList">
-        @foreach ($curtains as $curtain)
-            <a href= '/curtain/{{$curtain->name}}/' class="js--curtainCard">
-                @include('./components/curtain-card')
-            </a>
-        @endforeach
+            @foreach ($curtains as $curtain)
+                <a href= '/curtain/{{$curtain->name}}/' class="js--curtainCard">
+                    @include('./components/curtain-card')
+                </a>
+            @endforeach
 
             <section class="curtainList__add" id="js--addCurtainBtn">
                 <span class="material-icons u-noselect">add</span>
@@ -49,6 +49,7 @@
             @include('./components/add-curtain-card')
 
         </section>
+        @include('./components/duplicate-popup')
     </main>
 
 @endsection

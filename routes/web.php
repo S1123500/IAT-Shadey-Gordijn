@@ -18,7 +18,7 @@ Route::get('/', 'App\Http\Controllers\MainController@show');
 
 //Deze routes worden genomen als je op de vakantie knop klikt. Het gaat ALTIJD naar /vacation, en die bepaalt
 //welke route vervolgens genomen wordt.
-Route::get('/vacation', 'App\Http\Controllers\ChoosRedirectionController@chooser');     //dez zorgt voor het aanpassen van de database variabele
+Route::get('/vacation', 'App\Http\Controllers\VariableController@chooser');     //dez zorgt voor het aanpassen van de database variabele
 Route::get('/vacationmaker', 'App\Http\Controllers\VacationController@makevacation');   //deze vult de database met vakantie schedules
 Route::get('/vacationyeeter', 'App\Http\Controllers\VacationController@yeetvacation');  //deze haalt de vakantie schedules uit de database
 
@@ -35,6 +35,7 @@ Route::get('/delete/{name}', 'App\Http\Controllers\DeleteController@deleteCurtai
 
 // Update slider met redirect
 Route::get('/curtain/{name}/update/{value}', 'App\Http\Controllers\CurtainUpdateController@updateSlider'); 
+Route::get('/errorClose', 'App\Http\Controllers\VariableController@errorClose'); 
 
 // Curtain details link voor later
 // Route::get('/curtains/{$curtain}', function () {return view('details');});

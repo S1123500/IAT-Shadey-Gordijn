@@ -18,5 +18,8 @@ class VariableTableSeeder extends Seeder
         DB::table('variable')->insert([
             'name' => 'isOutOfHome', 
             'value' => 'false']);
+        DB::table('variable')->insert([
+            'name' => 'Error', 
+            'value' => 'false']);
     }
 }

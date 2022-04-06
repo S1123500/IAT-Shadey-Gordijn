@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Variable;
 
-class ChoosRedirectionController extends Controller
+class VariableController extends Controller
 {
     public function chooser() {
         $servername = "localhost";
@@ -20,7 +20,7 @@ class ChoosRedirectionController extends Controller
             exit();
         }
         
-        $isOutOfHome = Variable::first();
+        $isOutOfHome = Variable::where('name', 'isOutOfHome')->first();
         $isOutOfHomeValue = $isOutOfHome->value;
         
         $stmt1 = $conn->prepare("INSERT INTO variable (name, value) VALUES(?,?)");
@@ -40,5 +40,33 @@ class ChoosRedirectionController extends Controller
             $stmt1->execute();
             return redirect('/vacationmaker');   
         }
+    }
+
+    public function errorClose(){
+        $servername = "localhost";
+        $username = "ipmedt5_user";
+        $password = "12345";
+        $dbname = "ipmedt5";
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+        if (mysqli_connect_errno()) {
+            echo "Failed to connect to MySQL: " . mysqli_connect_error();
+            exit();
+        }
+
+        $Error = Variable::where('name', 'Error')->first();
+        $ErrorValue = $Error->value;
+        
+        $stmt2 = $conn->prepare("INSERT INTO variable (name, value) VALUES(?,?)");
+        $stmt2->bind_param("ss",$name, $ErrorValue);
+        $name = 'Error';
+
+        //change database variable to false
+        $Error->delete();
+        $ErrorValue = 'false';
+        $stmt2->execute();
+
+        return redirect()->back();
     }
 }

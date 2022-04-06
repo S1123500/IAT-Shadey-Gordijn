@@ -19,6 +19,9 @@ class DetailsController extends Controller
         $location = $curtain->curtainLocation;
         $schedules = $curtain->allSchedules;
 
+        $Error = Variable::where('name', 'Error')->first();
+        $Error = $Error->value;
+
         $daysInAWeek = array('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
         $daysAlreadyExist = array();
         $scheduleDays = Curtain::where('name', $name)->first()->allSchedules;
@@ -41,6 +44,7 @@ class DetailsController extends Controller
             'daysAlreadyExist' => $daysAlreadyExist,
             'scheduleDays' => $scheduleDays,
             'day' => $day,
+            'Error' => $Error,
             // 'timeOpen' => $timeOpen,
             // 'timeClose' => $timeClose
         ]);

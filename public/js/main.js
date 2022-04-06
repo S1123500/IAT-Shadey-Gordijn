@@ -21,17 +21,56 @@ window.onload = () => {
     // All pages
     const loadingSpinnerContainer = document.getElementById("js--loadingSpinner__container");
 
+        // ------ Animation Functions ------
+    // css van 'el' -> top: -2vh; display: none; opacity: 0; background: none; transition: 0.2s all;
+    const closeOverlay = (el) => {
+        el.style.background = "none";
+        setTimeout(() => {
+            el.style.opacity = "0";
+            el.style.top = "-2vh";
+        }, 10)
+        setTimeout(() => {
+            el.style.display = "none"
+        }, 200);
+    }
+
+    const openOverlay = (el) => {
+        el.style.display = "flex"
+        setTimeout(() => {
+            el.style.opacity = "1";
+            el.style.top = "0";
+        }, 1)
+        setTimeout(() => {
+            el.style.background = "rgba(0, 0, 0, 0.7)"
+        }, 75);
+    }
+
+    const systemStatusPopupOpen = (el) => {
+        el.style.display = "flex";
+        setTimeout(() => {
+            el.style.top = "0"
+        }, 150);
+    }
+
+    const systemStatusPopupClose = (el) => {
+        el.style.top = "-5vh";
+        setTimeout(() => {
+            el.style.top = "25vh";
+        }, 175)
+        setTimeout(() => {
+            el.style.display = "none";
+        }, 500)
+    }
+
+    const startLoadingAnimation = (el) => {
+        el.style.display = "flex";
+        el.style.opacity = "1";
+    }
+
     // Depending on pathname, run code..
     if (path === "/") {
         console.log("Homepage")
 
-        // getting the variable from database and making it boolean
-        var isOutOfHome = document.getElementById('js--outOfHomeCard').dataset.isoutofhome;
-        if (isOutOfHome === 'false') {
-            isOutOfHome = false;
-        } else {
-            isOutOfHome = true;
-        }
 
         // // Get js elements from DOM by ID
         const outOfHomeCard = document.getElementById("js--outOfHomeCard");
@@ -45,11 +84,31 @@ window.onload = () => {
         const closeAddCurtainBtn = document.getElementById("js--closeAddCurtain");
         const cancelAddCurtainBtn = document.getElementById("js--cancelAddCurtain");
         const curtainCard = document.getElementsByClassName("js--curtainCard");
+        const duplicatePopup = document.getElementById("js--duplicatePopup");
+        const duplicatePopupBtnClose = document.getElementById("js--duplicatePopupClose");
+
+
+        // getting the variable from database and making it boolean
+        var isOutOfHome = outOfHomeCard.dataset.isoutofhome;
+        if (isOutOfHome === 'false') {
+            isOutOfHome = false;
+        } else {
+            isOutOfHome = true;
+        }
+
+        var Error = duplicatePopup.dataset.error;
+        if (Error === 'true') {
+            systemStatusPopupOpen(duplicatePopup);
+        }
+
+        duplicatePopupBtnClose.addEventListener("click", () => {
+            systemStatusPopupClose(duplicatePopup);
+            window.location.replace(`http://${domainName}/errorClose`);
+        });
 
         // Loading animation
         for (let i = 0; i < curtainCard.length; i++) {
             const element = curtainCard[i];
-            console.log(element);
             element ? element.addEventListener("click", (e) => {
                 loadingSpinnerContainer.style.display = "flex";
                 loadingSpinnerContainer.style.opacity = "1";
@@ -273,51 +332,5 @@ window.onload = () => {
                     break;
             }
         }
-    }
-
-    // ------ Animation Functions ------
-    // css van 'el' -> top: -2vh; display: none; opacity: 0; background: none; transition: 0.2s all;
-    const closeOverlay = (el) => {
-        el.style.background = "none";
-        setTimeout(() => {
-            el.style.opacity = "0";
-            el.style.top = "-2vh";
-        }, 10)
-        setTimeout(() => {
-            el.style.display = "none"
-        }, 200);
-    }
-
-    const openOverlay = (el) => {
-        el.style.display = "flex"
-        setTimeout(() => {
-            el.style.opacity = "1";
-            el.style.top = "0";
-        }, 1)
-        setTimeout(() => {
-            el.style.background = "rgba(0, 0, 0, 0.7)"
-        }, 75);
-    }
-
-    const systemStatusPopupOpen = (el) => {
-        el.style.display = "flex";
-        setTimeout(() => {
-            el.style.top = "0"
-        }, 150);
-    }
-
-    const systemStatusPopupClose = (el) => {
-        el.style.top = "-5vh";
-        setTimeout(() => {
-            el.style.top = "25vh";
-        }, 175)
-        setTimeout(() => {
-            el.style.display = "none";
-        }, 500)
-    }
-
-    const startLoadingAnimation = (el) => {
-        el.style.display = "flex";
-        el.style.opacity = "1";
     }
 };
