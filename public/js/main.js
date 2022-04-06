@@ -13,8 +13,8 @@ window.onload = () => {
 
     // only if url is not 404
     setInterval(() => {
-        // let reloadTime = new Date().getHours() + ":" + new Date().getMinutes();
-        // window.location.replace(`http://${domainName}/autoReload/${reloadTime}`);
+        let reloadTime = new Date().getHours() + ":" + new Date().getMinutes();
+        window.location.replace(`http://${domainName}/autoReload/${reloadTime}`);
     }, refreshDelay);
    
 
@@ -36,8 +36,11 @@ window.onload = () => {
         const addCurtainBtnSubmit = document.getElementById("js--addCurtainBtnSubmit");
         const closeAddCurtainBtn = document.getElementById("js--closeAddCurtain");
         const cancelAddCurtainBtn = document.getElementById("js--cancelAddCurtain");
+<<<<<<< Updated upstream
         const curtainCard = document.getElementById("js--curtainCard");
+=======
         const curtainNameInput = document.getElementById("name");
+>>>>>>> Stashed changes
 
         // Loading animation
         curtainCard.addEventListener("click", (e) => {

@@ -19,7 +19,7 @@
             <!-- class="textError" -->
             <label for="name" class="addCurtainCard__nameLabel" >Curtain Name</label>
             <!-- class="inputError" -->
-            <input type="text" id="name" name="name" placeholder="Give your curtain a name" required>
+            <input type="text" id="name" name="name" placeholder="Give your curtain a name" required pattern="[^()/><\][\\\x22,;|]+">
             
             <label for="location">Curtain Location</label>
 

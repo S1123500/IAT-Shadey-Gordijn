@@ -435,18 +435,13 @@ body {
     white-space: nowrap;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    position: relative;
 }
 .addCurtainCard__form-location::-webkit-scrollbar{
     display: none;
 }
 
 .addCurtainCard__form-locations input[type="radio"] {
-    /* display: none; */
-    opacity: 0;
-    width: 1px;
-    height: 1px;
-    position: absolute;
+    display: none;
 }
 
 .addCurtainCard__form-location label {
