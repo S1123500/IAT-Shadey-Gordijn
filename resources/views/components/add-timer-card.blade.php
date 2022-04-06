@@ -10,7 +10,7 @@
             <h2 class="addNewTimer__title"> ADD A TIMER </h2>
             
             <form action="addTimer" id="js--addTimerForm" method="post" class="addNewTimer__form">
-                <p>Day of the week</p>
+                <p id="js--addTimer__dotwLabel">Day of the week</p>
                 <section class="addNewTimer__dotw u-noselect">
                         <input type="radio" id="monday" name="radios" value="monday">
                         <label for="monday" >M</label>
@@ -36,16 +36,16 @@
 
                 <section class="addNewTimer__openAndCloseTimes">
                     <section class="addNewTimer__openTime">
-                        <label for="open-time"> Open time </label>
+                        <label for="open-time" id="js--addTimer__openTimeLabel"> Open time </label>
                         <input type="time" step="300" id="open-time" name="open-time">
                     </section>
                     <section class="addNewTimer__closeTime">
-                        <label for="close-time"> Close time </label>
+                        <label for="close-time" id="js--addTimer__closeTimeLabel"> Close time </label>
                         <input type="time" step="300" name="close-time" id="close-time">
                     </section>
                 </section>
 
-                <p class="addNewTimer__errorMessage textError" id="js--addNewTimer__errorMessage">Hoi error</p>
+                <p class="addNewTimer__errorMessage textError" id="js--addNewTimer__errorMessage"></p>
 
                 <input class="addNewTimer__addCurtainBtn" id="js--addNewTimerSubmitBtn" type="submit" value="ADD TIMER">
             </form>

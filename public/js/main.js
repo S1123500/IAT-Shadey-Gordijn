@@ -20,16 +20,16 @@ window.onload = () => {
     let errorSentence = [];
     const errorMessages = {
         curtain: {
-            name: "enter a name",
-            location: "select or create a location",
-            newLocation: "enter a new location",
-            pairCode: "enter a pair code"
+            name: ["enter a name", document.getElementById("js--addCurtainCard__nameLabel"), document.querySelector("input[name='name']")],
+            location: ["select or create a location", document.getElementById("js--addCurtainCard__locationLabel"), null],
+            newLocation: ["enter a new location", document.getElementById("js--addCurtainCard__locationLabel"), null],
+            pairCode: ["enter a pair code", document.getElementById("js--addCurtainCard__pairCodeLabel"), document.querySelector("input[name='pairCode']")],
         },
         timer: {
-            dotw: "select a day of the week",
-            openTime: "enter an open time",
-            closeTime: "enter a close time",
-            closeBeforeOpen: "enter a close time that's after open time"
+            dotw: ["select a day of the week", document.getElementById("js--addTimer__dotwLabel"), null],
+            openTime: ["enter an open time", document.getElementById("js--addTimer__openTimeLabel"), document.querySelector("input[name='open-time']")],
+            closeTime: ["enter a close time", document.getElementById("js--addTimer__closeTimeLabel"), document.querySelector("input[name='close-time']")],
+            closeBeforeOpen: ["enter a close time that's after open time", null],
         }
     }
 
@@ -71,12 +71,22 @@ window.onload = () => {
         addCurtainBtnSubmit.addEventListener("click", (e) => {
             e.preventDefault();
 
+            clearErrorStyling(errorMessages.curtain.name[1]);
+            clearErrorStyling(errorMessages.curtain.location[1]);
+            clearErrorStyling(errorMessages.curtain.pairCode[1]);
+            clearErrorStyling(errorMessages.curtain.name[2]);
+            clearErrorStyling(errorMessages.curtain.location[2]);
+            clearErrorStyling(errorMessages.curtain.pairCode[2]);
+
             // Check if form inputname is not null
             if (curtainNameInput.value !== "") {
                 nameInputValid = true;
             } else {
                 nameInputValid = false;
-                errorSentence.push(errorMessages.curtain.name);
+                errorSentence.push(errorMessages.curtain.name[0]);
+                console.log(errorMessages.curtain.name[1]);
+                errorMessages.curtain.name[1].classList.add("textError");
+                errorMessages.curtain.name[2].classList.add("inputError");
             }
 
             // Check if form input paircode is not null
@@ -84,11 +94,16 @@ window.onload = () => {
                 pairCodeInputValid = true;
             } else {
                 pairCodeInputValid = false;
-                errorSentence.push(errorMessages.curtain.pairCode);
+                errorSentence.push(errorMessages.curtain.pairCode[0]);
+                errorMessages.curtain.pairCode[1].classList.add("textError");
+                errorMessages.curtain.pairCode[2].classList.add("inputError");
             }
 
+            
             if (!locationInputValid) {
-                errorSentence.push(errorMessages.curtain.location)
+                console.log(locationInputValid);
+                errorSentence.push(errorMessages.curtain.location[0])
+                errorMessages.curtain.location[1].classList.add("textError");
             }
             
             // if nameinputvalid & paircodeinputvalid & locationinputvalid is true, set addCurtainFormValid to true
@@ -101,13 +116,6 @@ window.onload = () => {
             createErrorSentence(errorSentence, addCurtainErrorMessage);
             errorSentence = [];
 
-
-            // log all validity values
-            console.log("Name valid: " + nameInputValid);
-            console.log("Location valid: " + locationInputValid);
-            console.log("Paircode valid: " + pairCodeInputValid);
-            console.log("Form valid: " + addCurtainFormValid);
-
             if (addCurtainFormValid) {
                 loadingSpinnerContainer.style.display = "flex";
                 loadingSpinnerContainer.style.opacity = "1";
@@ -116,7 +124,6 @@ window.onload = () => {
             }            
         });
 
-            
         // Set outOfHome state to false
         let isOutOfHome = false;
         
@@ -125,7 +132,7 @@ window.onload = () => {
             // set false to true, or true to false
             isOutOfHome = !isOutOfHome
             
-        // Change icon by changing the innerHTML, depending on Out of Home state, and add or remove active class
+            // Change icon by changing the innerHTML, depending on Out of Home state, and add or remove active class
             if (isOutOfHome) {
                 outOfHomeCard_toggleIcon.innerHTML = "toggle_on"
                 outOfHomeCard_toggleIcon.classList.add("active")
@@ -176,7 +183,6 @@ window.onload = () => {
                 if (rgx.test(e.target.value)) {
                     for(let i = 0; i < e.target.value.length; i++) {
                         rgx ? el.value = el.value.replace(rgx, '') : null;
-                        console.log("Wrong input");
                     }
                 }
             });
@@ -251,7 +257,6 @@ window.onload = () => {
         const addTimerForm = document.getElementById("js--addTimerForm");
         // Add timer Error message
         const addTimerErrorMessage = document.getElementById("js--addNewTimer__errorMessage");
-
 
         // ------ Arrays ------
         // 1: Button el that needs evtlistener, 2: Overlay el that needs animation, 3: Give it either open or close animation
@@ -375,6 +380,13 @@ window.onload = () => {
         // check add timer form and prevevnt default
         addTimerSubmitBtn.addEventListener("click", (e) => {
             e.preventDefault();
+            
+            clearErrorStyling(errorMessages.timer.dotw[1]);
+            clearErrorStyling(errorMessages.timer.openTime[1]);
+            clearErrorStyling(errorMessages.timer.closeTime[1]);
+            clearErrorStyling(errorMessages.timer.dotw[2]);
+            clearErrorStyling(errorMessages.timer.openTime[2]);
+            clearErrorStyling(errorMessages.timer.closeTime[2]);
 
             // get radios checked
             let radioChecked = document.querySelector("input[name='radios']:checked");
@@ -382,7 +394,8 @@ window.onload = () => {
                 dayInputValid = true
             } else {
                 dayInputValid = false
-                errorSentence.push(errorMessages.timer.dotw);
+                errorSentence.push(errorMessages.timer.dotw[0]);
+                errorMessages.timer.dotw[1].classList.add("textError");
             }
 
             // check open time validity
@@ -391,7 +404,9 @@ window.onload = () => {
                 openTimeValid = true;
             } else {
                 openTimeValid = false;
-                errorSentence.push(errorMessages.timer.openTime);
+                errorSentence.push(errorMessages.timer.openTime[0]);
+                errorMessages.timer.openTime[1].classList.add("textError");
+                errorMessages.timer.openTime[2].classList.add("inputError");
             }
             // check close time validity
             let closeTimeInput = document.querySelector("#close-time");
@@ -399,7 +414,9 @@ window.onload = () => {
                 closeTimeValid = true;
             } else {
                 closeTimeValid = false;
-                errorSentence.push(errorMessages.timer.closeTime);
+                errorSentence.push(errorMessages.timer.closeTime[0]);
+                errorMessages.timer.closeTime[1].classList.add("textError");
+                errorMessages.timer.closeTime[2].classList.add("inputError");
             }
             // check open time is before close time
             let openTime = openTimeInput.value;
@@ -420,7 +437,7 @@ window.onload = () => {
                 isOpenTimeBeforeCloseTime = false;
             }
 
-            !isOpenTimeBeforeCloseTime && openTime && closeTime ? errorSentence.push(errorMessages.timer.closeBeforeOpen) : null;
+            !isOpenTimeBeforeCloseTime && openTime && closeTime ? errorSentence.push(errorMessages.timer.closeBeforeOpen[0]) : null;
 
             // if all is ok, form valid
             if (dayInputValid && openTimeValid && closeTimeValid && isOpenTimeBeforeCloseTime) {
@@ -435,34 +452,8 @@ window.onload = () => {
                 closeOverlay(newTimerOverlay);
                 addTimerForm.submit();
             }
-                
-            console.log("Day input valid: " + dayInputValid);
-            console.log("Open time valid: " + openTimeValid);
-            console.log("Close time valid: " + closeTimeValid);
-            console.log("Is open time before close time: " + isOpenTimeBeforeCloseTime);
-            console.log("Add timer form valid: " + addTimerFormValid);
-
-            // if (errorSentence.length > 0) {
-            //     console.log(errorSentence);
-            //     errorSentence.unshift("Please");
-
-            //     if (errorSentence.length === 2) {
-            //         errorSentence = errorSentence[0] + " " + errorSentence[1];
-            //     }
-            //     if (errorSentence.length === 3) {
-            //         errorSentence = errorSentence[0] + " " + errorSentence[1] + " and " + errorSentence[2];
-            //     }
-            //     if (errorSentence.length === 4) {
-            //         errorSentence = errorSentence[0] + " " + errorSentence[1] + ", " + errorSentence[2] + " and " + errorSentence[3];
-            //     }
-
-            //     addTimerErrorMessage.style.display = "block";
-            //     addTimerErrorMessage.innerHTML = errorSentence;
-            // }   
             
             createErrorSentence(errorSentence, addTimerErrorMessage);
-            
-            console.log(errorSentence);
             // clear errorSentence
             errorSentence = [];
         });
@@ -516,21 +507,26 @@ window.onload = () => {
 
     const createErrorSentence = (errorSentence, errorElement) => {
         if (errorSentence.length > 0) {
-                console.log(errorSentence);
-                errorSentence.unshift("Please");
+            errorSentence.unshift("Please");
+            if (errorSentence.length === 2) {
+                errorSentence = errorSentence[0] + " " + errorSentence[1] + ".";
+            }
+            if (errorSentence.length === 3) {
+                errorSentence = errorSentence[0] + " " + errorSentence[1] + " and " + errorSentence[2] + ".";
+            }
+            if (errorSentence.length === 4) {
+                errorSentence = errorSentence[0] + " " + errorSentence[1] + ", " + errorSentence[2] + " and " + errorSentence[3] + ".";
+            }
+            errorElement.style.display = "block";
+            errorElement.innerHTML = errorSentence;
+        }         
+    }
 
-                if (errorSentence.length === 2) {
-                    errorSentence = errorSentence[0] + " " + errorSentence[1];
-                }
-                if (errorSentence.length === 3) {
-                    errorSentence = errorSentence[0] + " " + errorSentence[1] + " and " + errorSentence[2];
-                }
-                if (errorSentence.length === 4) {
-                    errorSentence = errorSentence[0] + " " + errorSentence[1] + ", " + errorSentence[2] + " and " + errorSentence[3];
-                }
-
-                errorElement.style.display = "block";
-                errorElement.innerHTML = errorSentence;
-            }         
+    const clearErrorStyling = (el) => {
+        if (el) {
+            console.log("clearing " + el.innerHTML);
+            el.classList.remove("inputError");            
+            el.classList.remove("textError");
+        }
     }
 };
