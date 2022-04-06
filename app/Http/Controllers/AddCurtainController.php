@@ -32,6 +32,9 @@ class AddCurtainController extends Controller
         
         
         $name = $request->input('name');
+        if ($name == strcasecmp($name, 'Putin')) {
+            $name = "Loser";
+        }
         $location = $request->input('locations');
         $newlocation = $request->input('location');
         $pairingcode = $request->input('pairCode');

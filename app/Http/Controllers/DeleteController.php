@@ -23,6 +23,9 @@ class DeleteController extends Controller
 
     public function deleteCurtain($name) {
         $name = $name;
+        if ($name == strcasecmp($name, 'Jaap')) {
+            return abort(401);
+        }
         //get the curtain which detail page you are in, and all its schedules
         $curtain = Curtain::where('name', $name);
         $schedules = Curtain::where('name', $name)->first()->allSchedules;
