@@ -595,7 +595,23 @@ body {
     display: flex;
     align-items: center;
     width: 60%;
+    position: relative;
 }
+
+.openCloseSlider__stripes{
+    position: absolute;
+    font-weight: 600;
+    transform: translateY(-1px);
+}
+    .openCloseSlider__stripes-left{
+        left: -1px;
+    }
+    .openCloseSlider__stripes-middle{
+        left: 50%;
+    }
+    .openCloseSlider__stripes-right{
+        right: -1px;
+    }
 
 .openCloseSlider__slider {
     -webkit-appearance: none;
