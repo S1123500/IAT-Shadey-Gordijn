@@ -8,8 +8,22 @@ window.onload = () => {
     // Regex to check if path is /curtain/{curtain name}
     const regex = new RegExp("\/curtain\/[A-Za-z0-9]+")
 
-    // get time each 5 minutes and refresh the page
-    const refreshDelay = 300000;
+    // Make error sentence
+    let errorSentence = [];
+    const errorMessages = {
+        curtain: {
+            name: ["enter a name", document.getElementById("js--addCurtainCard__nameLabel"), document.querySelector("input[name='name']")],
+            location: ["select or create a location", document.getElementById("js--addCurtainCard__locationLabel"), null],
+            newLocation: ["enter a new location", document.getElementById("js--addCurtainCard__locationLabel"), null],
+            pairCode: ["enter a pair code", document.getElementById("js--addCurtainCard__pairCodeLabel"), document.querySelector("input[name='pairCode']")],
+        },
+        timer: {
+            dotw: ["select a day of the week", document.getElementById("js--addTimer__dotwLabel"), null],
+            openTime: ["enter an open time", document.getElementById("js--addTimer__openTimeLabel"), document.querySelector("input[name='open-time']")],
+            closeTime: ["enter a close time", document.getElementById("js--addTimer__closeTimeLabel"), document.querySelector("input[name='close-time']")],
+            closeBeforeOpen: ["enter a close time that's after open time", null],
+        }
+    }
 
     // All pages
     const loadingSpinnerContainer = document.getElementById("js--loadingSpinner__container");
@@ -78,6 +92,73 @@ window.onload = () => {
         const curtainCard = document.getElementsByClassName("js--curtainCard");
         const duplicatePopup = document.getElementById("js--duplicatePopup");
         const duplicatePopupBtnClose = document.getElementById("js--duplicatePopupClose");
+
+        // Error senteces
+        let nameInputValid = false;
+        let pairCodeInputValid = false;
+        let locationInputValid = false;
+        let addCurtainFormValid = false;
+
+        // Loading animation
+        curtainCard.addEventListener("click", () => {
+            loadingSpinnerContainer.style.display = "flex";
+            loadingSpinnerContainer.style.opacity = "1";
+        });
+        // Check add curtain form submit
+        addCurtainBtnSubmit.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            clearErrorStyling(errorMessages.curtain.name[1]);
+            clearErrorStyling(errorMessages.curtain.location[1]);
+            clearErrorStyling(errorMessages.curtain.pairCode[1]);
+            clearErrorStyling(errorMessages.curtain.name[2]);
+            clearErrorStyling(errorMessages.curtain.location[2]);
+            clearErrorStyling(errorMessages.curtain.pairCode[2]);
+
+            // Check if form inputname is not null
+            if (curtainNameInput.value !== "") {
+                nameInputValid = true;
+            } else {
+                nameInputValid = false;
+                errorSentence.push(errorMessages.curtain.name[0]);
+                errorMessages.curtain.name[1].classList.add("textError");
+                errorMessages.curtain.name[2].classList.add("inputError");
+            }
+
+            // Check if form input paircode is not null
+            if (pairCodeInput.value !== "") {
+                pairCodeInputValid = true;
+            } else {
+                pairCodeInputValid = false;
+                errorSentence.push(errorMessages.curtain.pairCode[0]);
+                errorMessages.curtain.pairCode[1].classList.add("textError");
+                errorMessages.curtain.pairCode[2].classList.add("inputError");
+            }
+            
+            if (!locationInputValid) {
+                errorSentence.push(errorMessages.curtain.location[0])
+                errorMessages.curtain.location[1].classList.add("textError");
+            }
+            
+            // if nameinputvalid & paircodeinputvalid & locationinputvalid is true, set addCurtainFormValid to true
+            if (nameInputValid && pairCodeInputValid && locationInputValid) {
+                addCurtainFormValid = true;
+            } else {
+                addCurtainFormValid = false;
+            }
+
+            createErrorSentence(errorSentence, addCurtainErrorMessage);
+            errorSentence = [];
+
+            if (addCurtainFormValid) {
+                loadingSpinnerContainer.style.display = "flex";
+                loadingSpinnerContainer.style.opacity = "1";
+                closeOverlay(addCurtainOverlay);
+                addCurtainForm.submit();                
+            }            
+        });
+
+
 
         // =========================== Vacation ===========================
         // getting the variable from database and making it boolean
@@ -151,11 +232,6 @@ window.onload = () => {
             }
         });
 
-        addCurtainBtnSubmit.addEventListener("click", (e) => {
-            loadingSpinnerContainer.style.display = "flex";
-            loadingSpinnerContainer.style.opacity = "1";
-        });
-
         addCurtainBtn.addEventListener("click", () => {
             openOverlay(addCurtainOverlay);
         })
@@ -166,7 +242,53 @@ window.onload = () => {
         cancelAddCurtainBtn.addEventListener("click", () => {
             closeOverlay(addCurtainOverlay);
         })
+
+        // Check if 
+        // const pairCodeRegex = /[^[a-zA-Z]{0,4}[0-9]{0,4}$]/;
+        const specialChar = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+
+        const handleInput = (el, evt, rgx) => {
+            el.addEventListener(evt, (e) => {
+                // if paircoderegex set input to upper case
+                el === pairCodeInput ? el.value = el.value.toUpperCase() : null;
+                if (rgx.test(e.target.value)) {
+                    for(let i = 0; i < e.target.value.length; i++) {
+                        rgx ? el.value = el.value.replace(rgx, '') : null;
+                    }
+                }
+            });
+        }
+
+        ["paste", "keyup"].forEach((i) => {
+            handleInput(pairCodeInput, i, specialChar);
+            handleInput(curtainNameInput, i, specialChar);
+            handleInput(addLocationInput, i, specialChar);
+        });
+
+        locationRadioButtons.forEach((i) => {
+            i.addEventListener("click", (e) => {
+                if (e.target.checked) {
+                    locationInputValid = true;
+                    if (e.target.value === "addLocation") {
+                        locationInputValid = false;
+                        if (addLocationInput.value !== "") {
+                            locationInputValid = true;
+                        }
+                    }
+                }                
+            })
+        })
+
+        addLocationInput.addEventListener("keyup", (e) => {
+            if (e.target.value !== "") {
+                locationInputValid = true;
+            } else {
+                locationInputValid = false;
+            }
+        })
     }
+
+
 
     // ========================================= DETAIL =========================================
     if (regex.test(path)) {
@@ -178,8 +300,8 @@ window.onload = () => {
         // Add timer to curtain
         const newTimerOverlay = document.getElementById("js--newTimerOverlay");
         const addTimerBtn = document.getElementById("js--addTimerBtn");
-        const addTimerBtnSubmit = document.getElementById("js--addTimerBtnSubmit");
         const closeTimerIcon = document.getElementById("js--closeAddNewTimerIcon");
+        const addTimerSubmitBtn = document.getElementById("js--addNewTimerSubmitBtn");
         const closeTimerBtn = document.getElementById("js--closeAddNewTimerBtn");
         // Are you sure timer
         const areYouSureTimerOverlay = document.getElementById("js--areYouSureTimerOverlay")
@@ -204,6 +326,10 @@ window.onload = () => {
         // Timer card
         const timerCardDay = document.getElementsByClassName("timerCard__title");
         const timersTimeline = document.getElementsByClassName("timerCard__openToClose");
+        // Addtimer form
+        const addTimerForm = document.getElementById("js--addTimerForm");
+        // Add timer Error message
+        const addTimerErrorMessage = document.getElementById("js--addNewTimer__errorMessage");
 
         // ------ Arrays ------
         // 1: Button el that needs evtlistener, 2: Overlay el that needs animation, 3: Give it either open or close animation
@@ -240,9 +366,6 @@ window.onload = () => {
             startLoadingAnimation(loadingSpinnerContainer);
 
         });
-        addTimerBtnSubmit.addEventListener("click", () => {
-            startLoadingAnimation(loadingSpinnerContainer);
-        });
         areYouSureDeleteTimerBtn ? areYouSureDeleteTimerBtn.addEventListener("click", () => {
             closeOverlay(areYouSureTimerOverlay);
             startLoadingAnimation(loadingSpinnerContainer);
@@ -259,12 +382,12 @@ window.onload = () => {
         };
 
         // =========================== Slider ===========================
-        openCloseSlider.addEventListener("mouseup", () => {
-            handleSliderClick();
-        })
-        openCloseSlider.addEventListener("touchend", () => {
-            handleSliderClick();
-        })
+        // openCloseSlider.addEventListener("mouseup", () => {
+        //     handleSliderClick();
+        // })
+        // openCloseSlider.addEventListener("touchend", () => {
+        //     handleSliderClick();
+        // })
 
         const handleSliderClick = () => {
             startLoadingAnimation(loadingSpinnerContainer);
@@ -327,6 +450,118 @@ window.onload = () => {
                     timerCardDay[i].innerHTML = "Sunday";
                     break;
             }
+        }
+        
+        // =========================== Errors/Validation ===========================
+        let dayInputValid = false;
+        let openTimeValid = false;
+        let closeTimeValid = false;
+        let isOpenTimeBeforeCloseTime = false;
+        let addTimerFormValid = false;
+
+        // check add timer form and prevevnt default
+        addTimerSubmitBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            
+            clearErrorStyling(errorMessages.timer.dotw[1]);
+            clearErrorStyling(errorMessages.timer.openTime[1]);
+            clearErrorStyling(errorMessages.timer.closeTime[1]);
+            clearErrorStyling(errorMessages.timer.dotw[2]);
+            clearErrorStyling(errorMessages.timer.openTime[2]);
+            clearErrorStyling(errorMessages.timer.closeTime[2]);
+
+            // get radios checked
+            let radioChecked = document.querySelector("input[name='radios']:checked");
+            if (radioChecked) {
+                dayInputValid = true
+            } else {
+                dayInputValid = false
+                errorSentence.push(errorMessages.timer.dotw[0]);
+                errorMessages.timer.dotw[1].classList.add("textError");
+            }
+
+            // check open time validity
+            let openTimeInput = document.querySelector("#open-time");
+            if (openTimeInput.value !== "") {
+                openTimeValid = true;
+            } else {
+                openTimeValid = false;
+                errorSentence.push(errorMessages.timer.openTime[0]);
+                errorMessages.timer.openTime[1].classList.add("textError");
+                errorMessages.timer.openTime[2].classList.add("inputError");
+            }
+            // check close time validity
+            let closeTimeInput = document.querySelector("#close-time");
+            if (closeTimeInput.value !== "") {
+                closeTimeValid = true;
+            } else {
+                closeTimeValid = false;
+                errorSentence.push(errorMessages.timer.closeTime[0]);
+                errorMessages.timer.closeTime[1].classList.add("textError");
+                errorMessages.timer.closeTime[2].classList.add("inputError");
+            }
+            // check open time is before close time
+            let openTime = openTimeInput.value;
+            let closeTime = closeTimeInput.value;
+            if (openTime !== "" && closeTime !== "") {
+                let openTimeArr = openTime.split(":");
+                let closeTimeArr = closeTime.split(":");
+                let openTimeHours = parseInt(openTimeArr[0]);
+                let openTimeMinutes = parseInt(openTimeArr[1]);
+                let closeTimeHours = parseInt(closeTimeArr[0]);
+                let closeTimeMinutes = parseInt(closeTimeArr[1]);
+                if (openTimeHours < closeTimeHours || (openTimeHours === closeTimeHours && openTimeMinutes < closeTimeMinutes)) {
+                    isOpenTimeBeforeCloseTime = true;
+                } else {
+                    isOpenTimeBeforeCloseTime = false;
+                }
+            } else {
+                isOpenTimeBeforeCloseTime = false;
+            }
+
+            !isOpenTimeBeforeCloseTime && openTime && closeTime ? errorSentence.push(errorMessages.timer.closeBeforeOpen[0]) : null;
+
+            // if all is ok, form valid
+            if (dayInputValid && openTimeValid && closeTimeValid && isOpenTimeBeforeCloseTime) {
+                addTimerFormValid = true;
+            } else {
+                addTimerFormValid = false;
+            }
+
+            if (addTimerFormValid) {
+                loadingSpinnerContainer.style.display = "flex";
+                loadingSpinnerContainer.style.opacity = "1";
+                closeOverlay(newTimerOverlay);
+                addTimerForm.submit();
+            }
+            
+            createErrorSentence(errorSentence, addTimerErrorMessage);
+            // clear errorSentence
+            errorSentence = [];
+        });
+    }
+
+    const createErrorSentence = (errorSentence, errorElement) => {
+        if (errorSentence.length > 0) {
+            errorSentence.unshift("Please");
+            if (errorSentence.length === 2) {
+                errorSentence = errorSentence[0] + " " + errorSentence[1] + ".";
+            }
+            if (errorSentence.length === 3) {
+                errorSentence = errorSentence[0] + " " + errorSentence[1] + " and " + errorSentence[2] + ".";
+            }
+            if (errorSentence.length === 4) {
+                errorSentence = errorSentence[0] + " " + errorSentence[1] + ", " + errorSentence[2] + " and " + errorSentence[3] + ".";
+            }
+            errorElement.style.display = "block";
+            errorElement.innerHTML = errorSentence;
+        }         
+    }
+
+    const clearErrorStyling = (el) => {
+        if (el) {
+            el.classList.remove("inputError");            
+            el.classList.remove("textError");
         }
     }
 };

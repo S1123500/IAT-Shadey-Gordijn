@@ -18,11 +18,11 @@
         <form action="addCurtain" method="post" class="addCurtainCard__form" id="js--addCurtainForm">
         @csrf
             <!-- class="textError" -->
-            <label for="name" class="addCurtainCard__nameLabel" >Curtain Name</label>
+            <label for="name" class="addCurtainCard__nameLabel" id="js--addCurtainCard__nameLabel">Curtain Name</label>
             <!-- class="inputError" -->
             <input type="text" id="name" name="name" placeholder="Give your curtain a name" required pattern="[^()/><\][\\\x22,;|]+">
             
-            <label for="location">Curtain Location</label>
+            <label for="location" id="js--addCurtainCard__locationLabel">Curtain Location</label>
 
             <section class="addCurtainCard__form-locations">
 
@@ -43,7 +43,7 @@
             <input type="text" id="js--newLocation" class="newLocationInput" name="location" placeholder="Add new location">
 
             <section class="addCurtainCard__pairCode">
-                <label for="pairCode">
+                <label for="pairCode" id="js--addCurtainCard__pairCodeLabel">
                     Unique Pair Code 
                     
                 </label>
@@ -55,6 +55,8 @@
                     </p>
                 <input type="text" id="pairCode" name="pairCode" placeholder="SHDY0000" required>
             </section>
+
+            <p class="errorText addCurtain__errorMessage" id="js--addCurtainErrorMessage">error test</p>
 
             <input type="submit" class="addCurtainCard__form-addBtn" id="js--addCurtainBtnSubmit" value="Add Curtain">
         </form> 

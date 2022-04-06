@@ -464,10 +464,11 @@ body {
 
 .addCurtainCard__form label {
     font-family: var(--ff-primary);
-    font-size: 14px;
+    font-size: 100%;
 
     color: var(--clr-white);
     border-radius: 5px;
+    font-weight: 400;
 }
 
 .addCurtainCard__form input[type="text"],
@@ -730,7 +731,23 @@ body {
     align-items: center;
 
     width: 60%;
+    position: relative;
 }
+
+.openCloseSlider__stripes{
+    position: absolute;
+    font-weight: 600;
+    transform: translateY(-1px);
+}
+    .openCloseSlider__stripes-left{
+        left: -1px;
+    }
+    .openCloseSlider__stripes-middle{
+        left: 50%;
+    }
+    .openCloseSlider__stripes-right{
+        right: -1px;
+    }
 
 .openCloseSlider__slider {
     width: 100%;
@@ -1110,11 +1127,11 @@ body {
     background-color: var(--clr-yellow);
 }
 .addNewTimer__dotw input[type="radio"]:disabled+label {
-    opacity: 0.5;
+    opacity: 0.8;
+    color: var(--clr-grey);
 }
 .addNewTimer__dotw input[type="radio"]:hover:disabled+label {
     background: var(--clr-white);
-    opacity: 0.5;
     cursor:not-allowed;
 }
 
@@ -1768,4 +1785,6 @@ body {
 
 .textError {
     color: var(--clr-orange) !important;
+    font-weight: 400 !important;
+    font-size: 100%;
 }
