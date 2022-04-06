@@ -9,10 +9,10 @@
         <section class="addNewTimer">
             <h2 class="addNewTimer__title"> ADD A TIMER </h2>
             
-            <form action="addTimer" method="post" class="addNewTimer__form">
+            <form action="addTimer" id="js--addTimerForm" method="post" class="addNewTimer__form">
                 <p>Day of the week</p>
                 <section class="addNewTimer__dotw u-noselect">
-                        <input type="radio" id="monday" name="radios" value="monday" checked>
+                        <input type="radio" id="monday" name="radios" value="monday">
                         <label for="monday" >M</label>
 
                         <input type="radio" id="tuesday" name="radios" value="tuesday">
@@ -45,7 +45,9 @@
                     </section>
                 </section>
 
-                <input class="addNewTimer__addCurtainBtn" type="submit" value="ADD CURTAIN">
+                <p class="addNewTimer__errorMessage textError" id="js--addNewTimer__errorMessage">Hoi error</p>
+
+                <input class="addNewTimer__addCurtainBtn" id="js--addNewTimerSubmitBtn" type="submit" value="ADD TIMER">
             </form>
             
             <button class="addNewTimer__cancelBtn" id="js--closeAddNewTimerBtn"> CANCEL </button>

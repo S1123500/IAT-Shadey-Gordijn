@@ -65,6 +65,8 @@
                 <input type="text" id="pairCode" name="pairCode" placeholder="SHDY0000" required>
             </section>
 
+            <p class="errorText addCurtain__errorMessage" id="js--addCurtainErrorMessage">error test</p>
+
             <input type="submit" class="addCurtainCard__form-addBtn" id="js--addCurtainBtnSubmit" value="Add Curtain">
         </form> 
 

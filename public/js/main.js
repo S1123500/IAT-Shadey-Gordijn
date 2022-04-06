@@ -17,6 +17,21 @@ window.onload = () => {
         window.location.replace(`http://${domainName}/autoReload/${reloadTime}`);
     }, refreshDelay);
    
+    let errorSentence = [];
+    const errorMessages = {
+        curtain: {
+            name: "enter a name",
+            location: "select or create a location",
+            newLocation: "enter a new location",
+            pairCode: "enter a pair code"
+        },
+        timer: {
+            dotw: "select a day of the week",
+            openTime: "enter an open time",
+            closeTime: "enter a close time",
+            closeBeforeOpen: "enter a close time that's after open time"
+        }
+    }
 
     // All pages
     const loadingSpinnerContainer = document.getElementById("js--loadingSpinner__container");
@@ -36,20 +51,69 @@ window.onload = () => {
         const addCurtainBtnSubmit = document.getElementById("js--addCurtainBtnSubmit");
         const closeAddCurtainBtn = document.getElementById("js--closeAddCurtain");
         const cancelAddCurtainBtn = document.getElementById("js--cancelAddCurtain");
-<<<<<<< Updated upstream
         const curtainCard = document.getElementById("js--curtainCard");
-=======
         const curtainNameInput = document.getElementById("name");
->>>>>>> Stashed changes
+        const pairCodeInput = document.getElementById("pairCode");
+        const locationRadioButtons = document.querySelectorAll("input[name='locations']");
+        const addCurtainErrorMessage = document.getElementById("js--addCurtainErrorMessage");
+
+        let nameInputValid = false;
+        let pairCodeInputValid = false;
+        let locationInputValid = false;
+        let addCurtainFormValid = false;
 
         // Loading animation
-        curtainCard.addEventListener("click", (e) => {
+        curtainCard.addEventListener("click", () => {
             loadingSpinnerContainer.style.display = "flex";
             loadingSpinnerContainer.style.opacity = "1";
         });
+        // Check add curtain form submit
         addCurtainBtnSubmit.addEventListener("click", (e) => {
-            loadingSpinnerContainer.style.display = "flex";
-            loadingSpinnerContainer.style.opacity = "1";
+            e.preventDefault();
+
+            // Check if form inputname is not null
+            if (curtainNameInput.value !== "") {
+                nameInputValid = true;
+            } else {
+                nameInputValid = false;
+                errorSentence.push(errorMessages.curtain.name);
+            }
+
+            // Check if form input paircode is not null
+            if (pairCodeInput.value !== "") {
+                pairCodeInputValid = true;
+            } else {
+                pairCodeInputValid = false;
+                errorSentence.push(errorMessages.curtain.pairCode);
+            }
+
+            if (!locationInputValid) {
+                errorSentence.push(errorMessages.curtain.location)
+            }
+            
+            // if nameinputvalid & paircodeinputvalid & locationinputvalid is true, set addCurtainFormValid to true
+            if (nameInputValid && pairCodeInputValid && locationInputValid) {
+                addCurtainFormValid = true;
+            } else {
+                addCurtainFormValid = false;
+            }
+
+            createErrorSentence(errorSentence, addCurtainErrorMessage);
+            errorSentence = [];
+
+
+            // log all validity values
+            console.log("Name valid: " + nameInputValid);
+            console.log("Location valid: " + locationInputValid);
+            console.log("Paircode valid: " + pairCodeInputValid);
+            console.log("Form valid: " + addCurtainFormValid);
+
+            if (addCurtainFormValid) {
+                loadingSpinnerContainer.style.display = "flex";
+                loadingSpinnerContainer.style.opacity = "1";
+                closeOverlay(addCurtainOverlay);
+                addCurtainForm.submit();                
+            }            
         });
 
             
@@ -78,9 +142,9 @@ window.onload = () => {
         })
 
         // Eventlistener on form
-        addCurtainForm.addEventListener('click', function (event) {
+        addCurtainForm.addEventListener('click', (e) => {
             // If a radio button is checked
-            if (event.target && event.target.matches("input[type='radio']")) {
+            if (e.target && e.target.matches("input[type='radio']")) {
                 // Check if radio button check is the addLocationBtn
                 if(addLocationBtn.checked) {
                     addLocationInput.style.display = "inline-block"
@@ -102,10 +166,48 @@ window.onload = () => {
         })
 
         // Check if 
-        var specialChar = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-        curtainNameInput.addEventListener("keyup", (e) => {
-            console.log(specialChar.test(e.target.value))
-            // console.log(curtainNameInput.value)
+        // const pairCodeRegex = /[^[a-zA-Z]{0,4}[0-9]{0,4}$]/;
+        const specialChar = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+
+        const handleInput = (el, evt, rgx) => {
+            el.addEventListener(evt, (e) => {
+                // if paircoderegex set input to upper case
+                el === pairCodeInput ? el.value = el.value.toUpperCase() : null;
+                if (rgx.test(e.target.value)) {
+                    for(let i = 0; i < e.target.value.length; i++) {
+                        rgx ? el.value = el.value.replace(rgx, '') : null;
+                        console.log("Wrong input");
+                    }
+                }
+            });
+        }
+
+        ["paste", "keyup"].forEach((i) => {
+            handleInput(pairCodeInput, i, specialChar);
+            handleInput(curtainNameInput, i, specialChar);
+            handleInput(addLocationInput, i, specialChar);
+        });
+
+        locationRadioButtons.forEach((i) => {
+            i.addEventListener("click", (e) => {
+                if (e.target.checked) {
+                    locationInputValid = true;
+                    if (e.target.value === "addLocation") {
+                        locationInputValid = false;
+                        if (addLocationInput.value !== "") {
+                            locationInputValid = true;
+                        }
+                    }
+                }                
+            })
+        })
+
+        addLocationInput.addEventListener("keyup", (e) => {
+            if (e.target.value !== "") {
+                locationInputValid = true;
+            } else {
+                locationInputValid = false;
+            }
         })
     }
 
@@ -121,6 +223,7 @@ window.onload = () => {
         const addTimerBtn = document.getElementById("js--addTimerBtn");
         const closeTimerIcon = document.getElementById("js--closeAddNewTimerIcon");
         const closeTimerBtn = document.getElementById("js--closeAddNewTimerBtn");
+        const addTimerSubmitBtn = document.getElementById("js--addNewTimerSubmitBtn");
         // Are you sure timer
         const areYouSureTimerOverlay = document.getElementById("js--areYouSureTimerOverlay")
         const areYouSureCancelBtn = document.getElementById("js--areYouSureCancelBtn");
@@ -144,6 +247,11 @@ window.onload = () => {
         // Timer card
         const timerCardDay = document.getElementsByClassName("timerCard__title");
         const timersTimeline = document.getElementsByClassName("timerCard__openToClose");
+        // Addtimer form
+        const addTimerForm = document.getElementById("js--addTimerForm");
+        // Add timer Error message
+        const addTimerErrorMessage = document.getElementById("js--addNewTimer__errorMessage");
+
 
         // ------ Arrays ------
         // 1: Button el that needs evtlistener, 2: Overlay el that needs animation, 3: Give it either open or close animation
@@ -257,6 +365,107 @@ window.onload = () => {
                     break;
             }
         }
+
+        let dayInputValid = false;
+        let openTimeValid = false;
+        let closeTimeValid = false;
+        let isOpenTimeBeforeCloseTime = false;
+        let addTimerFormValid = false;
+
+        // check add timer form and prevevnt default
+        addTimerSubmitBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            // get radios checked
+            let radioChecked = document.querySelector("input[name='radios']:checked");
+            if (radioChecked) {
+                dayInputValid = true
+            } else {
+                dayInputValid = false
+                errorSentence.push(errorMessages.timer.dotw);
+            }
+
+            // check open time validity
+            let openTimeInput = document.querySelector("#open-time");
+            if (openTimeInput.value !== "") {
+                openTimeValid = true;
+            } else {
+                openTimeValid = false;
+                errorSentence.push(errorMessages.timer.openTime);
+            }
+            // check close time validity
+            let closeTimeInput = document.querySelector("#close-time");
+            if (closeTimeInput.value !== "") {
+                closeTimeValid = true;
+            } else {
+                closeTimeValid = false;
+                errorSentence.push(errorMessages.timer.closeTime);
+            }
+            // check open time is before close time
+            let openTime = openTimeInput.value;
+            let closeTime = closeTimeInput.value;
+            if (openTime !== "" && closeTime !== "") {
+                let openTimeArr = openTime.split(":");
+                let closeTimeArr = closeTime.split(":");
+                let openTimeHours = parseInt(openTimeArr[0]);
+                let openTimeMinutes = parseInt(openTimeArr[1]);
+                let closeTimeHours = parseInt(closeTimeArr[0]);
+                let closeTimeMinutes = parseInt(closeTimeArr[1]);
+                if (openTimeHours < closeTimeHours || (openTimeHours === closeTimeHours && openTimeMinutes < closeTimeMinutes)) {
+                    isOpenTimeBeforeCloseTime = true;
+                } else {
+                    isOpenTimeBeforeCloseTime = false;
+                }
+            } else {
+                isOpenTimeBeforeCloseTime = false;
+            }
+
+            !isOpenTimeBeforeCloseTime && openTime && closeTime ? errorSentence.push(errorMessages.timer.closeBeforeOpen) : null;
+
+            // if all is ok, form valid
+            if (dayInputValid && openTimeValid && closeTimeValid && isOpenTimeBeforeCloseTime) {
+                addTimerFormValid = true;
+            } else {
+                addTimerFormValid = false;
+            }
+
+            if (addTimerFormValid) {
+                loadingSpinnerContainer.style.display = "flex";
+                loadingSpinnerContainer.style.opacity = "1";
+                closeOverlay(newTimerOverlay);
+                addTimerForm.submit();
+            }
+                
+            console.log("Day input valid: " + dayInputValid);
+            console.log("Open time valid: " + openTimeValid);
+            console.log("Close time valid: " + closeTimeValid);
+            console.log("Is open time before close time: " + isOpenTimeBeforeCloseTime);
+            console.log("Add timer form valid: " + addTimerFormValid);
+
+            // if (errorSentence.length > 0) {
+            //     console.log(errorSentence);
+            //     errorSentence.unshift("Please");
+
+            //     if (errorSentence.length === 2) {
+            //         errorSentence = errorSentence[0] + " " + errorSentence[1];
+            //     }
+            //     if (errorSentence.length === 3) {
+            //         errorSentence = errorSentence[0] + " " + errorSentence[1] + " and " + errorSentence[2];
+            //     }
+            //     if (errorSentence.length === 4) {
+            //         errorSentence = errorSentence[0] + " " + errorSentence[1] + ", " + errorSentence[2] + " and " + errorSentence[3];
+            //     }
+
+            //     addTimerErrorMessage.style.display = "block";
+            //     addTimerErrorMessage.innerHTML = errorSentence;
+            // }   
+            
+            createErrorSentence(errorSentence, addTimerErrorMessage);
+            
+            console.log(errorSentence);
+            // clear errorSentence
+            errorSentence = [];
+        });
     }
 
     // ------ Animation Functions ------
@@ -303,5 +512,25 @@ window.onload = () => {
     const startLoadingAnimation = (el) => {
         el.style.display = "flex";
         el.style.opacity = "1";
+    }
+
+    const createErrorSentence = (errorSentence, errorElement) => {
+        if (errorSentence.length > 0) {
+                console.log(errorSentence);
+                errorSentence.unshift("Please");
+
+                if (errorSentence.length === 2) {
+                    errorSentence = errorSentence[0] + " " + errorSentence[1];
+                }
+                if (errorSentence.length === 3) {
+                    errorSentence = errorSentence[0] + " " + errorSentence[1] + " and " + errorSentence[2];
+                }
+                if (errorSentence.length === 4) {
+                    errorSentence = errorSentence[0] + " " + errorSentence[1] + ", " + errorSentence[2] + " and " + errorSentence[3];
+                }
+
+                errorElement.style.display = "block";
+                errorElement.innerHTML = errorSentence;
+            }         
     }
 };

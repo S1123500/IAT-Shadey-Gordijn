@@ -552,6 +552,12 @@ body {
     visibility: visible;
 }
 
+.addCurtain__errorMessage {
+    color: var(--clr-orange);
+    display: none;
+    padding-bottom: 0.5rem;
+}
+
 /* Curtain Details Pagina --------- */
 
 /* Header */
@@ -1051,6 +1057,11 @@ body {
     cursor: pointer;
     transform: scale(1.02);
     background-color: #ffd60a0c;
+}
+
+.addNewTimer__errorMessage {
+    padding-bottom: .5rem;
+    display: none;
 }
 
 /* Are you sure? */
