@@ -11,13 +11,6 @@ window.onload = () => {
     // get time each 5 minutes and refresh the page
     const refreshDelay = 300000;
 
-    // only if url is not 404
-    setInterval(() => {
-        // let reloadTime = new Date().getHours() + ":" + new Date().getMinutes();
-        // window.location.replace(`http://${domainName}/autoReload/${reloadTime}`);
-    }, refreshDelay);
-
-
     // All pages
     const loadingSpinnerContainer = document.getElementById("js--loadingSpinner__container");
 
