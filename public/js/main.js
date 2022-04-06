@@ -84,7 +84,6 @@ window.onload = () => {
             } else {
                 nameInputValid = false;
                 errorSentence.push(errorMessages.curtain.name[0]);
-                console.log(errorMessages.curtain.name[1]);
                 errorMessages.curtain.name[1].classList.add("textError");
                 errorMessages.curtain.name[2].classList.add("inputError");
             }
@@ -98,10 +97,8 @@ window.onload = () => {
                 errorMessages.curtain.pairCode[1].classList.add("textError");
                 errorMessages.curtain.pairCode[2].classList.add("inputError");
             }
-
             
             if (!locationInputValid) {
-                console.log(locationInputValid);
                 errorSentence.push(errorMessages.curtain.location[0])
                 errorMessages.curtain.location[1].classList.add("textError");
             }
@@ -524,7 +521,6 @@ window.onload = () => {
 
     const clearErrorStyling = (el) => {
         if (el) {
-            console.log("clearing " + el.innerHTML);
             el.classList.remove("inputError");            
             el.classList.remove("textError");
         }
