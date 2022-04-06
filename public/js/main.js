@@ -36,7 +36,11 @@ window.onload = () => {
         const addCurtainBtnSubmit = document.getElementById("js--addCurtainBtnSubmit");
         const closeAddCurtainBtn = document.getElementById("js--closeAddCurtain");
         const cancelAddCurtainBtn = document.getElementById("js--cancelAddCurtain");
+<<<<<<< Updated upstream
         const curtainCard = document.getElementById("js--curtainCard");
+=======
+        const curtainNameInput = document.getElementById("name");
+>>>>>>> Stashed changes
 
         // Loading animation
         curtainCard.addEventListener("click", (e) => {
@@ -95,6 +99,13 @@ window.onload = () => {
         })
         cancelAddCurtainBtn.addEventListener("click", () => {
             closeOverlay(addCurtainOverlay);
+        })
+
+        // Check if 
+        var specialChar = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+        curtainNameInput.addEventListener("keyup", (e) => {
+            console.log(specialChar.test(e.target.value))
+            // console.log(curtainNameInput.value)
         })
     }
 
