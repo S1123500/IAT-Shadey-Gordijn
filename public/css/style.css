@@ -464,10 +464,10 @@ body {
 
 .addCurtainCard__form label {
     font-family: var(--ff-primary);
-    font-size: 14px;
-
     color: var(--clr-white);
+    font-size: 100%;
     border-radius: 5px;
+    font-weight: 400;
 }
 
 .addCurtainCard__form input[type="text"],
@@ -689,6 +689,12 @@ body {
     visibility: visible;
 }
 
+.addCurtain__errorMessage {
+    color: var(--clr-orange);
+    display: none;
+    padding-bottom: 0.5rem;
+}
+
 /* Curtain Details Pagina --------- */
 
 /* Header */
@@ -730,7 +736,23 @@ body {
     align-items: center;
 
     width: 60%;
+    position: relative;
 }
+
+.openCloseSlider__stripes{
+    position: absolute;
+    font-weight: 600;
+    transform: translateY(-1px);
+}
+    .openCloseSlider__stripes-left{
+        left: -1px;
+    }
+    .openCloseSlider__stripes-middle{
+        left: 50%;
+    }
+    .openCloseSlider__stripes-right{
+        right: -1px;
+    }
 
 .openCloseSlider__slider {
     width: 100%;
@@ -1110,11 +1132,11 @@ body {
     background-color: var(--clr-yellow);
 }
 .addNewTimer__dotw input[type="radio"]:disabled+label {
-    opacity: 0.5;
+    opacity: 0.8;
+    color: var(--clr-grey);
 }
 .addNewTimer__dotw input[type="radio"]:hover:disabled+label {
-    background: var(--clr-white);
-    opacity: 0.5;
+    background-color: var(--clr-white);
     cursor:not-allowed;
 }
 
@@ -1279,6 +1301,11 @@ body {
     transform: scale(1.02);
 
     background-color: #ffd60a0c;
+}
+
+.addNewTimer__errorMessage {
+    padding-bottom: .5rem;
+    display: none;
 }
 
 /* Are you sure? */
@@ -1768,4 +1795,6 @@ body {
 
 .textError {
     color: var(--clr-orange) !important;
+    font-weight: 400 !important;
+    font-size: 100%;
 }
