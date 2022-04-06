@@ -22,11 +22,13 @@ class DetailsController extends Controller
         $daysInAWeek = array('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun');
         $daysAlreadyExist = array();
         $scheduleDays = Curtain::where('name', $name)->first()->allSchedules;
+        $day = NUll;
 
         foreach ($scheduleDays as $schedule){
                 $day = $schedule->whichDay;
                 array_push($daysAlreadyExist, $day);
         };
+
         // $timeOpen = $schedules->timeOpen;
         // $timeClose = $schedules->timeClose;
         return view('details',[
