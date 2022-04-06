@@ -369,8 +369,9 @@ body {
 .addCurtainCard__form label {
     font-family: var(--ff-primary);
     color: var(--clr-white);
-    font-size: 14px;
+    font-size: 100%;
     border-radius: 5px;
+    font-weight: 400;
 }
 .addCurtainCard__form input[type="text"], .addCurtainCard input[type="text"] {
     font-family: var(--ff-primary);
@@ -932,11 +933,11 @@ body {
     animation: radioClick 0.45s ease-out;
 }
 .addNewTimer__dotw input[type="radio"]:disabled+label {
-    opacity: 0.5;
+    opacity: 0.8;
+    color: var(--clr-grey);
 }
 .addNewTimer__dotw input[type="radio"]:hover:disabled+label {
-    background: var(--clr-white);
-    opacity: 0.5;
+    background-color: var(--clr-white);
     cursor:not-allowed;
 }
 
@@ -1498,5 +1499,7 @@ body {
 
 .textError {
     color: var(--clr-orange) !important;
+    font-weight: 400 !important;
+    font-size: 100%;
 }
 
