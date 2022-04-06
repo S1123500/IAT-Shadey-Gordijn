@@ -23,7 +23,6 @@ while True:
     t = time.localtime()
     current_time = time.strftime("%H:%M", t)
     current_day = time.strftime("%A", t)
-    print(current_day)
     
     # match current_day: 
     #      case "Monday": current_day = "Mon";
@@ -47,26 +46,36 @@ while True:
         current_day = "Sat"
     if current_day == "Sunday":
         current_day = "Sun"
-
-
+    
+    # What day and time is it now
+    print(current_day)
     print(current_time)
-    mycursor.execute("SELECT curtainName FROM schedule WHERE whichDay = '%s' AND timeOpen = '%s' " % ('Mon', '16:21'))
+
+    # Check if Curtain needs to Open
+    mycursor.execute("SELECT curtainName FROM schedule WHERE whichDay = '%s' AND timeOpen = '%s' " % (current_day, current_time))
     list=[]
     for index in mycursor:
         curtain = index[0]
         list.append(curtain)
-    percentage = 0
+        if list:
+            percentage = 0
+
     for x in list:
         update(x, percentage)
-    # for index in mycursor:
-    #     curtain = index[0]
-    #     percentage = 0
-    #     update(curtain, percentage)
-    # mycursor.execute("SELECT curtainName FROM schedule WHERE whichDay =%s AND timeClose =%s", (current_day, current_time))
-    # for index in mycursor:
-    #     curtain = index[0]
-    #     percentage = 2
-    #     update(curtain, percentage)
+
+    # Check if Curtain needs to close
+    mycursor.execute("SELECT curtainName FROM schedule WHERE whichDay = '%s' AND timeClose = '%s' " % (current_day, current_time))
+    list=[]
+    for index in mycursor:
+        curtain = index[0]
+        list.append(curtain)
+        if list:
+            percentage = 2
+
+    for x in list:
+        update(x, percentage)
+
+    # Update databsae and wait a minute to check agains
     mydb.commit()
     time.sleep(60)
 
