@@ -40,7 +40,6 @@ window.onload = () => {
     if (path === "/") {
         console.log("Homepage")
 
-        // // Get js elements from DOM by ID
         const outOfHomeCard = document.getElementById("js--outOfHomeCard");
         const outOfHomeCard_toggleIcon = document.getElementById("js--outOfHomeCard-toggleIcon");
         const addLocationInput = document.getElementById('js--newLocation');
