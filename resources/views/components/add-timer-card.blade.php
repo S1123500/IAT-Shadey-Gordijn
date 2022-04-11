@@ -10,6 +10,7 @@
             <h2 class="addNewTimer__title"> ADD A TIMER </h2>
             
             <form action="addTimer" id="js--addTimerForm" method="post" class="addNewTimer__form">
+            @csrf
                 <p id="js--addTimer__dotwLabel">Day of the week</p>
                 <section class="addNewTimer__dotw u-noselect">
 
