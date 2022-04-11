@@ -33,6 +33,9 @@ window.onload = () => {
         }
     }
 
+    // All curtainCard background images available
+    const curtainCardImages = ["../img/bathroom.png", "../img/bedroom.png", "../img/kitchen.png", "../img/livingroom.png","../img/jaap.png"];
+
     // All pages
     const loadingSpinnerContainer = document.getElementById("js--loadingSpinner__container");
 
@@ -51,6 +54,7 @@ window.onload = () => {
         const closeAddCurtainBtn = document.getElementById("js--closeAddCurtain");
         const cancelAddCurtainBtn = document.getElementById("js--cancelAddCurtain");
         const curtainCard = document.getElementById("js--curtainCard");
+        const curtainCardBackground = document.querySelectorAll(".curtainCard__wrapper")
         const curtainNameInput = document.getElementById("name");
         const pairCodeInput = document.getElementById("pairCode");
         const locationRadioButtons = document.querySelectorAll("input[name='locations']");
@@ -143,6 +147,24 @@ window.onload = () => {
 
             window.location.replace(`http://${domainName}/vacation`);
         })
+
+        // add background to curtainCard
+        for (let i = 0; i < curtainCardBackground.length; i++) {
+            if (curtainCardBackground[i].innerHTML.toLowerCase().includes("jaap")){
+                curtainCardBackground[i].style.backgroundImage = "url("+curtainCardImages[4]+")"
+            } else if(curtainCardBackground[i].innerHTML.toLowerCase().includes("badkamer") || curtainCardBackground[i].innerHTML.toLowerCase().includes("bathroom")) {
+                curtainCardBackground[i].style.backgroundImage = "url("+curtainCardImages[0]+")"
+            } else if(curtainCardBackground[i].innerHTML.toLowerCase().includes("slaapkamer") || curtainCardBackground[i].innerHTML.includes("bedroom")){
+                curtainCardBackground[i].style.backgroundImage = "url("+curtainCardImages[1]+")"
+            } else if(curtainCardBackground[i].innerHTML.toLowerCase().includes("keuken") || curtainCardBackground[i].innerHTML.toLowerCase().includes("kitchen")){
+                curtainCardBackground[i].style.backgroundImage = "url("+curtainCardImages[2]+")"
+            } else if(curtainCardBackground[i].innerHTML.toLowerCase().includes("woonkamer") || curtainCardBackground[i].innerHTML.toLowerCase().includes("living room")){
+                curtainCardBackground[i].style.backgroundImage = "url("+curtainCardImages[3]+")"
+            } else {
+                let imageIndex = Math.floor((Math.random() * (curtainCardImages.length - 1)))
+                curtainCardBackground[i].style.backgroundImage = "url("+curtainCardImages[imageIndex]+")"
+            }
+        }
 
         // Eventlistener on form
         addCurtainForm.addEventListener('click', (e) => {

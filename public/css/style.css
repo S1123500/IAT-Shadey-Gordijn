@@ -241,8 +241,9 @@ body {
     padding-bottom: 100%;
 }
 .curtainCard__wrapper {
-    background: var(--clr-light-blue);
-    background-size: 250%;
+    /* background: var(--clr-light-blue); */
+    /* background: url("../img/livingRoom.png"); */
+    background-size: 150%;
     background-position: center;
     display: flex;
     justify-content: flex-start;
