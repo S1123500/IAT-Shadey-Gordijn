@@ -92,18 +92,17 @@ window.onload = () => {
         const curtainCard = document.getElementsByClassName("js--curtainCard");
         const duplicatePopup = document.getElementById("js--duplicatePopup");
         const duplicatePopupBtnClose = document.getElementById("js--duplicatePopupClose");
+        const curtainNameInput = document.getElementById("name");
+        const pairCodeInput = document.getElementById("pairCode");
+        const locationRadioButtons = document.querySelectorAll("input[name='locations']");
+        const addCurtainErrorMessage = document.getElementById("js--addCurtainErrorMessage");
 
         // Error senteces
         let nameInputValid = false;
         let pairCodeInputValid = false;
         let locationInputValid = false;
         let addCurtainFormValid = false;
-
-        // Loading animation
-        curtainCard.addEventListener("click", () => {
-            loadingSpinnerContainer.style.display = "flex";
-            loadingSpinnerContainer.style.opacity = "1";
-        });
+        
         // Check add curtain form submit
         addCurtainBtnSubmit.addEventListener("click", (e) => {
             e.preventDefault();
