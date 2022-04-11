@@ -17,11 +17,16 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor(buffered=True)
 # port = serial.Serial("COM5", baudrate=9600, timeout=3.0)
 
+
+
+
 rcv = ""
 toSend = ""
 current_state = ""
 updated_state = ""
 current_direction = ""
+
+
 
 paring_name = "default"
 
@@ -30,9 +35,12 @@ half_move = int(math.floor(full_move / 2))
 
 
 def read_serial():
+    global rcv
     #rcv = str(port.readline().decode().strip())
     # print(rcv)
     print("serial read goes here :)\n")  # REMOVE ME
+    rcv = "Betty"
+    return rcv
 
 
 # def send_serial(x):
@@ -60,7 +68,6 @@ def curtain_close(x):
 
 
 def curtain_btn(name):
-    global current_direction
     print("curtain button pressed")
     mycursor.execute(
         "SELECT percentage FROM curtain WHERE name = '%s'" % (name))
@@ -83,11 +90,15 @@ def curtain_btn(name):
         current_direction = "opening"
 
 def reference(name):
-    x = mycursor.execute(
+    global current_state
+    mycursor.execute(
         "SELECT percentage FROM curtain WHERE name = '%s'" % (name))
-    if not x is current_state:
-        current_state = x
-        move(current_state)
+    for index in mycursor:
+        x = index[0]
+        if not x is current_state:
+            current_state = x
+            move(current_state)
+    print(current_state)
 
 def update(name, value):
     global current_state
@@ -126,16 +137,20 @@ def move(value):
 
 
 def main():
+    global rcv
     global current_state
+    global current_direction
+    global paring_name
+
     time.sleep(3)
     paring_name = read_serial()
     time.sleep(3)
 
+    # reference(paring_name)
     current_state = mycursor.execute("SELECT percentage FROM curtain WHERE name = '%s'" % (paring_name))
+    
 
     while True:
-        reference(paring_name)
-
         t = time.localtime()
         current_time = time.strftime("%H:%M", t)
         current_day = time.strftime("%A", t)[0:3]
@@ -184,9 +199,10 @@ def main():
                 break
             else:
                 rcv = ""
+
+            reference(paring_name)
             time.sleep(1)
             # port.reset_input_buffer()
-            reference(paring_name)
 
 
 if __name__ == "__main__":
