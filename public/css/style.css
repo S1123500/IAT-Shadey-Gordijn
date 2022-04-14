@@ -305,6 +305,10 @@ body {
 }
 
 .curtainCard__wrapper {
+    /* background: var(--clr-light-blue); */
+    /* background: url("../img/livingRoom.png"); */
+    background-size: 150%;
+    background-position: center;
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
