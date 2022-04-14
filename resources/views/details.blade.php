@@ -28,10 +28,10 @@
         <section class="openCloseSlider__container">
             <p>Open</p>
             <section class="openCloseSlider">
-            <p class="openCloseSlider__stripes openCloseSlider__stripes-left">|</p>
-                <p class="openCloseSlider__stripes openCloseSlider__stripes-middle">|</p>
+                <p class="openCloseSlider__stripes openCloseSlider__stripes-left u-noselect">|</p>
+                <p class="openCloseSlider__stripes openCloseSlider__stripes-middle u-noselect">|</p>
                 <input type="range" class="openCloseSlider__slider" id="openCloseSlider__slider" min="0" value="{{$curtain->percentage}}" max="2" step="1" list="openCloseSlider__options">
-                <p class="openCloseSlider__stripes openCloseSlider__stripes-right">|</p>
+                <p class="openCloseSlider__stripes openCloseSlider__stripes-right u-noselect">|</p>
             </section>
             <p>Close</p>
         </section>
