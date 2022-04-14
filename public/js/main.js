@@ -227,11 +227,11 @@ window.onload = () => {
                 curtainCardBackground[i].style.backgroundImage = "url("+curtainCardImages[4]+")"
             } else if(curtainCardBackground[i].innerHTML.toLowerCase().includes("badkamer") || curtainCardBackground[i].innerHTML.toLowerCase().includes("bathroom")) {
                 curtainCardBackground[i].style.backgroundImage = "url("+curtainCardImages[0]+")"
-            } else if(curtainCardBackground[i].innerHTML.toLowerCase().includes("slaapkamer") || curtainCardBackground[i].innerHTML.includes("bedroom")){
+            } else if(curtainCardBackground[i].innerHTML.toLowerCase().includes("slaapkamer") || curtainCardBackground[i].innerHTML.toLowerCase().includes("bedroom")){
                 curtainCardBackground[i].style.backgroundImage = "url("+curtainCardImages[1]+")"
             } else if(curtainCardBackground[i].innerHTML.toLowerCase().includes("keuken") || curtainCardBackground[i].innerHTML.toLowerCase().includes("kitchen")){
                 curtainCardBackground[i].style.backgroundImage = "url("+curtainCardImages[2]+")"
-            } else if(curtainCardBackground[i].innerHTML.toLowerCase().includes("woonkamer") || curtainCardBackground[i].innerHTML.toLowerCase().includes("living room")){
+            } else if(curtainCardBackground[i].innerHTML.toLowerCase().includes("woonkamer") || curtainCardBackground[i].innerHTML.toLowerCase().includes("livingroom")){
                 curtainCardBackground[i].style.backgroundImage = "url("+curtainCardImages[3]+")"
             } else {
                 let imageIndex = Math.floor((Math.random() * (curtainCardImages.length - 1)))
