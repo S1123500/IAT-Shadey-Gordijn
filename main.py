@@ -1,6 +1,6 @@
 from cmath import log
 from json.tool import main
-# import serial
+import serial
 import os
 import mysql.connector
 import time
@@ -15,74 +15,78 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor(buffered=True)
-# port = serial.Serial("COM5", baudrate=9600, timeout=3.0)
+port = serial.Serial("/dev/ttyUSB0", baudrate=9600, timeout=3.0)
 
 
 
 
 rcv = ""
 toSend = ""
-current_state = ""
-updated_state = ""
-current_direction = ""
+current_state = None
+updated_state = None
+current_direction = "opening"
 
 
 
 paring_name = "default"
 
-full_move = 12  # MUST BE DIVISIBLE BY 2 FOR BEST EFFECT
+full_move = 8  # MUST BE DIVISIBLE BY 2 FOR BEST EFFECT
 half_move = int(math.floor(full_move / 2))
 
 
 def read_serial():
-    global rcv
-    #rcv = str(port.readline().decode().strip())
-    # print(rcv)
-    print("serial read goes here :)\n")  # REMOVE ME
-    rcv = "Betty"
+    #global rcv
+    rcv = str(port.readline().decode().strip())
+    print(rcv)
+    port.reset_input_buffer()
     return rcv
 
 
-# def send_serial(x):
-#     toSend = x
-#     port.write(toSend.encode())
-#     toSend = ""
+def send_serial(x):
+    toSend = x
+    port.write(str(toSend).encode())
+    toSend = ""
+    port.reset_output_buffer()
 
 
 def curtain_open(x):
     print("it will open with " + str(x) + " rotations")
-#     send_serial("a1")
-#     time.sleep(5)
-#     send_serial(x) # half_move || full_move
-#     time.sleep(5)
-#     send_serial("l1")
+    send_serial("a1")
+    time.sleep(2)
+    print(read_serial)
+    send_serial(x) # half_move || full_move
+    time.sleep(2)
+    send_serial("l1")
 
 
 def curtain_close(x):
     print("it will close with " + str(x) + " rotations")
-#     send_serial("a1")
-#     time.sleep(5)
-#     send_serial(x)
-#     time.sleep(5)
-#     send_serial("l2")
+    send_serial("a1")
+    time.sleep(2)
+    print(read_serial)
+    send_serial(x)
+    time.sleep(2)
+    send_serial("l2")
 
 
 def curtain_btn(name):
+    global current_direction
     print("curtain button pressed")
     mycursor.execute(
         "SELECT percentage FROM curtain WHERE name = '%s'" % (name))
     for index in mycursor:
         current_state = index[0]
+
+    print("state is: "+str(current_state))
     if current_state == 0:
         update(name, 1)
         current_direction = "closing"
     elif current_state == 1:
+        print(current_direction + 'exists')
         if current_direction == "closing":
-            curtain_close(half_move)
             update(name, 2)
             current_direction = "opening"
         elif current_direction == "opening":
-            curtain_open(half_move)
             update(name, 0)
             current_direction = "closing"
     elif current_state == 2:
@@ -96,8 +100,10 @@ def reference(name):
     for index in mycursor:
         x = index[0]
         if not x is current_state:
-            current_state = x
-            move(current_state)
+            updated_state = x
+            move(updated_state)
+            print("this is reference()")
+            current_state = updated_state
     print(current_state)
 
 def update(name, value):
@@ -109,24 +115,31 @@ def update(name, value):
     mycursor.execute(
         "UPDATE curtain SET percentage = %s WHERE name = '%s'" % (value, name))
     print("curtain updated")
-    move(value)
+    reference(name)
+    current_state = value
+
     
 def move(value):
-    if value != current_state:
         if current_state == 1:
             if value < current_state:
                 curtain_open(half_move)
+                return
             elif value > current_state:
                 curtain_close(half_move)
+                return
         elif value == 1:
             if value < current_state:
                 curtain_open(half_move)
+                return
             elif value > current_state:
                 curtain_close(half_move)
+                return
         elif value < current_state:
             curtain_open(full_move)
+            return
         elif value > current_state:
             curtain_close(full_move)
+            return
 
     ####
     # VALUE is CURTAIN STATE:
@@ -146,10 +159,16 @@ def main():
     paring_name = read_serial()
     time.sleep(3)
 
-    # reference(paring_name)
     current_state = mycursor.execute("SELECT percentage FROM curtain WHERE name = '%s'" % (paring_name))
+    for x in mycursor:
+        current_state = x[0]
+    updated_state = current_state
+
+    print("Current state: " + str(current_state))
+    print("Updated state: " + str(updated_state))
     
 
+    reference(paring_name)
     while True:
         t = time.localtime()
         current_time = time.strftime("%H:%M", t)
@@ -187,21 +206,12 @@ def main():
         mydb.commit()
 
         # time.sleep(60) depricated timer, not accurate enough
-
+        reference(paring_name)
         # new for loop that reads serial for button input and waits less than a minute
-
-        # for loop
-        for i in range(0, 30):
-            read_serial()
-            if rcv == "mc":
+        if 'mc' in read_serial():
                 curtain_btn(paring_name)
-                rcv = ""
-                break
-            else:
-                rcv = ""
-
-            reference(paring_name)
-            time.sleep(1)
+                #rcv = ""
+            
             # port.reset_input_buffer()
 
 
